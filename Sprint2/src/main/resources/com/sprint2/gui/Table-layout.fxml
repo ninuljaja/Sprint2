@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sprint2.gui.TableLayoutController">
+   <effect>
+      <ColorAdjust />
+   </effect>
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="168.0" layoutY="4.0" text="Manage Table Status" textFill="#f55e61" AnchorPane.topAnchor="4.0">
+         <font>
+            <Font name="System Bold" size="37.0" />
+         </font>
+      </Label>
+      <Pane layoutX="474.0" layoutY="60.0" prefHeight="270.0" prefWidth="211.0" style="-fx-background-radius: 10px; -fx-background-color: white; -fx-border-color: #666666; -fx-border-radius: 10px;" AnchorPane.bottomAnchor="120.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="60.0">
+         <children>
+            <Label fx:id="tableNumberLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" prefHeight="40.0" prefWidth="210.0" text="Table" underline="true">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Button alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="35.0" layoutY="40.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="140.0" style="-fx-border-color: black; -fx-background-color: white;" text="Fill Table">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="placeOrderBtn" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="35.0" layoutY="82.0" mnemonicParsing="false" onAction="#onPlaceOrderBtn" prefHeight="30.0" prefWidth="140.0" style="-fx-border-color: black; -fx-background-color: white;" text="Place Order">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="35.0" layoutY="171.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="140.0" style="-fx-border-color: black; -fx-background-color: white;" text="Mark as Dirty">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="35.0" layoutY="216.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="140.0" style="-fx-border-color: black; -fx-background-color: white;" text="Mark as Clean">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="35.0" layoutY="126.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="140.0" style="-fx-border-color: black; -fx-background-color: white;" text="View Order">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <GridPane layoutX="17.0" layoutY="55.39999999999998" prefHeight="377.0" prefWidth="449.0" AnchorPane.bottomAnchor="18.0" AnchorPane.leftAnchor="17.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.0" minWidth="10.0" prefWidth="24.6" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.0" minWidth="10.0" prefWidth="79.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.0" minWidth="10.0" prefWidth="75.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.0" minWidth="10.0" prefWidth="75.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.0" minWidth="10.0" prefWidth="75.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.0" minWidth="10.0" prefWidth="75.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.0" minWidth="10.0" prefWidth="75.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="57.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="57.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="57.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="57.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="57.0" minHeight="10.0" prefHeight="56.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="57.0" minHeight="10.0" prefHeight="56.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" text="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" text="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" text="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" text="4" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" text="5" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" text="6" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" text="A" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" text="B" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" text="C" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" text="D" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" text="E" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" text="F" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="tableA1Btn" alignment="CENTER" mnemonicParsing="false" onAction="#onTableA1" prefHeight="45.0" prefWidth="45.0" style="-fx-border-color: #666666; -fx-background-color: #83df5bff;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Button fx:id="tableA2Btn" disable="true" mnemonicParsing="false" onAction="#onTableA2" prefHeight="45.0" prefWidth="45.0" style="-fx-border-color: #666666; -fx-background-color: #83df5bff;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Button fx:id="tableB1Btn" alignment="CENTER" disable="true" layoutX="49.0" layoutY="18.0" mnemonicParsing="false" onAction="#onTableB1" prefHeight="45.0" prefWidth="45.0" style="-fx-border-color: #666666; -fx-background-color: #83df5bff;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Button fx:id="tableB2Btn" disable="true" mnemonicParsing="false" onAction="#onTableB2" prefHeight="45.0" prefWidth="45.0" style="-fx-border-color: #666666; -fx-background-color: #83df5bff;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Button fx:id="tableA3Btn" disable="true" mnemonicParsing="false" onAction="#onTableA3" prefHeight="45.0" prefWidth="45.0" style="-fx-border-color: #666666; -fx-background-color: #83df5bff;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <Button fx:id="tableB3Btn" disable="true" mnemonicParsing="false" onAction="#onTableB3" prefHeight="45.0" prefWidth="45.0" style="-fx-border-color: #666666; -fx-background-color: #83df5bff;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <Button fx:id="tableA4Btn" disable="true" mnemonicParsing="false" onAction="#onTableA4" prefHeight="45.0" prefWidth="45.0" style="-fx-border-color: #666666; -fx-background-color: #83df5bff;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+            <Button fx:id="tableB4Btn" disable="true" mnemonicParsing="false" onAction="#onTableB4" prefHeight="45.0" prefWidth="45.0" style="-fx-border-color: #666666; -fx-background-color: #83df5bff;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+            <Button fx:id="tableA5Btn" disable="true" mnemonicParsing="false" onAction="#onTableA5" prefHeight="45.0" prefWidth="45.0" style="-fx-border-color: #666666; -fx-background-color: #83df5bff;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+            <Button fx:id="tableB5Btn" disable="true" mnemonicParsing="false" onAction="#onTableB5" prefHeight="45.0" prefWidth="45.0" style="-fx-border-color: #666666; -fx-background-color: #83df5bff;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+            <Button fx:id="tableA6Btn" disable="true" mnemonicParsing="false" onAction="#onTableA6" prefHeight="45.0" prefWidth="45.0" style="-fx-border-color: #666666; -fx-background-color: #83df5bff;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+            <Button fx:id="tableB6Btn" disable="true" mnemonicParsing="false" onAction="#onTableB6" prefHeight="45.0" prefWidth="45.0" style="-fx-border-color: #666666; -fx-background-color: #83df5bff;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+            <Button fx:id="tableC5Btn" disable="true" mnemonicParsing="false" onAction="#onTableC5" prefHeight="45.0" prefWidth="45.0" style="-fx-border-color: #666666; -fx-background-color: #83df5bff;" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+            <Button fx:id="tableD5Btn" disable="true" mnemonicParsing="false" onAction="#onTableD5" prefHeight="45.0" prefWidth="45.0" style="-fx-border-color: #666666; -fx-background-color: #83df5bff;" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+            <Button fx:id="tableC6Btn" disable="true" mnemonicParsing="false" onAction="#onTableC6" prefHeight="45.0" prefWidth="45.0" style="-fx-border-color: #666666; -fx-background-color: #83df5bff;" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+            <Button fx:id="tableD6Btn" disable="true" mnemonicParsing="false" onAction="#onTableD6" prefHeight="45.0" prefWidth="45.0" style="-fx-border-color: #666666; -fx-background-color: #83df5bff;" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+            <Button fx:id="tableE1Btn" disable="true" mnemonicParsing="false" onAction="#onTableE1" prefHeight="45.0" prefWidth="45.0" style="-fx-border-color: #666666; -fx-background-color: #83df5bff;" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Button fx:id="tableF1Btn" disable="true" mnemonicParsing="false" onAction="#onTableF1" prefHeight="45.0" prefWidth="45.0" style="-fx-border-color: #666666; -fx-background-color: #83df5bff;" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Button fx:id="tableE2Btn" disable="true" mnemonicParsing="false" onAction="#onTableE2" prefHeight="45.0" prefWidth="45.0" style="-fx-border-color: #666666; -fx-background-color: #83df5bff;" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Button fx:id="tableF2Btn" disable="true" mnemonicParsing="false" onAction="#onTableF2" prefHeight="45.0" prefWidth="45.0" style="-fx-border-color: #666666; -fx-background-color: #83df5bff;" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Button fx:id="tableE3Btn" disable="true" mnemonicParsing="false" onAction="#onTableE3" prefHeight="45.0" prefWidth="45.0" style="-fx-border-color: #666666; -fx-background-color: #83df5bff;" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <Button fx:id="tableF3Btn" disable="true" mnemonicParsing="false" onAction="#onTableF3" prefHeight="45.0" prefWidth="45.0" style="-fx-border-color: #666666; -fx-background-color: #83df5bff;" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <Button fx:id="tableE4Btn" disable="true" mnemonicParsing="false" onAction="#onTableE4" prefHeight="45.0" prefWidth="45.0" style="-fx-border-color: #666666; -fx-background-color: #83df5bff;" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+            <Button fx:id="tableF4Btn" disable="true" mnemonicParsing="false" onAction="#onTableF4" prefHeight="45.0" prefWidth="45.0" style="-fx-border-color: #666666; -fx-background-color: #83df5bff;" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+            <Button fx:id="tableE5Btn" disable="true" mnemonicParsing="false" onAction="#onTableE5" prefHeight="45.0" prefWidth="45.0" style="-fx-border-color: #666666; -fx-background-color: #83df5bff;" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+            <Button fx:id="tableF5Btn" disable="true" mnemonicParsing="false" onAction="#onTableF5" prefHeight="45.0" prefWidth="45.0" style="-fx-border-color: #666666; -fx-background-color: #83df5bff;" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+            <Button fx:id="tableE6Btn" disable="true" mnemonicParsing="false" onAction="#onTableE6" prefHeight="45.0" prefWidth="45.0" style="-fx-border-color: #666666; -fx-background-color: #83df5bff;" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+            <Button fx:id="tableF6Btn" disable="true" mnemonicParsing="false" onAction="#onTableF6" prefHeight="45.0" prefWidth="45.0" style="-fx-border-color: #666666; -fx-background-color: #83df5bff;" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #bfc7caff;" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowSpan="4">
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </GridPane.margin>
+            </Pane>
+         </children>
+      </GridPane>
+      <Group layoutX="498.0" layoutY="347.0">
+         <children>
+            <Label layoutX="14.0" layoutY="-6.0" text="  Ready">
+               <graphic>
+                  <Label accessibleRole="IMAGE_VIEW" prefHeight="15.0" prefWidth="18.0" style="-fx-background-color: #83df5bff; -fx-border-color: #666666;" text="    " />
+               </graphic>
+            </Label>
+            <Label layoutX="14.0" layoutY="16.0" text="  Occupied">
+               <graphic>
+                  <Label accessibleRole="IMAGE_VIEW" prefHeight="15.0" prefWidth="18.0" style="-fx-background-color: #f0f00bff; -fx-border-color: #666666;" text="    " />
+               </graphic></Label>
+            <Label layoutX="14.0" layoutY="37.0" text="  Dirty">
+               <graphic>
+                  <Label accessibleRole="IMAGE_VIEW" prefHeight="15.0" prefWidth="18.0" style="-fx-background-color: #ff0000ff; -fx-border-color: #666666;" text="    " />
+               </graphic>
+            </Label>
+         </children>
+      </Group>
+      <Button fx:id="goBackBtn" layoutX="621.0" layoutY="410.0" mnemonicParsing="false" onAction="#onGoBack" prefHeight="31.0" prefWidth="64.0" text="Back" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="15.0" />
+   </children>
+</AnchorPane>
