@@ -19,8 +19,7 @@
             <Font name="Droid Sans" size="79.0" />
          </font>
          <stylesheets>
-            <URL value="@font.css" />
-            <URL value="@font.css" />
+            <URL value="@style.css" />
          </stylesheets>
          <effect>
             <DropShadow height="13.43" offsetX="3.0" offsetY="4.0" radius="5.779999999999999" width="11.69">

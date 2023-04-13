@@ -7,3 +7,9 @@
 .text {
     -fx-font-family: DancingScript-Bold
 }
+
+
+
+.button:focused {
+    -fx-border-width: 3px;
+}

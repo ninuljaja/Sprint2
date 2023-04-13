@@ -8,28 +8,37 @@ import javafx.scene.control.Label;
 import java.io.IOException;
 
 public class TableLayoutController {
+    public Button tableB1Btn;
     @FXML
     private Button placeOrderBtn;
     @FXML
     private Button tableA1Btn, tableA2Btn,tableA3Btn, tableA42Btn, tableA5Btn, tableA6Btn;
+
+
 
     @FXML
     private Label tableNumberLabel;
 
 
     public TableLayoutController() throws IOException {
+
     }
+
 
     @FXML
     protected void onTableA1(){
         tableNumberLabel.setText("Table A1");
-        placeOrderBtn.setDisable(false);
+
+
 
     }
 
     @FXML
     protected void onTableA2(){
         tableNumberLabel.setText("Table A2");
+     //   tableA2Btn.requestFocus();
+
+
 
     }
 
