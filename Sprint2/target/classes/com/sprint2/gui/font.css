@@ -1,9 +1,0 @@
-@font-face {
-   
-	font-family: 'Dancing Script', cursive;
-    src: url('DancingScript-Bold.ttf');
-}
-
-.text {
-    -fx-font-family: DancingScript-Bold
-}
