@@ -14,7 +14,7 @@ public class GUIApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Login-view.fxml"));
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root);
-
+        primaryStage.setResizable(false);
         primaryStage.setScene(scene);
         primaryStage.show();
     }

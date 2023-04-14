@@ -50,7 +50,9 @@ public class LoginController {
                 loader.setController(this);
                 Parent root = loader.load();
 
+
                 stage = new Stage();
+                stage.setResizable(false);
                 stage.setScene(new Scene(root));
                 stage.show();
             } catch (Exception e) {
