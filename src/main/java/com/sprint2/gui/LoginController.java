@@ -17,9 +17,9 @@ public class LoginController {
   Stage stage;
 
     @FXML
-    private Button managerButton, waitButton, kitchenButton, busButton, hostButton;
-    @FXML
-    private Label welcomeLabel;
+    private Button login, managerButton, waitButton, kitchenButton, busButton, hostButton;
+
+
     @FXML
     private AnchorPane loginAs;
 
@@ -35,34 +35,27 @@ public class LoginController {
     public LoginController() throws IOException {
     }
 
+
+
+
+
     @FXML
     protected void onLoginButton() throws IOException {
 
         String userName = usernameField.getText();
         String pass = passwordField.getText();
-        String[] result= Authentication.authenticateUser(userName, pass);
+        String[] user= Authentication.authenticateUser(userName, pass);
 
-        if(result != null)
+        if(user != null)
         {
             tries = 0;
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginAs.fxml"));
-                loader.setController(this);
-                Parent root = loader.load();
 
+            Employee employee = null;
 
-                stage = new Stage();
-                stage.setResizable(false);
-                stage.setScene(new Scene(root));
-                stage.show();
-            } catch (Exception e) {
-                System.err.println(String.format("Error: %s", e.getMessage()));
-            }
-            welcomeLabel.setText("Welcome, " + result[0] + " " + result[1] + "\nLog in as…");
-            String role = result[2].toLowerCase();
+            String role = user[3].toLowerCase();
             switch (role) {
                 case "manager":
-                   Manager manager = new Manager();
+                    employee = new Manager(user);
 
                    break;
                 case "busser":
@@ -93,6 +86,17 @@ public class LoginController {
 
                     break;
             }
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginAs.fxml"));
+                Parent root = loader.load();
+                LoginAsController loginAsScreenController = loader.getController();
+                loginAsScreenController.setUser(employee);
+                stage = (Stage) login.getScene().getWindow();
+                stage.setScene(new Scene(root));
+                stage.show();
+            } catch (Exception e) {
+                System.err.println(String.format("Error: %s", e.getMessage()));
+            }
         }
         else
         {
@@ -113,29 +117,12 @@ public class LoginController {
     }
 
 
-    @FXML
-    protected void onLogOutButton() throws IOException {
-        //
 
-             Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"Are you sure you want to log out?", ButtonType.YES);
-             alert.setHeaderText("");
-             alert.showAndWait();
-
-             if (alert.getResult() == ButtonType.YES){
-                 System.exit(0);
-             }
-    }
     @FXML
     protected void onCancelButton(){
         System.exit(0);
     }
 
-    @FXML
-    protected void onWaiterButton() throws IOException {
 
-  
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("Table-layout.fxml"));
-        loginAs.getChildren().setAll(pane);
-    }
 
 }

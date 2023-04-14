@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="loginPane" maxHeight="370.0" maxWidth="370.0" minHeight="370.0" minWidth="370.0" prefHeight="370.0" prefWidth="370.0" style="-fx-background-color: #f55e61;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sprint2.gui.LoginController">
+<AnchorPane fx:id="loginPane" maxHeight="370.0" maxWidth="370.0" minHeight="370.0" minWidth="370.0" prefHeight="370.0" prefWidth="401.0" style="-fx-background-color: #f55e61;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sprint2.gui.LoginController">
    <effect>
       <ColorAdjust />
    </effect>

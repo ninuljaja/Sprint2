@@ -2,7 +2,6 @@ package com.sprint2.gui;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class Authentication {
@@ -20,7 +19,7 @@ public class Authentication {
 
             File myFile = new File("Employee.csv");
             Scanner scan = new Scanner(myFile);
-            PrintWriter writer = new PrintWriter("the-file-name.txt");
+
             while (scan.hasNextLine()) {
                 dataline = scan.nextLine();
 
@@ -28,7 +27,7 @@ public class Authentication {
                 String[] line = dataline.split(",");
                 if (line[4].equals(user)) {
                     if (line[5].equals(pass)) {
-                        toReturn = new String[]{line[1], line[2], line[3]};
+                        toReturn = new String[]{line[0], line[1], line[2], line[3]};
                     }
                     return toReturn;
                 }

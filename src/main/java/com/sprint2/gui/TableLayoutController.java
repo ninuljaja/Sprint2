@@ -2,8 +2,13 @@ package com.sprint2.gui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
@@ -13,7 +18,8 @@ public class TableLayoutController {
     private Button placeOrderBtn;
     @FXML
     private Button tableA1Btn, tableA2Btn,tableA3Btn, tableA42Btn, tableA5Btn, tableA6Btn;
-
+@FXML
+private AnchorPane pane;
 
 
     @FXML
@@ -23,6 +29,7 @@ public class TableLayoutController {
     public TableLayoutController() throws IOException {
 
     }
+
 
 
     @FXML
@@ -198,13 +205,21 @@ public class TableLayoutController {
         placeOrderBtn.setDisable(false);
 
     }
+
     @FXML
-    protected void onGoBack(){
-        System.exit(0);
+
+    public void onPlaceOrderBtn(ActionEvent actionEvent) throws IOException {
 
     }
 
 
-    public void onPlaceOrderBtn(ActionEvent actionEvent) {
+    public void goBack(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginAs.fxml"));
+        Parent root = loader.load();
+
+        // Get the current node and its parent scene
+        Node node = (Node) actionEvent.getSource();
+        Scene scene = node.getScene();
+        scene.setRoot(root);
     }
 }
