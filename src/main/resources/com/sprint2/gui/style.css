@@ -13,3 +13,11 @@
 .button:focused {
     -fx-border-width: 3px;
 }
+
+#menuPane {
+    -fx-background-color: #f58f8fff;
+    -fx-border-color: #af4345;
+    -fx-border-style: dashed;
+    -fx-border-width: 2px;
+
+}
