@@ -5,16 +5,14 @@
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
-<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="loginPane" maxHeight="370.0" maxWidth="370.0" minHeight="370.0" minWidth="370.0" prefHeight="370.0" prefWidth="401.0" style="-fx-background-color: #f55e61;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sprint2.gui.LoginController">
+<AnchorPane fx:id="loginPane" maxHeight="410.0" maxWidth="410.0" minHeight="380.0" minWidth="380.0" prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: #f55e61; -fx-border-insets: 23px; -fx-border-color: white; -fx-border-width: 3px;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sprint2.gui.LoginController">
    <effect>
       <ColorAdjust />
    </effect>
    <children>
-      <Rectangle arcHeight="1.0" arcWidth="5.0" fill="#1f93ff00" height="330.0" layoutX="20.0" layoutY="20.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="3.0" width="330.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
-      <Label alignment="CENTER" layoutX="129.0" layoutY="49.0" prefHeight="118.0" prefWidth="112.0" style="-fx-font-family: 'Dancing Script', cursive;" text="J’s" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" AnchorPane.topAnchor="49.0">
+      <Label id="logo" alignment="CENTER" layoutX="142.0" layoutY="45.0" prefHeight="118.0" prefWidth="116.0" style="-fx-font-family: 'Dancing Script', cursive;" text="J’s" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" AnchorPane.topAnchor="40.0">
          <font>
             <Font name="Droid Sans" size="79.0" />
          </font>
@@ -29,21 +27,21 @@
             </DropShadow>
          </effect>
       </Label>
-      <TextField fx:id="usernameField" alignment="CENTER" layoutX="85.0" layoutY="201.0" prefHeight="40.0" prefWidth="200.0" promptText="Username" style="-fx-background-color: #af4345; -fx-border-color: #f58f8f;" AnchorPane.leftAnchor="85.0" AnchorPane.rightAnchor="85.0">
+      <TextField fx:id="usernameField" alignment="CENTER" layoutX="85.0" layoutY="201.0" prefHeight="40.0" prefWidth="200.0" promptText="Username" style="-fx-background-color: #af4345; -fx-border-color: #f58f8f;" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0">
          <font>
             <Font size="14.0" />
          </font></TextField>
-      <PasswordField fx:id="passwordField" alignment="CENTER" layoutX="85.0" layoutY="252.0" prefHeight="40.0" prefWidth="200.0" promptText="Password" style="-fx-background-color: #af4345; -fx-border-color: #f58f8f;" AnchorPane.leftAnchor="85.0" AnchorPane.rightAnchor="85.0">
+      <PasswordField fx:id="passwordField" alignment="CENTER" layoutX="85.0" layoutY="252.0" prefHeight="40.0" prefWidth="200.0" promptText="Password" style="-fx-background-color: #af4345; -fx-border-color: #f58f8f;" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0">
          <font>
             <Font size="14.0" />
          </font>
       </PasswordField>
-      <Button fx:id="login" layoutX="219.0" layoutY="303.0" mnemonicParsing="false" onAction="#onLoginButton" prefHeight="30.0" prefWidth="66.0" style="-fx-background-color: #f55e61;" text="Login" textFill="WHITE" AnchorPane.bottomAnchor="37.4">
+      <Button fx:id="login" layoutX="167.0" layoutY="310.0" mnemonicParsing="false" onAction="#onLoginButton" prefHeight="30.0" prefWidth="66.0" style="-fx-background-color: #f55e61;" text="Login" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <Button layoutX="87.0" layoutY="303.0" mnemonicParsing="false" onAction="#onCancelButton" style="-fx-background-color: #f55e61;" text="Cancel" textFill="WHITE" AnchorPane.bottomAnchor="37.4">
+      <Button id="closeBtn" layoutX="325.0" layoutY="38.0" mnemonicParsing="false" onAction="#onCancelButton" stylesheets="@style.css" text="X" textFill="WHITE" AnchorPane.rightAnchor="-26.0" AnchorPane.topAnchor="-26.0">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
