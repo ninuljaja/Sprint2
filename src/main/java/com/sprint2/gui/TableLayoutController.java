@@ -19,7 +19,7 @@ public class TableLayoutController {
     @FXML
     private Button tableA1Btn, tableA2Btn,tableA3Btn, tableA42Btn, tableA5Btn, tableA6Btn;
 @FXML
-private AnchorPane pane;
+private AnchorPane tableLayout;
 
 
     @FXML
@@ -209,6 +209,9 @@ private AnchorPane pane;
     @FXML
 
     public void onPlaceOrderBtn(ActionEvent actionEvent) throws IOException {
+
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Menu-view.fxml"));
+        tableLayout.getChildren().setAll(pane);
 
     }
 

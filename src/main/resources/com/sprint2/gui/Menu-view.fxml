@@ -1,25 +1,248 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="570.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sprint2.gui.MenuViewController">
    <children>
-      <Pane layoutX="24.0" layoutY="70.0" prefHeight="459.0" prefWidth="555.0" style="-fx-border-radius: 60px; -fx-background-radius: 60px; -fx-background-color: #f55e61ff; -fx-border-color: #af4345;">
+      <Pane layoutX="7.0" layoutY="52.0" prefHeight="510.0" prefWidth="539.0" style="-fx-border-radius: 60px; -fx-background-radius: 60px; -fx-background-color: #f55e61ff; -fx-border-color: #af4345;">
          <children>
-            <ScrollPane layoutX="28.0" layoutY="28.0" prefHeight="406.0" prefWidth="491.0" style="-fx-background-color: #f55e61ff; -fx-border-color: #f55e61ff;">
+            <ScrollPane layoutX="28.0" layoutY="16.0" prefHeight="478.0" prefWidth="490.0" style="-fx-background-color: #f55e61ff; -fx-border-color: #f55e61ff;">
                <content>
-                  <SplitPane dividerPositions="0.5034246575342465" prefHeight="406.0" prefWidth="472.0" style="-fx-background-color: #f55e61ff; -fx-border-color: #f55e61ff;">
+                  <SplitPane dividerPositions="0.5" prefHeight="500.0" prefWidth="472.0" style="-fx-background-color: #f55e61ff; -fx-border-color: #f55e61ff;">
                     <items>
                       <AnchorPane prefHeight="405.0" prefWidth="258.0">
                            <children>
-                              <Pane id="menuPane" layoutX="14.0" layoutY="2.0" prefHeight="395.0" prefWidth="219.0" stylesheets="@style.css" />
+                              <Pane id="menuPane" layoutX="14.0" layoutY="1.0" prefHeight="223.0" prefWidth="219.0" stylesheets="@style.css">
+                                 <children>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="69.0" layoutY="10.0" text="Appetizers">
+                                       <font>
+                                          <Font size="17.0" />
+                                       </font>
+                                    </Label>
+                                    <Button alignment="BASELINE_LEFT" layoutX="17.0" layoutY="42.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="187.0" style="-fx-background-color: white; -fx-background-radius: 6px; -fx-border-radius: 6px; -fx-border-color: #af4345; -fx-border-insets: -1;" text="Chips &amp; Dip">
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Button>
+                                    <Button alignment="BASELINE_LEFT" layoutX="17.0" layoutY="86.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="187.0" style="-fx-background-color: white; -fx-background-radius: 6px; -fx-border-radius: 6px; -fx-border-color: #af4345; -fx-border-insets: -1;" text="Buffalo Blue Chips">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </Button>
+                                    <Button alignment="BASELINE_LEFT" layoutX="17.0" layoutY="130.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="187.0" style="-fx-background-color: white; -fx-background-radius: 6px; -fx-border-radius: 6px; -fx-border-color: #af4345; -fx-border-insets: -1;" text="Chicken Nachos">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </Button>
+                                    <Button alignment="BASELINE_LEFT" layoutX="17.0" layoutY="174.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="187.0" style="-fx-background-color: white; -fx-background-radius: 6px; -fx-border-radius: 6px; -fx-border-color: #af4345; -fx-border-insets: -1;" text="Pork Nachos">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </Button>
+                                 </children></Pane>
+                              <Pane id="menuPane" layoutX="14.0" layoutY="232.0" prefHeight="223.0" prefWidth="219.0" stylesheets="@style.css">
+                                 <children>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="86.0" layoutY="10.0" text="Wraps">
+                                       <font>
+                                          <Font size="17.0" />
+                                       </font>
+                                    </Label>
+                                    <Button alignment="BASELINE_LEFT" layoutX="17.0" layoutY="42.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="187.0" style="-fx-background-color: white; -fx-background-radius: 6px; -fx-border-radius: 6px; -fx-border-color: #af4345; -fx-border-insets: -1;" text="Club">
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Button>
+                                    <Button alignment="BASELINE_LEFT" layoutX="17.0" layoutY="86.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="187.0" style="-fx-background-color: white; -fx-background-radius: 6px; -fx-border-radius: 6px; -fx-border-color: #af4345; -fx-border-insets: -1;" text="Chicken BLT&amp;A">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </Button>
+                                    <Button alignment="BASELINE_LEFT" layoutX="17.0" layoutY="130.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="187.0" style="-fx-background-color: white; -fx-background-radius: 6px; -fx-border-radius: 6px; -fx-border-color: #af4345; -fx-border-insets: -1;" text="Veggie">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </Button>
+                                    <Button alignment="BASELINE_LEFT" layoutX="17.0" layoutY="174.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="187.0" style="-fx-background-color: white; -fx-background-radius: 6px; -fx-border-radius: 6px; -fx-border-color: #af4345; -fx-border-insets: -1;" text="Chicken Caesar">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </Button>
+                                 </children>
+                              </Pane>
+                              <Pane id="menuPane" layoutX="14.0" layoutY="463.0" prefHeight="223.0" prefWidth="219.0" stylesheets="@style.css">
+                                 <children>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="65.0" layoutY="10.0" text="Sandwiches">
+                                       <font>
+                                          <Font size="17.0" />
+                                       </font>
+                                    </Label>
+                                    <Button alignment="BASELINE_LEFT" layoutX="17.0" layoutY="42.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="187.0" style="-fx-background-color: white; -fx-background-radius: 6px; -fx-border-radius: 6px; -fx-border-color: #af4345; -fx-border-insets: -1;" text="Grilled Cheese">
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Button>
+                                    <Button alignment="BASELINE_LEFT" layoutX="17.0" layoutY="86.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="187.0" style="-fx-background-color: white; -fx-background-radius: 6px; -fx-border-radius: 6px; -fx-border-color: #af4345; -fx-border-insets: -1;" text="100% Beef Hot Dog">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </Button>
+                                    <Button alignment="BASELINE_LEFT" layoutX="17.0" layoutY="130.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="187.0" style="-fx-background-color: white; -fx-background-radius: 6px; -fx-border-radius: 6px; -fx-border-color: #af4345; -fx-border-insets: -1;" text="Chicken BLT&amp;A">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </Button>
+                                    <Button alignment="BASELINE_LEFT" layoutX="17.0" layoutY="174.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="187.0" style="-fx-background-color: white; -fx-background-radius: 6px; -fx-border-radius: 6px; -fx-border-color: #af4345; -fx-border-insets: -1;" text="Cordon Bleu">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </Button>
+                                 </children>
+                              </Pane>
                            </children></AnchorPane>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="405.0" prefWidth="239.0" />
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="405.0" prefWidth="239.0">
+                           <children>
+                              <Pane id="menuPane" layoutX="4.0" layoutY="1.0" prefHeight="223.0" prefWidth="219.0" stylesheets="@style.css">
+                                 <children>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="86.0" layoutY="10.0" text="Salads">
+                                       <font>
+                                          <Font size="17.0" />
+                                       </font>
+                                    </Label>
+                                    <Button alignment="BASELINE_LEFT" layoutX="17.0" layoutY="42.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="187.0" style="-fx-background-color: white; -fx-background-radius: 6px; -fx-border-radius: 6px; -fx-border-color: #af4345; -fx-border-insets: -1;" text="House Salad">
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Button>
+                                    <Button alignment="BASELINE_LEFT" layoutX="17.0" layoutY="86.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="187.0" style="-fx-background-color: white; -fx-background-radius: 6px; -fx-border-radius: 6px; -fx-border-color: #af4345; -fx-border-insets: -1;" text="Wedge Salad">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </Button>
+                                    <Button alignment="BASELINE_LEFT" layoutX="17.0" layoutY="130.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="187.0" style="-fx-background-color: white; -fx-background-radius: 6px; -fx-border-radius: 6px; -fx-border-color: #af4345; -fx-border-insets: -1;" text="Caesar Salad">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </Button>
+                                    <Button alignment="BASELINE_LEFT" layoutX="17.0" layoutY="174.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="187.0" style="-fx-background-color: white; -fx-background-radius: 6px; -fx-border-radius: 6px; -fx-border-color: #af4345; -fx-border-insets: -1;" text="Sweet Potato Chicken Salad">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </Button>
+                                    <Pane id="menuPane" layoutY="231.0" prefHeight="223.0" prefWidth="219.0" stylesheets="@style.css">
+                                       <children>
+                                          <Label alignment="CENTER" contentDisplay="CENTER" layoutX="82.0" layoutY="10.0" text="Entrees">
+                                             <font>
+                                                <Font size="17.0" />
+                                             </font>
+                                          </Label>
+                                          <Button alignment="BASELINE_LEFT" layoutX="17.0" layoutY="42.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="187.0" style="-fx-background-color: white; -fx-background-radius: 6px; -fx-border-radius: 6px; -fx-border-color: #af4345; -fx-border-insets: -1;" text="Shrimp &amp; Grits">
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding>
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                             <font>
+                                                <Font size="13.0" />
+                                             </font>
+                                          </Button>
+                                          <Button alignment="BASELINE_LEFT" layoutX="17.0" layoutY="86.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="187.0" style="-fx-background-color: white; -fx-background-radius: 6px; -fx-border-radius: 6px; -fx-border-color: #af4345; -fx-border-insets: -1;" text="Sweet Tea Fried Chicken">
+                                             <font>
+                                                <Font size="13.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding>
+                                          </Button>
+                                          <Button alignment="BASELINE_LEFT" layoutX="17.0" layoutY="130.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="187.0" style="-fx-background-color: white; -fx-background-radius: 6px; -fx-border-radius: 6px; -fx-border-color: #af4345; -fx-border-insets: -1;" text="Caribbean Chicken">
+                                             <font>
+                                                <Font size="13.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding>
+                                          </Button>
+                                          <Button alignment="BASELINE_LEFT" layoutX="17.0" layoutY="174.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="187.0" style="-fx-background-color: white; -fx-background-radius: 6px; -fx-border-radius: 6px; -fx-border-color: #af4345; -fx-border-insets: -1;" text="Grilled Pork Chops">
+                                             <font>
+                                                <Font size="13.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding>
+                                          </Button>
+                                       </children>
+                                    </Pane>
+                                 </children>
+                              </Pane>
+                           </children></AnchorPane>
                     </items>
                   </SplitPane>
                </content>
             </ScrollPane>
          </children></Pane>
+      <Button layoutX="538.0" layoutY="538.0" mnemonicParsing="false" onAction="#onGoBackBtn" text="Go Back" />
    </children>
 </AnchorPane>
