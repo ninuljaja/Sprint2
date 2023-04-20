@@ -104,7 +104,7 @@ public class LoginController {
             tries++;
             Alert alert = new Alert(Alert.AlertType.ERROR);
             if (tries == 3){
-                alert.setContentText("You entered the wrong password 3 time. System is closing");
+                alert.setContentText("You entered the wrong password 3 time. This terminal will be locked. Please contact your manager for assistance.");
                 alert.showAndWait();
                 alert.setResult(ButtonType.CLOSE);
                 if (alert.getResult() == ButtonType.CLOSE)
