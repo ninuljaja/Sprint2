@@ -35,10 +35,6 @@ public class LoginController {
     public LoginController() throws IOException {
     }
 
-
-
-
-
     @FXML
     protected void onLoginButton() throws IOException {
 
@@ -51,14 +47,16 @@ public class LoginController {
             tries = 0;
 
             Employee employee = null;
-
+            Session session = null;
             String role = user[3].toLowerCase();
             switch (role) {
                 case "manager":
                     employee = new Manager(user);
-
+                    session = Session.getInstance();
+                    session.setUser(employee);
                    break;
                 case "busser":
+
                     hostButton.setDisable(true);
                     kitchenButton.setDisable(true);
                     waitButton.setDisable(true);
@@ -72,6 +70,9 @@ public class LoginController {
 
                     break;
                 case "server":
+                    employee = new Waiter(user);
+                    session = Session.getInstance();
+                    session.setUser(employee);
                     hostButton.setDisable(true);
                     kitchenButton.setDisable(true);
                     busButton.setDisable(true);
@@ -83,14 +84,13 @@ public class LoginController {
                     kitchenButton.setDisable(true);
                     waitButton.setDisable(true);
                     managerButton.setDisable(true);
-
                     break;
             }
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginAs.fxml"));
                 Parent root = loader.load();
-                LoginAsController loginAsScreenController = loader.getController();
-                loginAsScreenController.setUser(employee);
+            //    LoginAsController loginAsScreenController = loader.getController();
+            //    loginAsScreenController.setUser(employee);
                 stage = (Stage) login.getScene().getWindow();
                 stage.setScene(new Scene(root));
                 stage.show();
@@ -115,8 +115,6 @@ public class LoginController {
             alert.showAndWait();
         }
     }
-
-
 
     @FXML
     protected void onCancelButton(){

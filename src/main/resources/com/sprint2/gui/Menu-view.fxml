@@ -244,5 +244,27 @@
             </ScrollPane>
          </children></Pane>
       <Button layoutX="538.0" layoutY="538.0" mnemonicParsing="false" onAction="#onGoBackBtn" text="Go Back" />
+      <BorderPane layoutX="603.0" prefHeight="570.0" prefWidth="218.0" style="-fx-background-color: #f58f8fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <Label text="Label" BorderPane.alignment="CENTER" />
+         </top>
+         <center>
+            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+
+
+                  <Pane layoutX="26.0" layoutY="14.0" prefHeight="96.0" prefWidth="167.0" style="-fx-background-color: #f4ccccff;" />
+                  <Pane layoutX="26.0" layoutY="182.0" prefHeight="96.0" prefWidth="167.0" style="-fx-background-color: #f4ccccff;" />
+                  <BorderPane layoutX="20.0" layoutY="293.0" prefHeight="159.0" prefWidth="205.0" style="-fx-background-color: #f4ccccff;">
+                     <top>
+                        <Label text="Other" BorderPane.alignment="CENTER" />
+                     </top>
+
+                  </BorderPane>
+
+            </Pane>
+         </center>
+
+      </BorderPane>
+
    </children>
 </AnchorPane>

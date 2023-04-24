@@ -37,7 +37,7 @@ public class Authentication {
         } catch (IOException ioex) {
             System.out.println("Error: " + ioex.getMessage());
         }
-        return toReturn;
+        return null;
 
     }
 
