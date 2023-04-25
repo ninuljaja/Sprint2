@@ -18,8 +18,6 @@ public class GUIApplication extends Application {
         primaryStage.setResizable(false);
         primaryStage.setScene(scene);
         primaryStage.show();
-
-        System.out.println("test for commits");
     }
 
     public static void main(String[] args) {
