@@ -1,9 +1,12 @@
 package com.sprint2.gui;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class ClockLogs {
 
@@ -14,7 +17,13 @@ public class ClockLogs {
     private LocalDateTime clockInTime;
     private LocalDateTime clockOutTime;
 
+    private EventType type;
+    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
+    public enum EventType {
+        CLOCK_IN,
+        CLOCK_OUT
+    }
     public ClockLogs() {
         this.clockIns = new ArrayList<>();
         this.clockOuts = new ArrayList<>();
@@ -29,20 +38,22 @@ public class ClockLogs {
         return clockOutTime;
     }
 
-    public void clockIn() {
+    public void clockIn(String employeeID) {
         clockInTime = LocalDateTime.now();
         this.clockIns.add(clockInTime);
+        saveClockInOutTime(employeeID, EventType.CLOCK_IN.name(), formatter.format(clockInTime));
         isClockedIn = true;
     }
 
-    public void clockOut() {
+    public void clockOut(String employeeID) {
         clockOutTime = LocalDateTime.now();
         this.clockOuts.add(clockOutTime);
+        saveClockInOutTime(employeeID, EventType.CLOCK_OUT.name(), formatter.format(clockInTime));
         isClockedIn = false;
+
     }
 
     public String lastAction() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         if (!clockIns.isEmpty()) {
             int lastRecord = clockIns.size() - 1;
             if (isClockedIn){
@@ -56,6 +67,21 @@ public class ClockLogs {
     }
     public boolean isClockedIn(){
         return isClockedIn;
+    }
+
+    public void saveClockInOutTime(String employeeID, String typeOfEvent, String time){
+        try {
+
+            FileWriter writer = new FileWriter("ClockIn_ClockOut_Logs.csv", true);
+
+            writer.write(employeeID + "," + typeOfEvent + "," + time + "\n");
+            writer.close();
+        }
+        catch(IOException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+
     }
 
 

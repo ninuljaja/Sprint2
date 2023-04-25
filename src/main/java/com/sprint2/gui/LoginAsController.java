@@ -30,12 +30,13 @@ public class LoginAsController {
     private Employee user;
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
+
     public LoginAsController(){
 
     }
     public void initialize() {
         Session session = Session.getInstance();
-        Employee user = session.getUser();
+        user = session.getUser();
 
         // Set the username label
 
@@ -81,16 +82,18 @@ public class LoginAsController {
 
         if (!record.isClockedIn()) {
             clockInOutButton.setText("Clock Out");
-            record.clockIn();
+            record.clockIn(user.getEmployeeID());
             clockInOutLbl.setText("Last action: Clock In at " + formatter.format(record.getClockInTime()));
 
         } else {
             clockInOutButton.setText("Clock In");
-            record.clockOut();
+            record.clockOut(user.getEmployeeID());
             clockInOutLbl.setText("Last action: Clock Out at " + formatter.format(record.getClockOutTime()));
 
         }
     }
+
+
 
 
 
