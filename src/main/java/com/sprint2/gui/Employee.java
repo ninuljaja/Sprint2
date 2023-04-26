@@ -1,6 +1,6 @@
 package com.sprint2.gui;
 
-public abstract class Employee {
+public class Employee {
     protected int employeeID;
     private String firstName = "";
     private String lastName = "";
