@@ -252,10 +252,10 @@
             </font></Label>
 
 
-            <Pane fx:id="selectionPane" prefHeight="553.0" prefWidth="222.0" visible="false" BorderPane.alignment="CENTER" GridPane.rowIndex="1">
+            <Pane fx:id="selectionPane" prefWidth="222.0" BorderPane.alignment="CENTER" GridPane.rowIndex="1">
 
 
-                  <Pane layoutX="14.0" layoutY="14.0" prefHeight="113.0" prefWidth="195.0" style="-fx-background-color: #f4ccccff;">
+                  <Pane layoutX="14.0" layoutY="12.0" prefHeight="113.0" prefWidth="195.0" style="-fx-background-color: #f4ccccff;">
                <children>
                   <Group layoutX="9.0" layoutY="40.0">
                      <children>
@@ -269,7 +269,7 @@
                      </children>
                   </Group>
                </children></Pane>
-                  <Pane layoutX="14.0" layoutY="157.0" prefHeight="140.0" prefWidth="195.0" style="-fx-background-color: #f4ccccff;">
+                  <Pane layoutX="14.0" layoutY="142.0" prefHeight="140.0" prefWidth="195.0" style="-fx-background-color: #f4ccccff;">
                <children>
                   <Group layoutX="19.0" layoutY="11.0">
                      <children>
@@ -288,10 +288,10 @@
                      </children>
                   </Group>
                </children></Pane>
-                  <GridPane gridLinesVisible="true" layoutX="14.0" layoutY="342.0" prefHeight="150.0" prefWidth="195.0" style="-fx-background-color: #f4ccccff; -fx-grid-lines-color: #af4345;">
+                  <GridPane gridLinesVisible="true" layoutX="14.0" layoutY="300.0" prefHeight="140.0" prefWidth="195.0" style="-fx-background-color: #f4ccccff; -fx-grid-lines-color: #af4345;">
 
                         <Label prefHeight="31.0" prefWidth="163.0" style="-fx-background-color: #f4ccccff;" text="Other" BorderPane.alignment="CENTER" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-               <TextArea prefHeight="119.0" prefWidth="196.0" promptText="Add description" style="-fx-control-inner-background: #f4ccccff;" GridPane.rowIndex="1" />
+               <TextArea prefHeight="126.0" prefWidth="200.0" promptText="Add description" style="-fx-control-inner-background: #f4ccccff;" GridPane.rowIndex="1" />
                <columnConstraints>
                   <ColumnConstraints />
                </columnConstraints>
@@ -304,12 +304,14 @@
                   </GridPane>
 
             </Pane>
+         <Button fx:id="addToOrderBtn" mnemonicParsing="false" onAction="#onAddToOrder" prefHeight="41.0" prefWidth="182.0" style="-fx-border-color: #af4345; -fx-background-radius: 6px; -fx-border-radius: 6px; -fx-background-color: white; -fx-border-insets: -1;" text="Add to Order" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
          <columnConstraints>
             <ColumnConstraints />
          </columnConstraints>
          <rowConstraints>
             <RowConstraints maxHeight="57.6" minHeight="10.0" prefHeight="57.6" />
-            <RowConstraints maxHeight="541.6" minHeight="512.8" prefHeight="512.8" />
+            <RowConstraints maxHeight="541.6" minHeight="439.0" prefHeight="457.80000000000007" />
+            <RowConstraints maxHeight="86.79999999999995" minHeight="10.0" prefHeight="55.0" />
          </rowConstraints>
 
 

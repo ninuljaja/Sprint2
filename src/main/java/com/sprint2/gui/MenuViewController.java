@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 
@@ -17,9 +18,12 @@ public class MenuViewController {
 
     @FXML
     private Label itemNameLbl;
+    @FXML
+    private Button addToOrderBtn;
 
     @FXML
     private Pane selectionPane;
+
 
 
     public void onGoBackBtn(ActionEvent actionEvent) throws IOException {
@@ -35,10 +39,11 @@ public class MenuViewController {
     public void onA1Btn(ActionEvent actionEvent) {
         String[] itemArray = findItem("A1");
         if(itemArray != null){
-
             Item item = new Item(itemArray);
             selectionPane.setVisible(true);
             itemNameLbl.setText(item.getItemName());
+            addToOrderBtn.setText(String.format("Add to Order ($%.2f)", item.getPrice()));
+
         }else {
             System.out.println("Item not Found");
         }
@@ -50,6 +55,7 @@ public class MenuViewController {
             Item item = new Item(itemArray);
             selectionPane.setVisible(true);
             itemNameLbl.setText(item.getItemName());
+            addToOrderBtn.setText(String.format("Add to Order ($%.2f)", item.getPrice()));
         }
     }
 
@@ -59,6 +65,7 @@ public class MenuViewController {
             Item item = new Item(itemArray);
             selectionPane.setVisible(true);
             itemNameLbl.setText(item.getItemName());
+            addToOrderBtn.setText(String.format("Add to Order ($%.2f)", item.getPrice()));
         }
     }
 
@@ -68,6 +75,7 @@ public class MenuViewController {
             Item item = new Item(itemArray);
             selectionPane.setVisible(true);
             itemNameLbl.setText(item.getItemName());
+            addToOrderBtn.setText(String.format("Add to Order ($%.2f)", item.getPrice()));
         }
     }
 
@@ -77,6 +85,7 @@ public class MenuViewController {
             Item item = new Item(itemArray);
             selectionPane.setVisible(true);
             itemNameLbl.setText(item.getItemName());
+            addToOrderBtn.setText(String.format("Add to Order ($%.2f)", item.getPrice()));
         }
     }
 
@@ -86,6 +95,7 @@ public class MenuViewController {
             Item item = new Item(itemArray);
             selectionPane.setVisible(true);
             itemNameLbl.setText(item.getItemName());
+            addToOrderBtn.setText(String.format("Add to Order ($%.2f)", item.getPrice()));
         }
     }
 
@@ -95,6 +105,7 @@ public class MenuViewController {
             Item item = new Item(itemArray);
             selectionPane.setVisible(true);
             itemNameLbl.setText(item.getItemName());
+            addToOrderBtn.setText(String.format("Add to Order ($%.2f)", item.getPrice()));
         }
     }
 
@@ -104,6 +115,7 @@ public class MenuViewController {
             Item item = new Item(itemArray);
             selectionPane.setVisible(true);
             itemNameLbl.setText(item.getItemName());
+            addToOrderBtn.setText(String.format("Add to Order ($%.2f)", item.getPrice()));
         }
     }
 
@@ -113,6 +125,7 @@ public class MenuViewController {
             Item item = new Item(itemArray);
             selectionPane.setVisible(true);
             itemNameLbl.setText(item.getItemName());
+            addToOrderBtn.setText(String.format("Add to Order ($%.2f)", item.getPrice()));
         }
     }
 
@@ -122,6 +135,7 @@ public class MenuViewController {
             Item item = new Item(itemArray);
             selectionPane.setVisible(true);
             itemNameLbl.setText(item.getItemName());
+            addToOrderBtn.setText(String.format("Add to Order ($%.2f)", item.getPrice()));
         }
     }
 
@@ -131,6 +145,7 @@ public class MenuViewController {
             Item item = new Item(itemArray);
             selectionPane.setVisible(true);
             itemNameLbl.setText(item.getItemName());
+            addToOrderBtn.setText(String.format("Add to Order ($%.2f)", item.getPrice()));
         }
     }
 
@@ -140,6 +155,7 @@ public class MenuViewController {
             Item item = new Item(itemArray);
             selectionPane.setVisible(true);
             itemNameLbl.setText(item.getItemName());
+            addToOrderBtn.setText(String.format("Add to Order ($%.2f)", item.getPrice()));
         }
     }
 
@@ -149,6 +165,7 @@ public class MenuViewController {
             Item item = new Item(itemArray);
             selectionPane.setVisible(true);
             itemNameLbl.setText(item.getItemName());
+            addToOrderBtn.setText(String.format("Add to Order ($%.2f)", item.getPrice()));
         }
     }
 
@@ -158,6 +175,7 @@ public class MenuViewController {
             Item item = new Item(itemArray);
             selectionPane.setVisible(true);
             itemNameLbl.setText(item.getItemName());
+            addToOrderBtn.setText(String.format("Add to Order ($%.2f)", item.getPrice()));
         }
     }
 
@@ -167,6 +185,7 @@ public class MenuViewController {
             Item item = new Item(itemArray);
             selectionPane.setVisible(true);
             itemNameLbl.setText(item.getItemName());
+            addToOrderBtn.setText(String.format("Add to Order ($%.2f)", item.getPrice()));
         }
     }
 
@@ -176,6 +195,7 @@ public class MenuViewController {
             Item item = new Item(itemArray);
             selectionPane.setVisible(true);
             itemNameLbl.setText(item.getItemName());
+            addToOrderBtn.setText(String.format("Add to Order ($%.2f)", item.getPrice()));
         }
     }
 
@@ -185,6 +205,7 @@ public class MenuViewController {
             Item item = new Item(itemArray);
             selectionPane.setVisible(true);
             itemNameLbl.setText(item.getItemName());
+            addToOrderBtn.setText(String.format("Add to Order ($%.2f)", item.getPrice()));
         }
     }
 
@@ -194,6 +215,7 @@ public class MenuViewController {
             Item item = new Item(itemArray);
             selectionPane.setVisible(true);
             itemNameLbl.setText(item.getItemName());
+            addToOrderBtn.setText(String.format("Add to Order ($%.2f)", item.getPrice()));
         }
     }
 
@@ -203,6 +225,7 @@ public class MenuViewController {
             Item item = new Item(itemArray);
             selectionPane.setVisible(true);
             itemNameLbl.setText(item.getItemName());
+            addToOrderBtn.setText(String.format("Add to Order ($%.2f)", item.getPrice()));
         }
     }
 
@@ -212,6 +235,7 @@ public class MenuViewController {
             Item item = new Item(itemArray);
             selectionPane.setVisible(true);
             itemNameLbl.setText(item.getItemName());
+            addToOrderBtn.setText(String.format("Add to Order ($%.2f)", item.getPrice()));
         }
     }
 
@@ -233,6 +257,9 @@ public class MenuViewController {
             System.out.println("Error: " + ioex.getMessage());
         }
         return null;
+    }
+
+    public void onAddToOrder(ActionEvent actionEvent) {
     }
 }
 
