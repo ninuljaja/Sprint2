@@ -4,6 +4,7 @@ public class Session {
     private static Session instance = null;
     private Employee user;
     private String mode;
+    private Table selectedTable;
 
     private Session() {}
 
@@ -27,5 +28,13 @@ public class Session {
 
     public void setMode(String mode) {
         this.mode = mode;
+    }
+
+    public void setSelectedTable(Table selectedTable) {
+        this.selectedTable = selectedTable;
+    }
+
+    public Table getSelectedTable() {
+        return selectedTable;
     }
 }

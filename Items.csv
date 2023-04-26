@@ -19,3 +19,13 @@ W1,Club,wraps,10,Ham; turkey; Swiss; cheddar; lettuce; tomato; mayo & bacon
 W2,Chicken BLT&A,wraps,10,Grilled chicken; bacon; lettuce; tomato; avocado & mayo
 W3,Veggie,wraps,10,Spinach; tomato; cucumber; onion & bell peppers
 W4,Chicken Caesar,wraps,10,Roasted chicken; romaine lettuce & shredded parmesan cheese tossed in Caesar dressing
+P1,Chicken,protein,3,
+P2,Pork,protein,3,
+P3,Ham,protein,3,
+Sc1,Carolina Gold,sauce,0.5,
+Sc2,Jim Beam,sauce,0.5,
+Sc3,Blue Cheese,sauce,0.5,
+Sc4,BBQ,sauce,0.5,
+Sc5,Ranch,sauce,0.5,
+Sc6,Buffalo,sauce,0.5,
+Sc7,Chipotle,sauce,0.5,

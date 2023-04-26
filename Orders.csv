@@ -1,1 +1,1 @@
-OrderNumber,orderDateTime,TableID,Status,Items
+OrderNumber,orderDateTime,TableID,Status,WaiterID

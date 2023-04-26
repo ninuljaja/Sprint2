@@ -255,17 +255,18 @@
             <Pane fx:id="selectionPane" prefWidth="222.0" BorderPane.alignment="CENTER" GridPane.rowIndex="1">
 
 
-                  <Pane layoutX="14.0" layoutY="12.0" prefHeight="113.0" prefWidth="195.0" style="-fx-background-color: #f4ccccff;">
+                  <Pane layoutX="14.0" layoutY="12.0" prefHeight="122.0" prefWidth="195.0" style="-fx-background-color: #f4ccccff;">
                <children>
                   <Group layoutX="9.0" layoutY="40.0">
                      <children>
                         <Label layoutX="9.0" layoutY="-35.0" prefHeight="17.0" prefWidth="112.0" text="Choose Protein" />
-                        <RadioButton mnemonicParsing="false" text="Chicken">
+                        <RadioButton layoutY="-7.0" mnemonicParsing="false" text="Chicken">
                            <toggleGroup>
                               <ToggleGroup fx:id="Protein" />
                            </toggleGroup></RadioButton>
-                        <RadioButton layoutY="25.0" mnemonicParsing="false" text="Pork" toggleGroup="$Protein" />
-                        <RadioButton layoutY="50.0" mnemonicParsing="false" text="Ham" toggleGroup="$Protein" />
+                        <RadioButton layoutY="16.0" mnemonicParsing="false" text="Pork" toggleGroup="$Protein" />
+                        <RadioButton layoutY="40.0" mnemonicParsing="false" text="Ham" toggleGroup="$Protein" />
+                        <RadioButton layoutY="64.0" mnemonicParsing="false" text="None" toggleGroup="$Protein" />
                      </children>
                   </Group>
                </children></Pane>
@@ -274,7 +275,7 @@
                   <Group layoutX="19.0" layoutY="11.0">
                      <children>
                         <Label layoutX="5.0" layoutY="-4.0" text="Choose Sauce" />
-                        <RadioButton layoutX="-8.0" layoutY="25.0" mnemonicParsing="false" text="White cheese">
+                        <RadioButton layoutX="-8.0" layoutY="25.0" mnemonicParsing="false" text="Carolina Gold">
                            <toggleGroup>
                               <ToggleGroup fx:id="Sauce" />
                            </toggleGroup></RadioButton>
@@ -282,8 +283,8 @@
                         <RadioButton layoutX="-8.0" layoutY="75.0" mnemonicParsing="false" text="Blue Cheese" toggleGroup="$Sauce" />
                         <RadioButton layoutX="95.0" layoutY="50.0" mnemonicParsing="false" text="Ranch" toggleGroup="$Sauce" />
                         <RadioButton layoutX="95.0" layoutY="25.0" mnemonicParsing="false" text="Buffalo" toggleGroup="$Sauce" />
-                        <RadioButton layoutX="95.0" layoutY="100.0" mnemonicParsing="false" text="BBQ" toggleGroup="$Sauce" />
-                        <RadioButton layoutX="-8.0" layoutY="100.0" mnemonicParsing="false" text="Carolina Gold" toggleGroup="$Sauce" />
+                        <RadioButton layoutX="95.0" layoutY="100.0" mnemonicParsing="false" text="None" toggleGroup="$Sauce" />
+                        <RadioButton layoutX="-8.0" layoutY="100.0" mnemonicParsing="false" text="BBQ" toggleGroup="$Sauce" />
                         <RadioButton layoutX="95.0" layoutY="75.0" mnemonicParsing="false" text="Chipotle" toggleGroup="$Sauce" />
                      </children>
                   </Group>
@@ -304,7 +305,7 @@
                   </GridPane>
 
             </Pane>
-         <Button fx:id="addToOrderBtn" mnemonicParsing="false" onAction="#onAddToOrder" prefHeight="41.0" prefWidth="182.0" style="-fx-border-color: #af4345; -fx-background-radius: 6px; -fx-border-radius: 6px; -fx-background-color: white; -fx-border-insets: -1;" text="Add to Order" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+         <Button fx:id="addToOrderBtn" disable="true" mnemonicParsing="false" onAction="#onAddToOrder" prefHeight="41.0" prefWidth="182.0" style="-fx-border-color: #af4345; -fx-background-radius: 6px; -fx-border-radius: 6px; -fx-background-color: white; -fx-border-insets: -1;" text="Add to Order" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
          <columnConstraints>
             <ColumnConstraints />
          </columnConstraints>
