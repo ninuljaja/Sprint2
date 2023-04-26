@@ -52,7 +52,7 @@ public class LoginAsController {
                 waitButton.setDisable(true);
                 managerButton.setDisable(true);
                 break;
-            case "server":
+            case "waiter":
                  hostButton.setDisable(true);
                  kitchenButton.setDisable(true);
                  busButton.setDisable(true);
