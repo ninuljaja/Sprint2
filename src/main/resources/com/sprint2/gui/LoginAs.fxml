@@ -26,7 +26,7 @@
          <font>
             <Font size="14.0" />
          </font></Button>
-      <Button fx:id="managerBtn" layoutX="255.0" layoutY="330.0" maxHeight="130.0" maxWidth="300.0" mnemonicParsing="false" onAction="#onManagerBtn" prefHeight="117.0" prefWidth="300.0" style="-fx-background-color: #8e7cc3ff; -fx-border-color: black; -fx-background-radius: 15px; -fx-border-radius: 15px;" text="Manager" AnchorPane.bottomAnchor="20.0">
+      <Button fx:id="managerButton" layoutX="255.0" layoutY="330.0" maxHeight="130.0" maxWidth="300.0" mnemonicParsing="false" onAction="#onManagerBtn" prefHeight="117.0" prefWidth="300.0" style="-fx-background-color: #8e7cc3ff; -fx-border-color: black; -fx-background-radius: 15px; -fx-border-radius: 15px;" text="Manager" AnchorPane.bottomAnchor="20.0">
          <font>
             <Font size="14.0" />
          </font></Button>

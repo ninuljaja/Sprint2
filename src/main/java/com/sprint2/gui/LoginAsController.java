@@ -53,10 +53,10 @@ public class LoginAsController {
                 managerButton.setDisable(true);
                 break;
             case "waiter":
-                 hostButton.setDisable(true);
-                 kitchenButton.setDisable(true);
-                 busButton.setDisable(true);
-                 managerButton.setDisable(true);
+                hostButton.setDisable(true);
+                kitchenButton.setDisable(true);
+                busButton.setDisable(true);
+                managerButton.setDisable(true);
                 break;
             case "host":
                 busButton.setDisable(true);
