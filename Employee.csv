@@ -1,6 +1,6 @@
 Employee ID,FirstName,MiddleInitial,LastName,Phone#,Address,Role,username,password,wage ($ per hour),SSN
 1,Jane,H,Smith,4576565377,54 Apple Street; Atlanta; GA; 30370,Manager,SJane1,Pas111,25,111111111
-2,Victor,D,Johnson,4784567894,87 Canton Stree; Atlanta; GA; 30076,Server,JVict1,Pas112,10,111222222
-3,Zoe,G,Harris,4702547879,789 Roswell Street; Atlanta; GA; 30350,Server,HZoe11,Pas113,10,121212121
-4,Jack,E,Anderson,4512255555,700 Pine Street; Atlanta; GA; 30333,Server,AJack1,Pas114,10,111111111
-5,Bill,Y,Miller,4704544545,879 Riverside Street; Atlanta; GA; 30330,Server,MBill1,Pas115,10,987654321
+2,Victor,D,Johnson,4784567894,87 Canton Stree; Atlanta; GA; 30076,Waiter,JVict1,Pas112,10,111222222
+3,Zoe,G,Harris,4702547879,789 Roswell Street; Atlanta; GA; 30350,Waiter,HZoe11,Pas113,10,121212121
+4,Jack,E,Anderson,4512255555,700 Pine Street; Atlanta; GA; 30333,Waiter,AJack1,Pas114,10,111111111
+5,Bill,Y,Miller,4704544545,879 Riverside Street; Atlanta; GA; 30330,Waiter,MBill1,Pas115,10,987654321

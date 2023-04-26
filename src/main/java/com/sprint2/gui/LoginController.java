@@ -54,7 +54,7 @@ public class LoginController {
                 case "cook":
                     //
                     break;
-                case "server":
+                case "waiter":
                     employee = new Waiter(user);
                     session = Session.getInstance();
                     session.setUser(employee);
