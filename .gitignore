@@ -36,3 +36,4 @@ build/
 
 ### Mac OS ###
 .DS_Store
+ClockIn_ClockOut_Logs.csv
