@@ -1,0 +1,23 @@
+ItemNumber,ItemName,Category,Price,Description
+1,Chips & Dip,appetizers,8,"Salsa, Queso or Guacamole"
+2,Buffalo Blue Chips,appetizers,6,House-made chips tossed in buffalo sauce; topped with blue cheese crumbles. Choice of ranch or blue cheese on top
+3,Chicken Nachos,appetizers,8.5,Pulled chicken; spicy white cheese sauce; & cheddar cheese topped with red onions & cilantro. Add BBQ sauce (+0.50)
+4,Pork Nachos,appetizers,8.5,Pulled pork; spicy white cheese sauce; & pepper jack cheese topped with tomato; Scallions & cilantro. Add BBQ sauce (+0.50)
+5,House Salad,salads/Side,5,Mixed Greens; topped with bacon; tomato & blue cheese crumbles
+6,House Salad,salads,7.5,Mixed Greens; topped with bacon; tomato & blue cheese crumbles
+7,Wedge Salad,salads,7.5,Iceberg lettuce wedge topped with bacon; tomato & blue cheese crumbles
+8,Caesar Salad,salads/Side,5,Romaine lettuce; shredded Parmesan cheese & croutons tossed in Caesar dressing
+9,Caesar Salad,salads,7.5,Romaine lettuce; shredded Parmesan cheese & croutons tossed in Caesar dressing
+10,Sweet Potato Chicken Salad,salads,11.5,Mixed greens; red onion; dried cranberries & goat cheese crumbles topped with chilled sweet potato crusted chicken
+11,Shrimp & Grits,entrees,13.5,Sautéed shrimp with garlic served on top of Adluh cheese grits; topped with sautéed peppers & onions
+12,Sweet Tea Fried Chicken,entrees,11.5,Fried chicken breast marinated in sweet tea & spices; topped with a sweet tea reduction
+13,Caribbean Chicken,entrees,11.5,Grilled chicken marinated in spicy Caribbean seasoning topped with mango salsa & avocado
+14,Grilled Pork Chops*,entrees,11,Two bone-in grilled pork chops
+15,Grilled Cheese,sandwiches,5.5,American cheese served on multigrain or white bread
+16,100% Beef Hot Dog,sandwiches,5.5,Substitute a second hot dog for your side Toppings: Mustard; ketchup; onion; jalapeno; slaw; relish; chili (+0.25); cheddar (+0.25)
+17,Chicken BLT&A,sandwiches,10,Grilled chicken; bacon; lettuce; tomato & avocado on a pretzel bun
+18,Cordon Bleu,sandwiches,11,Grilled Chicken topped with ham; Swiss; lettuce & tomato on a pretzel bun
+19,Club,wraps,10,Ham; turkey; Swiss; cheddar; lettuce; tomato; mayo & bacon
+20,Chicken BLT&A,wraps,10,Grilled chicken; bacon; lettuce; tomato; avocado & mayo
+21,Veggie,wraps,10,Spinach; tomato; cucumber; onion & bell peppers
+22,Chicken Caesar,wraps,10,Roasted chicken; romaine lettuce & shredded parmesan cheese tossed in Caesar dressing

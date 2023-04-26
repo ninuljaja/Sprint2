@@ -12,24 +12,19 @@ public class Authentication {
      * @return
      */
     public static String[] authenticateUser(String user, String pass) {
-
-        String[] toReturn = null;
         try {
-            String dataline = "";
-
+            String dataLine = "";
             File myFile = new File("Employee.csv");
             Scanner scan = new Scanner(myFile);
-
             while (scan.hasNextLine()) {
-                dataline = scan.nextLine();
+                dataLine = scan.nextLine();
 
                 // Split the string by comma
-                String[] line = dataline.split(",");
-                if (line[4].equals(user)) {
-                    if (line[5].equals(pass)) {
-                        toReturn = new String[]{line[0], line[1], line[2], line[3]};
+                String[] line = dataLine.split(",");
+                if (line[7].equals(user)) {
+                    if (line[8].equals(pass)) {
+                        return line;
                     }
-                    return toReturn;
                 }
             }
             scan.close();

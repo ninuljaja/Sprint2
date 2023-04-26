@@ -1,32 +1,34 @@
 package com.sprint2.gui;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Scanner;
 
 
 public class ClockLogs {
 
-    private List<LocalDateTime> clockIns;
-    private List<LocalDateTime> clockOuts;
-    private boolean isClockedIn = false;
+   // private List<LocalDateTime> clockIns;
+ //   private List<LocalDateTime> clockOuts;
+    private boolean isClockedIn;
 
     private LocalDateTime clockInTime;
     private LocalDateTime clockOutTime;
 
     private EventType type;
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    private String lastAction;
 
     public enum EventType {
         CLOCK_IN,
         CLOCK_OUT
     }
     public ClockLogs() {
-        this.clockIns = new ArrayList<>();
-        this.clockOuts = new ArrayList<>();
+    //    this.clockIns = new ArrayList<>();
+      //  this.clockOuts = new ArrayList<>();
+
     }
 
 
@@ -38,51 +40,74 @@ public class ClockLogs {
         return clockOutTime;
     }
 
-    public void clockIn(String employeeID) {
+    public void clockIn(int employeeID) {
         clockInTime = LocalDateTime.now();
-        this.clockIns.add(clockInTime);
+   //     this.clockIns.add(clockInTime);
         saveClockInOutTime(employeeID, EventType.CLOCK_IN.name(), formatter.format(clockInTime));
         isClockedIn = true;
     }
 
-    public void clockOut(String employeeID) {
+    public void clockOut(int employeeID) {
         clockOutTime = LocalDateTime.now();
-        this.clockOuts.add(clockOutTime);
-        saveClockInOutTime(employeeID, EventType.CLOCK_OUT.name(), formatter.format(clockInTime));
+    //    this.clockOuts.add(clockOutTime);
+        saveClockInOutTime(employeeID, EventType.CLOCK_OUT.name(), formatter.format(clockOutTime));
         isClockedIn = false;
 
     }
 
-    public String lastAction() {
-        if (!clockIns.isEmpty()) {
-            int lastRecord = clockIns.size() - 1;
-            if (isClockedIn){
-                return "Last action: Clock In at " + formatter.format(clockIns.get(lastRecord));
-            } else {
-                return "Last action: Clock Out at " + formatter.format(clockOuts.get(lastRecord));
-            }
+    public String lastAction(int employeeID) {
+        String lastAction = "";
+
+        String[] lastRecord = getLastRecord(employeeID);
+        if (lastRecord == null){
+            isClockedIn = false;
+            lastAction = "";
+        } else if(lastRecord[1].equals("CLOCK_IN")){
+            isClockedIn = true;
+            lastAction = "Last action: Clock In at " + lastRecord[2];
         } else {
-            return "";
+            isClockedIn = false;
+            lastAction =  "Last action: Clock Out at " + lastRecord[2];
         }
+        return lastAction;
     }
     public boolean isClockedIn(){
         return isClockedIn;
     }
 
-    public void saveClockInOutTime(String employeeID, String typeOfEvent, String time){
+    public void saveClockInOutTime(int employeeID, String typeOfEvent, String time){
         try {
-
             FileWriter writer = new FileWriter("ClockIn_ClockOut_Logs.csv", true);
-
-            writer.write(employeeID + "," + typeOfEvent + "," + time + "\n");
+            writer.write(""+ employeeID + "," + typeOfEvent + "," + time + "\n");
             writer.close();
         }
         catch(IOException e) {
             System.out.println("Error: " + e.getMessage());
         }
-
-
     }
 
+    public String[] getLastRecord(int employeeID) {
+        String[] lastRecord = null;
 
+        try {
+            String dataLine = "";
+            File myFile = new File("ClockIn_ClockOut_Logs.csv");
+            Scanner scan = new Scanner(myFile);
+            String[] line;
+            while (scan.hasNextLine()) {
+                dataLine = scan.nextLine();
+
+                // Split the string by comma
+                line = dataLine.split(",");
+                if (line[0].equals(String.valueOf(employeeID))) {
+                    lastRecord = line;
+                }
+            }
+            scan.close();
+        } catch (IOException ioex) {
+            System.out.println("Error: " + ioex.getMessage());
+
+        }
+        return lastRecord;
+    }
 }
