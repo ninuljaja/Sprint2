@@ -12,7 +12,6 @@ public class GUIApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Login-view.fxml"));
-
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root);
         primaryStage.setResizable(false);
