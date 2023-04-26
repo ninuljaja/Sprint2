@@ -71,7 +71,7 @@ public class LoginController {
                 stage.setScene(new Scene(root));
                 stage.show();
             } catch (Exception e) {
-                System.err.println(String.format("Error: %s", e.getMessage()));
+                System.err.println(String.format("Error in LoginController: %s", e.getMessage()));
             }
         }
         else
