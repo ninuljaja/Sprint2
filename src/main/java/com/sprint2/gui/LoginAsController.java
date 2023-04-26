@@ -146,7 +146,7 @@ public class LoginAsController {
             }
         }
         session.setMode("manager");
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("Table-layout.fxml"));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("EmployeeProfile-view.fxml"));
         loginAs.getChildren().setAll(pane);
     }
 }
