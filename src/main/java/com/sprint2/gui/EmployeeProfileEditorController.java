@@ -22,7 +22,7 @@ public class EmployeeProfileEditorController {
     @FXML
     private TableView<String[]> employeeTable;
     @FXML
-    private TableColumn<String[], String> employee, role;
+    private TableColumn<String[], String> employee, role, id;
 
     private ArrayList<Employee> employees = new ArrayList<>();
 
@@ -35,12 +35,11 @@ public class EmployeeProfileEditorController {
         Employee user = session.getUser();
         updateEmployeeList();
 
-        employee.setCellValueFactory(param -> new ReadOnlyStringWrapper(param.getValue()[0]));
+        id.setCellValueFactory(param -> new ReadOnlyStringWrapper(param.getValue()[0]));
+        employee.setCellValueFactory(param -> new ReadOnlyStringWrapper(param.getValue()[1]));
+        role.setCellValueFactory(param -> new ReadOnlyStringWrapper(param.getValue()[2]));
 
-
-        role.setCellValueFactory(param -> new ReadOnlyStringWrapper(param.getValue()[1]));
         employeeTable.setItems(data);
-
     }
 
     public void onGoBackBtn(ActionEvent actionEvent) throws IOException {
@@ -65,7 +64,7 @@ public class EmployeeProfileEditorController {
                 String[] line = dataLine.split(",");
                 Employee emp = new Employee(line);
                 employees.add(emp);
-                String[] parts = {(emp.getFirstName() + " " +emp.getLastName()), emp.getPosition()};
+                String[] parts = {String.valueOf(emp.employeeID),(emp.getFirstName() + " " +emp.getLastName()), emp.getPosition()};
                 data.add(parts);
             }
             scan.close();
