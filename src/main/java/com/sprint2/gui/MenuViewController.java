@@ -166,7 +166,7 @@ public class MenuViewController {
             }
             scan.close();
         } catch (IOException ioex) {
-            System.out.println("Error: " + ioex.getMessage());
+            ioex.printStackTrace();
         }
         return null;
     }

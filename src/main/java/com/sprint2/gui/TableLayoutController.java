@@ -271,7 +271,7 @@ public class TableLayoutController {
             scan.close();
 
         } catch (IOException ioex) {
-            System.out.println("Error: " + ioex.getMessage());
+            ioex.printStackTrace();
         }
         return null;
     }
@@ -291,7 +291,7 @@ public class TableLayoutController {
             scan.close();
 
         } catch (IOException ioex) {
-            System.out.println("Error: " + ioex.getMessage());
+            ioex.printStackTrace();
         }
     }
     public void setButtonStatus(String[] data){

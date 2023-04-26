@@ -22,7 +22,7 @@ public class Orders {
             items = order[4].split(";");
             waiterID = Integer.parseInt(order[5]);
         } catch (NumberFormatException ex){
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
     }
 
