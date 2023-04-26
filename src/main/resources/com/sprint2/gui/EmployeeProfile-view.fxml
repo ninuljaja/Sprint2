@@ -7,10 +7,10 @@
     <children>
         <Pane layoutX="5.0" layoutY="49.0" prefHeight="513.0" prefWidth="535.0" style="-fx-background-radius: 60px; -fx-background-color: #8e7cc3ff;">
          <children>
-            <TableView layoutX="40.0" layoutY="30.0" prefHeight="450.0" prefWidth="450.0">
+            <TableView fx:id="employeeTable" layoutX="40.0" layoutY="30.0" prefHeight="450.0" prefWidth="450.0">
               <columns>
-                <TableColumn minWidth="20.0" prefWidth="150.0" text="Employee" />
-                <TableColumn prefWidth="300.0" text="Role" />
+                <TableColumn fx:id="employee" minWidth="20.0" prefWidth="150.0" text="Employee" />
+                <TableColumn fx:id="role" prefWidth="300.0" text="Role" />
               </columns>
             </TableView>
          </children></Pane>
