@@ -9,37 +9,23 @@ import java.util.Scanner;
 
 
 public class ClockLogs {
-
-   // private List<LocalDateTime> clockIns;
- //   private List<LocalDateTime> clockOuts;
     private boolean isClockedIn;
-
     private LocalDateTime clockInTime;
     private LocalDateTime clockOutTime;
-
-    private EventType type;
-    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-    private String lastAction;
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     public enum EventType {
         CLOCK_IN,
         CLOCK_OUT
     }
     public ClockLogs() {
-    //    this.clockIns = new ArrayList<>();
-      //  this.clockOuts = new ArrayList<>();
-
     }
-
-
     public LocalDateTime getClockInTime() {
         return clockInTime;
     }
-
     public LocalDateTime getClockOutTime() {
         return clockOutTime;
     }
-
     public void clockIn(int employeeID) {
         clockInTime = LocalDateTime.now();
    //     this.clockIns.add(clockInTime);
@@ -57,11 +43,9 @@ public class ClockLogs {
 
     public String lastAction(int employeeID) {
         String lastAction = "";
-
         String[] lastRecord = getLastRecord(employeeID);
         if (lastRecord == null){
             isClockedIn = false;
-            lastAction = "";
         } else if(lastRecord[1].equals("CLOCK_IN")){
             isClockedIn = true;
             lastAction = "Last action: Clock In at " + lastRecord[2];
@@ -90,13 +74,12 @@ public class ClockLogs {
         String[] lastRecord = null;
 
         try {
-            String dataLine = "";
+            String dataLine;
             File myFile = new File("ClockIn_ClockOut_Logs.csv");
             Scanner scan = new Scanner(myFile);
             String[] line;
             while (scan.hasNextLine()) {
                 dataLine = scan.nextLine();
-
                 // Split the string by comma
                 line = dataLine.split(",");
                 if (line[0].equals(String.valueOf(employeeID))) {
@@ -104,9 +87,8 @@ public class ClockLogs {
                 }
             }
             scan.close();
-        } catch (IOException ioex) {
-            System.out.println("Error: " + ioex.getMessage());
-
+        } catch (IOException ex) {
+            System.out.println("Error: " + ex.getMessage());
         }
         return lastRecord;
     }

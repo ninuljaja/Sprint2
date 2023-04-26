@@ -10,200 +10,679 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
 
 public class TableLayoutController {
-    public Button tableB1Btn;
     @FXML
-    private Button placeOrderBtn;
+    private Button placeOrderBtn, fillTableBtn, viewOrdersBtn, markAsDirtyBtn;
     @FXML
-    private Button tableA1Btn, tableA2Btn,tableA3Btn, tableA42Btn, tableA5Btn, tableA6Btn;
-@FXML
-private AnchorPane tableLayout;
+    private Button A1, A2,A3, A4, A5, A6, B1, B2, B3, B4, B5, B6, C5, C6, D5, D6, E1, E2, E3, E4, E5, E6, F1, F2, F3, F4, F5, F6;
+    private ArrayList<Button> tableButtons = new ArrayList<>();
 
-
+    @FXML
+    private AnchorPane tableLayout;
     @FXML
     private Label tableNumberLabel;
+    private Table table;
+    private String[] tableData = null;
+
+    private ArrayList<Table> tables = null;
+    private ArrayList<Table> allTables = new ArrayList<>();
+    private Employee user;
+    private Session session = null;
+    private Waiter waiter = null;
+
 
 
     public TableLayoutController() throws IOException {
 
     }
+    public void initialize() {
+        session = Session.getInstance();
+        user = session.getUser();
+        tableButtons.addAll(Arrays.asList(A1,A2,A3,A4,A5,A6,B1,B2,B3,B4,B5,B6,C5,C6,D5,D6,E1,E2,E3,E4,E5,E6,F1,F2,F3,F4,F5,F6));
+        updateAllTables();
+        if(session.getMode().equalsIgnoreCase("waiter")){
+            waiter = new Waiter(session.getUser());
+        }
+        updateButtonAvailability();
+        updateButtonStatus();
+    }
 
+    private void updateButtonStatus() {
+        for (Button tableButton : tableButtons) {
+            String existingStyle = tableButton.getStyle();
+            for (Table table : allTables){
+                Button button = (Button) tableButton.lookup("#" + table.getTableID());
+                if (button != null) {
+                    if(table.getStatus().equalsIgnoreCase("READY")){
+                        tableButton.setStyle(existingStyle + "-fx-background-color: #83df5bff;");
+                    } else if (table.getStatus().equalsIgnoreCase("OCCUPIED")){
+                        tableButton.setStyle(existingStyle + "-fx-background-color: #f0f00bff;");
+                    } else if(table.getStatus().equalsIgnoreCase("DIRTY")){
+                        tableButton.setStyle(existingStyle + "-fx-background-color: #e41111ff;");
+                    }
+                }
+            }
+        }
+    }
 
+    private void updateButtonAvailability() {
+
+        if (session.getMode().equalsIgnoreCase("waiter")) {
+            tables = waiter.getAssignedTable();
+            if (!tables.isEmpty()) {
+                for (Table table : tables) {
+                    for (Button tableButton : tableButtons) {
+                        Button button = (Button) tableButton.lookup("#" + table.getTableID());
+                        if (button != null) {
+                            tableButton.setDisable(false);
+                        }
+                    }
+                }
+            }
+                // }
+        } else if (session.getMode().equalsIgnoreCase("manager") || session.getMode().equalsIgnoreCase("host")) {
+            for (Button tableButton : tableButtons) {
+                tableButton.setDisable(false);
+            }
+        }
+    }
 
     @FXML
     protected void onTableA1(){
-        tableNumberLabel.setText("Table A1");
-        placeOrderBtn.setDisable(false);
 
-
+        tableData = getTable("A1");
+        if(tableData != null) {
+            table = new Table(tableData);
+            tableNumberLabel.setText("Table " + table.getTableID());
+            if(session.getMode().equalsIgnoreCase("waiter")) {
+                if (table.getStatus().equalsIgnoreCase("Occupied")) {
+                    placeOrderBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                    viewOrdersBtn.setDisable(false);
+                } else if(table.getStatus().equalsIgnoreCase("Ready")){
+                    fillTableBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                }
+            } else if(session.getMode().equalsIgnoreCase("manager")) {
+                viewOrdersBtn.setDisable(false);
+                markAsDirtyBtn.setDisable(false);
+            }
+        }
     }
 
     @FXML
     protected void onTableA2(){
-        tableNumberLabel.setText("Table A2");
-        placeOrderBtn.setDisable(false);
-
-
-
+        tableData = getTable("A2");
+        if(tableData != null) {
+            table = new Table(tableData);
+            tableNumberLabel.setText("Table " + table.getTableID());
+            if(session.getMode().equalsIgnoreCase("waiter")) {
+                if (table.getStatus().equalsIgnoreCase("Occupied")) {
+                    placeOrderBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                    viewOrdersBtn.setDisable(false);
+                } else if(table.getStatus().equalsIgnoreCase("Ready")){
+                    fillTableBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                }
+            } else if(session.getMode().equalsIgnoreCase("manager")) {
+                viewOrdersBtn.setDisable(false);
+                markAsDirtyBtn.setDisable(false);
+            }
+        }
     }
 
     @FXML
-    protected void onTableA3(){
-        tableNumberLabel.setText("Table A3");
-        placeOrderBtn.setDisable(false);
-
+    protected void onTableA3() {
+        tableData = getTable("A3");
+        if (tableData != null) {
+            table = new Table(tableData);
+            tableNumberLabel.setText("Table " + table.getTableID());
+            if (session.getMode().equalsIgnoreCase("waiter")) {
+                if (table.getStatus().equalsIgnoreCase("Occupied")) {
+                    placeOrderBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                    viewOrdersBtn.setDisable(false);
+                } else if (table.getStatus().equalsIgnoreCase("Ready")) {
+                    fillTableBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                }
+            } else if (session.getMode().equalsIgnoreCase("manager")) {
+                viewOrdersBtn.setDisable(false);
+                markAsDirtyBtn.setDisable(false);
+            }
+        }
     }
     @FXML
     protected void onTableA4(){
-        tableNumberLabel.setText("Table A4");
-        placeOrderBtn.setDisable(false);
-
+        tableData = getTable("A4");
+        if(tableData != null) {
+            table = new Table(tableData);
+            tableNumberLabel.setText("Table " + table.getTableID());
+            if(session.getMode().equalsIgnoreCase("waiter")) {
+                if (table.getStatus().equalsIgnoreCase("Occupied")) {
+                    placeOrderBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                    viewOrdersBtn.setDisable(false);
+                } else if(table.getStatus().equalsIgnoreCase("Ready")){
+                    fillTableBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                }
+            } else if(session.getMode().equalsIgnoreCase("manager")) {
+                viewOrdersBtn.setDisable(false);
+                markAsDirtyBtn.setDisable(false);
+            }
+        }
     }
     @FXML
     protected void onTableA5(){
-        tableNumberLabel.setText("Table A5");
-        placeOrderBtn.setDisable(false);
-
+        tableData = getTable("A5");
+        if(tableData != null) {
+            table = new Table(tableData);
+            tableNumberLabel.setText("Table " + table.getTableID());
+            if(session.getMode().equalsIgnoreCase("waiter")) {
+                if (table.getStatus().equalsIgnoreCase("Occupied")) {
+                    placeOrderBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                    viewOrdersBtn.setDisable(false);
+                } else if(table.getStatus().equalsIgnoreCase("Ready")){
+                    fillTableBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                }
+            } else if(session.getMode().equalsIgnoreCase("manager")) {
+                viewOrdersBtn.setDisable(false);
+                markAsDirtyBtn.setDisable(false);
+            }
+        }
     }
     @FXML
     protected void onTableA6(){
-        tableNumberLabel.setText("Table A6");
-        placeOrderBtn.setDisable(false);
-
+        tableData = getTable("A6");
+        if(tableData != null) {
+            table = new Table(tableData);
+            tableNumberLabel.setText("Table " + table.getTableID());
+            if(session.getMode().equalsIgnoreCase("waiter")) {
+                if (table.getStatus().equalsIgnoreCase("Occupied")) {
+                    placeOrderBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                    viewOrdersBtn.setDisable(false);
+                } else if(table.getStatus().equalsIgnoreCase("Ready")){
+                    fillTableBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                }
+            } else if(session.getMode().equalsIgnoreCase("manager")) {
+                viewOrdersBtn.setDisable(false);
+                markAsDirtyBtn.setDisable(false);
+            }
+        }
     }
     @FXML
     protected void onTableB1(){
-        tableNumberLabel.setText("Table B1");
-        placeOrderBtn.setDisable(false);
-
+        tableData = getTable("B1");
+        if(tableData != null) {
+            table = new Table(tableData);
+            tableNumberLabel.setText("Table " + table.getTableID());
+            if(session.getMode().equalsIgnoreCase("waiter")) {
+                if (table.getStatus().equalsIgnoreCase("Occupied")) {
+                    placeOrderBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                    viewOrdersBtn.setDisable(false);
+                } else if(table.getStatus().equalsIgnoreCase("Ready")){
+                    fillTableBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                }
+            } else if(session.getMode().equalsIgnoreCase("manager")) {
+                viewOrdersBtn.setDisable(false);
+                markAsDirtyBtn.setDisable(false);
+            }
+        }
     }
     @FXML
     protected void onTableB2(){
-        tableNumberLabel.setText("Table B2");
-        placeOrderBtn.setDisable(false);
-
+        tableData = getTable("B2");
+        if(tableData != null) {
+            table = new Table(tableData);
+            tableNumberLabel.setText("Table " + table.getTableID());
+            if(session.getMode().equalsIgnoreCase("waiter")) {
+                if (table.getStatus().equalsIgnoreCase("Occupied")) {
+                    placeOrderBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                    viewOrdersBtn.setDisable(false);
+                } else if(table.getStatus().equalsIgnoreCase("Ready")){
+                    fillTableBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                }
+            } else if(session.getMode().equalsIgnoreCase("manager")) {
+                viewOrdersBtn.setDisable(false);
+                markAsDirtyBtn.setDisable(false);
+            }
+        }
     }
     @FXML
     protected void onTableB3(){
-        tableNumberLabel.setText("Table B3");
-        placeOrderBtn.setDisable(false);
-
+        tableData = getTable("B3");
+        if(tableData != null) {
+            table = new Table(tableData);
+            tableNumberLabel.setText("Table " + table.getTableID());
+            if(session.getMode().equalsIgnoreCase("waiter")) {
+                if (table.getStatus().equalsIgnoreCase("Occupied")) {
+                    placeOrderBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                    viewOrdersBtn.setDisable(false);
+                } else if(table.getStatus().equalsIgnoreCase("Ready")){
+                    fillTableBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                }
+            } else if(session.getMode().equalsIgnoreCase("manager")) {
+                viewOrdersBtn.setDisable(false);
+                markAsDirtyBtn.setDisable(false);
+            }
+        }
     }
     @FXML
     protected void onTableB4(){
-        tableNumberLabel.setText("Table B4");
-        placeOrderBtn.setDisable(false);
-
+        tableData = getTable("B4");
+        if(tableData != null) {
+            table = new Table(tableData);
+            tableNumberLabel.setText("Table " + table.getTableID());
+            if(session.getMode().equalsIgnoreCase("waiter")) {
+                if (table.getStatus().equalsIgnoreCase("Occupied")) {
+                    placeOrderBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                    viewOrdersBtn.setDisable(false);
+                } else if(table.getStatus().equalsIgnoreCase("Ready")){
+                    fillTableBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                }
+            } else if(session.getMode().equalsIgnoreCase("manager")) {
+                viewOrdersBtn.setDisable(false);
+                markAsDirtyBtn.setDisable(false);
+            }
+        }
     }
     @FXML
     protected void onTableB5(){
-        tableNumberLabel.setText("Table B5");
-        placeOrderBtn.setDisable(false);
-
+        tableData = getTable("B5");
+        if(tableData != null) {
+            table = new Table(tableData);
+            tableNumberLabel.setText("Table " + table.getTableID());
+            if(session.getMode().equalsIgnoreCase("waiter")) {
+                if (table.getStatus().equalsIgnoreCase("Occupied")) {
+                    placeOrderBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                    viewOrdersBtn.setDisable(false);
+                } else if(table.getStatus().equalsIgnoreCase("Ready")){
+                    fillTableBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                }
+            } else if(session.getMode().equalsIgnoreCase("manager")) {
+                viewOrdersBtn.setDisable(false);
+                markAsDirtyBtn.setDisable(false);
+            }
+        }
     }
     @FXML
     protected void onTableB6(){
-        tableNumberLabel.setText("Table B6");
-        placeOrderBtn.setDisable(false);
-
+        tableData = getTable("B6");
+        if(tableData != null) {
+            table = new Table(tableData);
+            tableNumberLabel.setText("Table " + table.getTableID());
+            if(session.getMode().equalsIgnoreCase("waiter")) {
+                if (table.getStatus().equalsIgnoreCase("Occupied")) {
+                    placeOrderBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                    viewOrdersBtn.setDisable(false);
+                } else if(table.getStatus().equalsIgnoreCase("Ready")){
+                    fillTableBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                }
+            } else if(session.getMode().equalsIgnoreCase("manager")) {
+                viewOrdersBtn.setDisable(false);
+                markAsDirtyBtn.setDisable(false);
+            }
+        }
     }
     @FXML
     protected void onTableC5(){
-        tableNumberLabel.setText("Table C5");
-        placeOrderBtn.setDisable(false);
-
+        tableData = getTable("C5");
+        if(tableData != null) {
+            table = new Table(tableData);
+            tableNumberLabel.setText("Table " + table.getTableID());
+            if(session.getMode().equalsIgnoreCase("waiter")) {
+                if (table.getStatus().equalsIgnoreCase("Occupied")) {
+                    placeOrderBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                    viewOrdersBtn.setDisable(false);
+                } else if(table.getStatus().equalsIgnoreCase("Ready")){
+                    fillTableBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                }
+            } else if(session.getMode().equalsIgnoreCase("manager")) {
+                viewOrdersBtn.setDisable(false);
+                markAsDirtyBtn.setDisable(false);
+            }
+        }
     }
     @FXML
     protected void onTableC6(){
-        tableNumberLabel.setText("Table C6");
-        placeOrderBtn.setDisable(false);
-
+        tableData = getTable("C6");
+        if(tableData != null) {
+            table = new Table(tableData);
+            tableNumberLabel.setText("Table " + table.getTableID());
+            if(session.getMode().equalsIgnoreCase("waiter")) {
+                if (table.getStatus().equalsIgnoreCase("Occupied")) {
+                    placeOrderBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                    viewOrdersBtn.setDisable(false);
+                } else if(table.getStatus().equalsIgnoreCase("Ready")){
+                    fillTableBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                }
+            } else if(session.getMode().equalsIgnoreCase("manager")) {
+                viewOrdersBtn.setDisable(false);
+                markAsDirtyBtn.setDisable(false);
+            }
+        }
     }
     @FXML
     protected void onTableD5(){
-        tableNumberLabel.setText("Table D5");
-        placeOrderBtn.setDisable(false);
-
+        tableData = getTable("D5");
+        if(tableData != null) {
+            table = new Table(tableData);
+            tableNumberLabel.setText("Table " + table.getTableID());
+            if(session.getMode().equalsIgnoreCase("waiter")) {
+                if (table.getStatus().equalsIgnoreCase("Occupied")) {
+                    placeOrderBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                    viewOrdersBtn.setDisable(false);
+                } else if(table.getStatus().equalsIgnoreCase("Ready")){
+                    fillTableBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                }
+            } else if(session.getMode().equalsIgnoreCase("manager")) {
+                viewOrdersBtn.setDisable(false);
+                markAsDirtyBtn.setDisable(false);
+            }
+        }
     }
     @FXML
     protected void onTableD6(){
-        tableNumberLabel.setText("Table D6");
-        placeOrderBtn.setDisable(false);
-
+        tableData = getTable("D6");
+        if(tableData != null) {
+            table = new Table(tableData);
+            tableNumberLabel.setText("Table " + table.getTableID());
+            if(session.getMode().equalsIgnoreCase("waiter")) {
+                if (table.getStatus().equalsIgnoreCase("Occupied")) {
+                    placeOrderBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                    viewOrdersBtn.setDisable(false);
+                } else if(table.getStatus().equalsIgnoreCase("Ready")){
+                    fillTableBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                }
+            } else if(session.getMode().equalsIgnoreCase("manager")) {
+                viewOrdersBtn.setDisable(false);
+                markAsDirtyBtn.setDisable(false);
+            }
+        }
     }
     @FXML
     protected void onTableE1(){
-        tableNumberLabel.setText("Table E1");
-        placeOrderBtn.setDisable(false);
-
+        tableData = getTable("E1");
+        if(tableData != null) {
+            table = new Table(tableData);
+            tableNumberLabel.setText("Table " + table.getTableID());
+            if(session.getMode().equalsIgnoreCase("waiter")) {
+                if (table.getStatus().equalsIgnoreCase("Occupied")) {
+                    placeOrderBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                    viewOrdersBtn.setDisable(false);
+                } else if(table.getStatus().equalsIgnoreCase("Ready")){
+                    fillTableBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                }
+            } else if(session.getMode().equalsIgnoreCase("manager")) {
+                viewOrdersBtn.setDisable(false);
+                markAsDirtyBtn.setDisable(false);
+            }
+        }
     }
     @FXML
     protected void onTableE2(){
-        tableNumberLabel.setText("Table E2");
-        placeOrderBtn.setDisable(false);
-
+        tableData = getTable("E2");
+        if(tableData != null) {
+            table = new Table(tableData);
+            tableNumberLabel.setText("Table " + table.getTableID());
+            if(session.getMode().equalsIgnoreCase("waiter")) {
+                if (table.getStatus().equalsIgnoreCase("Occupied")) {
+                    placeOrderBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                    viewOrdersBtn.setDisable(false);
+                } else if(table.getStatus().equalsIgnoreCase("Ready")){
+                    fillTableBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                }
+            } else if(session.getMode().equalsIgnoreCase("manager")) {
+                viewOrdersBtn.setDisable(false);
+                markAsDirtyBtn.setDisable(false);
+            }
+        }
     }
     @FXML
     protected void onTableE3(){
-        tableNumberLabel.setText("Table E3");
-        placeOrderBtn.setDisable(false);
-
+        tableData = getTable("E3");
+        if(tableData != null) {
+            table = new Table(tableData);
+            tableNumberLabel.setText("Table " + table.getTableID());
+            if(session.getMode().equalsIgnoreCase("waiter")) {
+                if (table.getStatus().equalsIgnoreCase("Occupied")) {
+                    placeOrderBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                    viewOrdersBtn.setDisable(false);
+                } else if(table.getStatus().equalsIgnoreCase("Ready")){
+                    fillTableBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                }
+            } else if(session.getMode().equalsIgnoreCase("manager")) {
+                viewOrdersBtn.setDisable(false);
+                markAsDirtyBtn.setDisable(false);
+            }
+        }
     }
     @FXML
     protected void onTableE4(){
-        tableNumberLabel.setText("Table E4");
-        placeOrderBtn.setDisable(false);
-
+        tableData = getTable("E4");
+        if(tableData != null) {
+            table = new Table(tableData);
+            tableNumberLabel.setText("Table " + table.getTableID());
+            if(session.getMode().equalsIgnoreCase("waiter")) {
+                if (table.getStatus().equalsIgnoreCase("Occupied")) {
+                    placeOrderBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                    viewOrdersBtn.setDisable(false);
+                } else if(table.getStatus().equalsIgnoreCase("Ready")){
+                    fillTableBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                }
+            } else if(session.getMode().equalsIgnoreCase("manager")) {
+                viewOrdersBtn.setDisable(false);
+                markAsDirtyBtn.setDisable(false);
+            }
+        }
     }
     @FXML
     protected void onTableE5(){
-        tableNumberLabel.setText("Table E5");
-        placeOrderBtn.setDisable(false);
-
+        tableData = getTable("E5");
+        if(tableData != null) {
+            table = new Table(tableData);
+            tableNumberLabel.setText("Table " + table.getTableID());
+            if(session.getMode().equalsIgnoreCase("waiter")) {
+                if (table.getStatus().equalsIgnoreCase("Occupied")) {
+                    placeOrderBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                    viewOrdersBtn.setDisable(false);
+                } else if(table.getStatus().equalsIgnoreCase("Ready")){
+                    fillTableBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                }
+            } else if(session.getMode().equalsIgnoreCase("manager")) {
+                viewOrdersBtn.setDisable(false);
+                markAsDirtyBtn.setDisable(false);
+            }
+        }
     }
     @FXML
     protected void onTableE6(){
-        tableNumberLabel.setText("Table E6");
-        placeOrderBtn.setDisable(false);
-
+        tableData = getTable("E6");
+        if(tableData != null) {
+            table = new Table(tableData);
+            tableNumberLabel.setText("Table " + table.getTableID());
+            if(session.getMode().equalsIgnoreCase("waiter")) {
+                if (table.getStatus().equalsIgnoreCase("Occupied")) {
+                    placeOrderBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                    viewOrdersBtn.setDisable(false);
+                } else if(table.getStatus().equalsIgnoreCase("Ready")){
+                    fillTableBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                }
+            } else if(session.getMode().equalsIgnoreCase("manager")) {
+                viewOrdersBtn.setDisable(false);
+                markAsDirtyBtn.setDisable(false);
+            }
+        }
     }
     @FXML
     protected void onTableF1(){
-        tableNumberLabel.setText("Table F1");
-        placeOrderBtn.setDisable(false);
-
+        tableData = getTable("F1");
+        if(tableData != null) {
+            table = new Table(tableData);
+            tableNumberLabel.setText("Table " + table.getTableID());
+            if(session.getMode().equalsIgnoreCase("waiter")) {
+                if (table.getStatus().equalsIgnoreCase("Occupied")) {
+                    placeOrderBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                    viewOrdersBtn.setDisable(false);
+                } else if(table.getStatus().equalsIgnoreCase("Ready")){
+                    fillTableBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                }
+            } else if(session.getMode().equalsIgnoreCase("manager")) {
+                viewOrdersBtn.setDisable(false);
+                markAsDirtyBtn.setDisable(false);
+            }
+        }
     }
     @FXML
     protected void onTableF2(){
-        tableNumberLabel.setText("Table F2");
-        placeOrderBtn.setDisable(false);
-
+        tableData = getTable("F2");
+        if(tableData != null) {
+            table = new Table(tableData);
+            tableNumberLabel.setText("Table " + table.getTableID());
+            if(session.getMode().equalsIgnoreCase("waiter")) {
+                if (table.getStatus().equalsIgnoreCase("Occupied")) {
+                    placeOrderBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                    viewOrdersBtn.setDisable(false);
+                } else if(table.getStatus().equalsIgnoreCase("Ready")){
+                    fillTableBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                }
+            } else if(session.getMode().equalsIgnoreCase("manager")) {
+                viewOrdersBtn.setDisable(false);
+                markAsDirtyBtn.setDisable(false);
+            }
+        }
     }
     @FXML
     protected void onTableF3(){
-        tableNumberLabel.setText("Table F3");
-        placeOrderBtn.setDisable(false);
-
+        tableData = getTable("F3");
+        if(tableData != null) {
+            table = new Table(tableData);
+            tableNumberLabel.setText("Table " + table.getTableID());
+            if(session.getMode().equalsIgnoreCase("waiter")) {
+                if (table.getStatus().equalsIgnoreCase("Occupied")) {
+                    placeOrderBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                    viewOrdersBtn.setDisable(false);
+                } else if(table.getStatus().equalsIgnoreCase("Ready")){
+                    fillTableBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                }
+            } else if(session.getMode().equalsIgnoreCase("manager")) {
+                viewOrdersBtn.setDisable(false);
+                markAsDirtyBtn.setDisable(false);
+            }
+        }
     }
     @FXML
     protected void onTableF4(){
-        tableNumberLabel.setText("Table F4");
-        placeOrderBtn.setDisable(false);
-
+        tableData = getTable("F4");
+        if(tableData != null) {
+            table = new Table(tableData);
+            tableNumberLabel.setText("Table " + table.getTableID());
+            if(session.getMode().equalsIgnoreCase("waiter")) {
+                if (table.getStatus().equalsIgnoreCase("Occupied")) {
+                    placeOrderBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                    viewOrdersBtn.setDisable(false);
+                } else if(table.getStatus().equalsIgnoreCase("Ready")){
+                    fillTableBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                }
+            } else if(session.getMode().equalsIgnoreCase("manager")) {
+                viewOrdersBtn.setDisable(false);
+                markAsDirtyBtn.setDisable(false);
+            }
+        }
     }
     @FXML
     protected void onTableF5(){
-        tableNumberLabel.setText("Table F5");
-        placeOrderBtn.setDisable(false);
-
+        tableData = getTable("F5");
+        if(tableData != null) {
+            table = new Table(tableData);
+            tableNumberLabel.setText("Table " + table.getTableID());
+            if(session.getMode().equalsIgnoreCase("waiter")) {
+                if (table.getStatus().equalsIgnoreCase("Occupied")) {
+                    placeOrderBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                    viewOrdersBtn.setDisable(false);
+                } else if(table.getStatus().equalsIgnoreCase("Ready")){
+                    fillTableBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                }
+            } else if(session.getMode().equalsIgnoreCase("manager")) {
+                viewOrdersBtn.setDisable(false);
+                markAsDirtyBtn.setDisable(false);
+            }
+        }
     }
     @FXML
     protected void onTableF6(){
-        tableNumberLabel.setText("Table F6");
-        placeOrderBtn.setDisable(false);
-
+        tableData = getTable("F6");
+        if(tableData != null) {
+            table = new Table(tableData);
+            tableNumberLabel.setText("Table " + table.getTableID());
+            if(session.getMode().equalsIgnoreCase("waiter")) {
+                if (table.getStatus().equalsIgnoreCase("Occupied")) {
+                    placeOrderBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                    viewOrdersBtn.setDisable(false);
+                } else if(table.getStatus().equalsIgnoreCase("Ready")){
+                    fillTableBtn.setDisable(false);
+                    markAsDirtyBtn.setDisable(false);
+                }
+            } else if(session.getMode().equalsIgnoreCase("manager")) {
+                viewOrdersBtn.setDisable(false);
+                markAsDirtyBtn.setDisable(false);
+            }
+        }
     }
 
     @FXML
@@ -214,8 +693,6 @@ private AnchorPane tableLayout;
         tableLayout.getChildren().setAll(pane);
 
     }
-
-
     public void goBack(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginAs.fxml"));
         Parent root = loader.load();
@@ -224,5 +701,46 @@ private AnchorPane tableLayout;
         Node node = (Node) actionEvent.getSource();
         Scene scene = node.getScene();
         scene.setRoot(root);
+    }
+    public String[] getTable(String tableID){
+        try {
+            String dataLine = "";
+            File myFile = new File("Tables.csv");
+            Scanner scan = new Scanner(myFile);
+            scan.nextLine();
+            while (scan.hasNextLine()) {
+                dataLine = scan.nextLine();
+                // Split the string by comma
+                String[] line = dataLine.split(",");
+                allTables.add(new Table(line));
+                if (line[0].equalsIgnoreCase(tableID)) {
+                    return line;
+                }
+            }
+            scan.close();
+
+        } catch (IOException ioex) {
+            System.out.println("Error: " + ioex.getMessage());
+        }
+        return null;
+    }
+    public void updateAllTables(){
+        allTables.removeAll(allTables);
+        try {
+            String dataLine = "";
+            File myFile = new File("Tables.csv");
+            Scanner scan = new Scanner(myFile);
+            scan.nextLine();
+            while (scan.hasNextLine()) {
+                dataLine = scan.nextLine();
+                // Split the string by comma
+                String[] line = dataLine.split(",");
+                allTables.add(new Table(line));
+            }
+            scan.close();
+
+        } catch (IOException ioex) {
+            System.out.println("Error: " + ioex.getMessage());
+        }
     }
 }

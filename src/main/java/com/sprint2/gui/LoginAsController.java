@@ -9,8 +9,10 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
+import java.io.File;
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
 
 public class LoginAsController {
 
@@ -29,13 +31,13 @@ public class LoginAsController {
     private ClockLogs record;
     private Employee user;
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-
+    private Session session = null;
 
     public LoginAsController(){
 
     }
     public void initialize() {
-        Session session = Session.getInstance();
+        session = Session.getInstance();
         user = session.getUser();
         switch (user.getPosition().toLowerCase()) {
             case "busser":
@@ -94,8 +96,30 @@ public class LoginAsController {
                 return;
             }
         }
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("Table-layout.fxml"));
-        loginAs.getChildren().setAll(pane);
+        String[] waiterUser = null;
+        try {
+            String dataLine = "";
+            File myFile = new File("Employee.csv");
+            Scanner scan = new Scanner(myFile);
+            while (scan.hasNextLine()) {
+                dataLine = scan.nextLine();
+                // Split the string by comma
+                String[] line = dataLine.split(",");
+                if (line[0].equalsIgnoreCase(String.valueOf(user.getEmployeeID()))) {
+                    waiterUser = line;
+                    break;
+                }
+            }
+            scan.close();
+        } catch (IOException ioex) {
+            System.out.println("Error: " + ioex.getMessage());
+        }
+        if(waiterUser != null) {
+            session.setMode("waiter");
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("Table-layout.fxml"));
+            loginAs.getChildren().setAll(pane);
+        }
+
     }
 
     @FXML
@@ -109,5 +133,20 @@ public class LoginAsController {
             record.clockOut(user.getEmployeeID());
             clockInOutLbl.setText("Last action: Clock Out at " + formatter.format(record.getClockOutTime()));
         }
+    }
+    @FXML
+    protected void onManagerBtn() throws IOException {
+        if(!record.isClockedIn()){
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"You did not clocked in. Do you want to clock in first?", ButtonType.YES, ButtonType.NO);
+            alert.setHeaderText("");
+            alert.showAndWait();
+            if (alert.getResult() == ButtonType.YES){
+                alert.close();
+                return;
+            }
+        }
+        session.setMode("manager");
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("Table-layout.fxml"));
+        loginAs.getChildren().setAll(pane);
     }
 }

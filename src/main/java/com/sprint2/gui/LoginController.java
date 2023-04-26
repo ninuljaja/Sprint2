@@ -46,6 +46,7 @@ public class LoginController {
                     employee = new Manager(user);
                     session = Session.getInstance();
                     session.setUser(employee);
+                    session.setMode("manager");
                    break;
                 case "busser":
                    //
@@ -57,6 +58,7 @@ public class LoginController {
                     employee = new Waiter(user);
                     session = Session.getInstance();
                     session.setUser(employee);
+                    session.setMode("waiter");
                     break;
                 case "host":
                     //
