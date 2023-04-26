@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="570.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sprint2.gui.EmployeeProfileEditorController">
+    <children>
+        <Pane layoutX="5.0" layoutY="49.0" prefHeight="513.0" prefWidth="535.0" style="-fx-background-radius: 60px; -fx-background-color: #8e7cc3ff;">
+         <children>
+            <TableView layoutX="40.0" layoutY="30.0" prefHeight="450.0" prefWidth="450.0">
+              <columns>
+                <TableColumn minWidth="20.0" prefWidth="150.0" text="Employee" />
+                <TableColumn prefWidth="300.0" text="Role" />
+              </columns>
+            </TableView>
+         </children></Pane>
+        <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onGoBackBtn" style="-fx-background-color: #b4a7d6ff; -fx-border-color: #9900ff;" text="Go Back" />
+      <Pane layoutX="595.0" prefHeight="570.0" prefWidth="225.0" style="-fx-background-color: #b4a7d6ff; -fx-border-color: #9900ff; -fx-border-width: 2;" />
+
+    </children>
+</AnchorPane>

@@ -21,6 +21,8 @@ public class Authentication {
 
                 // Split the string by comma
                 String[] line = dataLine.split(",");
+                System.out.println("Currently checking: ");
+                System.out.println(line[7] + ", " + line[8]);
                 if (line[7].equals(user)) {
                     if (line[8].equals(pass)) {
                         return line;
