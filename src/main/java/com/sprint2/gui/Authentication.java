@@ -30,7 +30,7 @@ public class Authentication {
             scan.close();
 
         } catch (IOException ioex) {
-            System.out.println("Error in Authentication: " + ioex.getMessage());
+            ioex.printStackTrace();
         }
         return null;
     }

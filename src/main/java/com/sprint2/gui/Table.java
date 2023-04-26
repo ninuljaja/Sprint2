@@ -13,7 +13,7 @@ public class Table {
         try{
             waiterID = Integer.parseInt(table[1]);
         } catch (NumberFormatException ex){
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
 
         status = table[2];

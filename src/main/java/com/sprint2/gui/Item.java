@@ -16,7 +16,7 @@ public class Item {
         try{
             price = Float.parseFloat(item[3]);
         } catch (NumberFormatException ex){
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
         description = item[4];
     }

@@ -41,7 +41,7 @@ public class Waiter extends Employee {
             scan.close();
 
         } catch (IOException ioex) {
-            System.out.println("Error in Waiter: " + ioex.getMessage());
+            ioex.printStackTrace();
         }
     }
 

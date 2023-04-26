@@ -112,7 +112,7 @@ public class LoginAsController {
             }
             scan.close();
         } catch (IOException ioex) {
-            System.out.println("Error: " + ioex.getMessage());
+            ioex.printStackTrace();
         }
         if(waiterUser != null) {
             session.setMode("waiter");

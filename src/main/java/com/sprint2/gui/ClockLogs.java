@@ -66,7 +66,7 @@ public class ClockLogs {
             writer.close();
         }
         catch(IOException e) {
-            System.out.println("Error: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -88,7 +88,7 @@ public class ClockLogs {
             }
             scan.close();
         } catch (IOException ex) {
-            System.out.println("Error: " + ex.getMessage());
+            ex.printStackTrace();
         }
         return lastRecord;
     }

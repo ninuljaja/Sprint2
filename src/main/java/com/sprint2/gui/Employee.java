@@ -27,7 +27,7 @@ public abstract class Employee {
             salary = Float.parseFloat(user[9]);
             SSN = Integer.parseInt(user[10]);
         } catch (NumberFormatException ex){
-            System.out.println(ex.getMessage());
+            ex.printStackTrace();
         }
     }
     public Employee(Employee user){
