@@ -6,15 +6,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class MenuViewController {
 
@@ -22,16 +19,24 @@ public class MenuViewController {
     private Label itemNameLbl;
     @FXML
     private Button addToOrderBtn;
-
+    @FXML
+    private RadioButton chipotleSauce, ranchSauce, buffaloSauce, blueCheeseSauce, bbqSauce, carolinaGoldSauce, jimBeamSauce, noneSauce;
+    @FXML
+    private RadioButton chickenProtein, porkProtein, hamProtein , noneProtein;
+    @FXML
+    private TextArea comments;
     @FXML
     private Pane selectionPane;
+
+    private ArrayList<RadioButton> sauces = new ArrayList<>();
+    private ArrayList<RadioButton> protein = new ArrayList<>();
     private Item item = null;
     private Session session = null;
     private Employee user = null;
 
     private Waiter waiter = null;
     private Table table = null;
-    List<OrderItem> orderItems = new ArrayList<>();
+    ArrayList<OrderItem> orderItems = new ArrayList<>();
 
     public void initialize() {
         session = Session.getInstance();
@@ -40,6 +45,10 @@ public class MenuViewController {
         if(session.getMode().equalsIgnoreCase("waiter")){
             waiter = new Waiter(session.getUser());
         }
+        selectionPane.setVisible(false);
+        sauces.addAll(Arrays.asList(chipotleSauce,ranchSauce,buffaloSauce,blueCheeseSauce,bbqSauce,carolinaGoldSauce,jimBeamSauce,noneSauce));
+        protein.addAll(Arrays.asList(chickenProtein,porkProtein,hamProtein, noneProtein));
+
     }
 
     public void onGoBackBtn(ActionEvent actionEvent) throws IOException {
@@ -172,9 +181,30 @@ public class MenuViewController {
     }
 
     public void onAddToOrder(ActionEvent actionEvent) {
-     /*   if(item != null && table != null){
-            orderItems.add(waiter.addOrderItem(item, ));
-        }*/
+        String addons = " ";
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"Add an item to the order?", ButtonType.YES, ButtonType.NO);
+        alert.setHeaderText("");
+        alert.showAndWait();
+
+        if (alert.getResult() == ButtonType.YES){
+            if(item != null && table != null && !sauces.isEmpty() && !protein.isEmpty()){
+                for (RadioButton sauce : sauces){
+                    if(sauce.isSelected()){
+                        addons += "Add Sauce: " + sauce.getText() + ";";
+                    }
+                }
+                for (RadioButton prot : protein){
+                    if(prot.isSelected()){
+                        addons += " Add Sauce: " + prot.getText();
+                    }
+                }
+                orderItems.add(waiter.addOrderItem(item, 1, addons, comments.getText()));
+                selectionPane.setVisible(false);
+                addToOrderBtn.setText("Add to order");
+                addToOrderBtn.setDisable(true);
+            }
+        }
+
     }
     public void choseItem(String[] itemArray){
         if(itemArray != null){
@@ -186,6 +216,22 @@ public class MenuViewController {
 
         }else {
             System.out.println("Item not Found");
+        }
+    }
+    public void onPlaceOrderBtn() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Place an order?", ButtonType.YES, ButtonType.NO);
+        alert.setHeaderText("");
+        alert.showAndWait();
+
+        if (alert.getResult() == ButtonType.YES) {
+            if (orderItems != null && table != null) {
+                waiter.createOrder(table, orderItems);
+                selectionPane.setVisible(false);
+                addToOrderBtn.setText("Add to order");
+                addToOrderBtn.setDisable(true);
+            } else {
+                System.out.println("Chose an item");
+            }
         }
     }
 }

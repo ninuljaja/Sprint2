@@ -19,7 +19,7 @@ import java.util.Scanner;
 public class TableLayoutController {
     @FXML
     private Button placeOrderBtn, fillTableBtn, viewOrdersBtn, markAsDirtyBtn;
-    private Button[] buttons = {placeOrderBtn, fillTableBtn, viewOrdersBtn, markAsDirtyBtn};
+    private ArrayList<Button> buttons = new ArrayList<>();
     @FXML
     private Button A1, A2,A3, A4, A5, A6, B1, B2, B3, B4, B5, B6, C5, C6, D5, D6, E1, E2, E3, E4, E5, E6, F1, F2, F3, F4, F5, F6;
     private ArrayList<Button> tableButtons = new ArrayList<>();
@@ -46,6 +46,7 @@ public class TableLayoutController {
         session = Session.getInstance();
         user = session.getUser();
         tableButtons.addAll(Arrays.asList(A1,A2,A3,A4,A5,A6,B1,B2,B3,B4,B5,B6,C5,C6,D5,D6,E1,E2,E3,E4,E5,E6,F1,F2,F3,F4,F5,F6));
+        buttons.addAll(Arrays.asList(placeOrderBtn, fillTableBtn, viewOrdersBtn, markAsDirtyBtn));
         updateAllTables();
         if(session.getMode().equalsIgnoreCase("waiter")){
             waiter = new Waiter(session.getUser());
@@ -295,9 +296,9 @@ public class TableLayoutController {
         }
     }
     public void setButtonStatus(String[] data){
-       /* for (Button button : buttons) {
+        for (Button button : buttons) {
             button.setDisable(true);
-        }*/
+        }
         if(data != null) {
             table = new Table(data);
             tableNumberLabel.setText("Table " + table.getTableID());

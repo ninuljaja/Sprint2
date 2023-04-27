@@ -1,6 +1,6 @@
 package com.sprint2.gui;
 
-public class Orders {
+public class Order {
     private int orderNum;
     private String orderDateTime;
     private String tableID;
@@ -13,7 +13,7 @@ public class Orders {
         IN_PROCESS,
         COMPLETED
     }
-    public Orders(String[] order){
+    public Order(String[] order){
         try{
             orderNum = Integer.parseInt(order[0]);
             orderDateTime = order[1];
