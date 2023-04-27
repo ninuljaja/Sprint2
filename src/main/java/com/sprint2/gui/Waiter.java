@@ -63,8 +63,9 @@ public class Waiter extends Employee {
                 for(OrderItem items : orderItems) {
                     writer.write(orderNumber + "," + items.getItem().getItemName() + "," + items.getAddons() + "," +
                             items.getComments() + "," + items.getQuantity() + "\n");
-                    writer.close();
+
                 }
+                writer.close();
             }
             catch(IOException e) {
                 e.printStackTrace();

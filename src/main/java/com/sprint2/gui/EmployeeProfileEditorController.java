@@ -24,7 +24,7 @@ public class EmployeeProfileEditorController {
     @FXML
     private TableColumn<String[], String> employee, role, id;
 
-    private ArrayList<Employee> employees = new ArrayList<>();
+    private ArrayList<Employee> employees;
 
     ObservableList<String[]> data = FXCollections.observableArrayList();
 
@@ -33,6 +33,7 @@ public class EmployeeProfileEditorController {
     public void initialize() {
         Session session = Session.getInstance();
         Employee user = session.getUser();
+        employees = new ArrayList<>();
         updateEmployeeList();
 
         id.setCellValueFactory(param -> new ReadOnlyStringWrapper(param.getValue()[0]));

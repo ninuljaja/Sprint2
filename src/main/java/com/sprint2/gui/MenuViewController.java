@@ -229,6 +229,7 @@ public class MenuViewController {
                 selectionPane.setVisible(false);
                 addToOrderBtn.setText("Add to order");
                 addToOrderBtn.setDisable(true);
+                orderItems.removeAll(orderItems);
             } else {
                 System.out.println("Chose an item");
             }
