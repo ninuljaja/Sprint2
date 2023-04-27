@@ -18,8 +18,6 @@ public class LoginController {
 
     @FXML
     private Button login;
-    @FXML
-    private AnchorPane loginAs;
     @FXML AnchorPane loginPane;
     @FXML
     private TextField usernameField;

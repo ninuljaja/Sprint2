@@ -2,7 +2,6 @@ package com.sprint2.gui;
 
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -32,6 +31,7 @@ public class LoginAsController {
     private Employee user;
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     private Session session = null;
+    private LoaderManager lm = new LoaderManager();
 
     public LoginAsController(){
 
@@ -116,8 +116,7 @@ public class LoginAsController {
         }
         if(waiterUser != null) {
             session.setMode("waiter");
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("Table-layout.fxml"));
-            loginAs.getChildren().setAll(pane);
+            lm.goToNextPane(loginAs, "Table-layout.fxml");
         }
 
     }
@@ -146,7 +145,6 @@ public class LoginAsController {
             }
         }
         session.setMode("manager");
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("EmployeeProfile-view.fxml"));
-        loginAs.getChildren().setAll(pane);
+        lm.goToNextPane(loginAs, "EmployeeProfile-view.fxml");
     }
 }

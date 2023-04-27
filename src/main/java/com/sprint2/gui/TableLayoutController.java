@@ -2,10 +2,6 @@ package com.sprint2.gui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -23,6 +19,7 @@ public class TableLayoutController {
     @FXML
     private Button A1, A2,A3, A4, A5, A6, B1, B2, B3, B4, B5, B6, C5, C6, D5, D6, E1, E2, E3, E4, E5, E6, F1, F2, F3, F4, F5, F6;
     private ArrayList<Button> tableButtons = new ArrayList<>();
+    private LoaderManager lm = new LoaderManager();
 
     @FXML
     private AnchorPane tableLayout;
@@ -242,17 +239,11 @@ public class TableLayoutController {
 
     public void onPlaceOrderBtn(ActionEvent actionEvent) throws IOException {
         session.setSelectedTable(table);
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("Menu-view.fxml"));
-        tableLayout.getChildren().setAll(pane);
+        lm.goToNextPane(tableLayout,"Menu-view.fxml");
     }
     public void goBack(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginAs.fxml"));
-        Parent root = loader.load();
 
-        // Get the current node and its parent scene
-        Node node = (Node) actionEvent.getSource();
-        Scene scene = node.getScene();
-        scene.setRoot(root);
+        lm.goBack("LoginAs.fxml", actionEvent);
     }
     public String[] getTable(String tableID){
         try {

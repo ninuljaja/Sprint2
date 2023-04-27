@@ -2,16 +2,14 @@ package com.sprint2.gui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
 
 public class MenuViewController {
 
@@ -51,14 +49,6 @@ public class MenuViewController {
 
     }
 
-    public void onGoBackBtn(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Table-layout.fxml"));
-        Parent root = loader.load();
-        // Get the current node and its parent scene
-        Node node = (Node) actionEvent.getSource();
-        Scene scene = node.getScene();
-        scene.setRoot(root);
-    }
 
     public void onA1Btn(ActionEvent actionEvent) {
         String[] itemArray = findItem("A1");
@@ -235,6 +225,11 @@ public class MenuViewController {
             }
         }
     }
+    public void onGoBackBtn(ActionEvent actionEvent) throws IOException {
+        LoaderManager lm = new LoaderManager();
+        lm.goBack("Table-layout.fxml", actionEvent);
+    }
+
 }
 
 
