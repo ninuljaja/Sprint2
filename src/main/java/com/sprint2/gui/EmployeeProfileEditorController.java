@@ -41,7 +41,7 @@ public class EmployeeProfileEditorController {
 
     public void onGoBackBtn(ActionEvent actionEvent) throws IOException {
         LoaderManager lm = new LoaderManager();
-        lm.goBack("LoginAs.fxml", actionEvent);
+        lm.goBack("ManagerScreenSelection.fxml", actionEvent);
     }
 
     public void updateEmployeeList(){

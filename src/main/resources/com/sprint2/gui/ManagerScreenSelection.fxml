@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="managerScreenSelection" minHeight="450.0" minWidth="700.0" prefHeight="570.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sprint2.gui.ManagerScreenSelectionController">
+   <children>
+      <Button fx:id="goBackBtn" layoutX="738.0" layoutY="525.0" mnemonicParsing="false" onAction="#goBack" prefHeight="31.0" prefWidth="64.0" text="Go Back" />
+      <GridPane hgap="20.0" layoutX="50.0" layoutY="179.0" prefHeight="290.0" prefWidth="720.0" vgap="20.0" AnchorPane.bottomAnchor="101.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="179.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="183.0" minHeight="10.0" prefHeight="181.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="188.0" minHeight="10.0" prefHeight="188.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button fx:id="menuModificationButton" disable="true" maxHeight="130.0" maxWidth="300.0" mnemonicParsing="false" prefHeight="117.0" prefWidth="193.0" style="-fx-background-color: #8e7cc3ff; -fx-border-color: black; -fx-background-radius: 15px; -fx-border-radius: 15px;" text="View/Modify Menu" wrapText="true" GridPane.columnIndex="2">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="employeeProfileButton" maxHeight="130.0" maxWidth="300.0" mnemonicParsing="false" onAction="#onEmployeeProfileButton" prefHeight="117.0" prefWidth="193.0" style="-fx-background-color: #8e7cc3ff; -fx-border-color: black; -fx-background-radius: 15px; -fx-border-radius: 15px;" text="View/Modify Employee Profiles" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="activityButton" maxHeight="130.0" maxWidth="300.0" mnemonicParsing="false" onAction="#onActivityButton" prefHeight="117.0" prefWidth="193.0" style="-fx-background-color: #8e7cc3ff; -fx-border-color: black; -fx-background-radius: 15px; -fx-border-radius: 15px;" text="View Daily Activity" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="managerButton24" disable="true" maxHeight="130.0" maxWidth="300.0" mnemonicParsing="false" prefHeight="117.0" prefWidth="193.0" style="-fx-background-color: #8e7cc3ff; -fx-border-color: black; -fx-background-radius: 15px; -fx-border-radius: 15px;" text="View Schedule, Activities, and Salary" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="managerButton221" disable="true" maxHeight="130.0" maxWidth="300.0" mnemonicParsing="false" prefHeight="117.0" prefWidth="193.0" style="-fx-background-color: #8e7cc3ff; -fx-border-color: black; -fx-background-radius: 15px; -fx-border-radius: 15px;" text="View Restaurant Statistics" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="floorPlanButton" disable="true" maxHeight="130.0" maxWidth="300.0" mnemonicParsing="false" prefHeight="117.0" prefWidth="193.0" style="-fx-background-color: #8e7cc3ff; -fx-border-color: black; -fx-background-radius: 15px; -fx-border-radius: 15px;" text="View/Modify Floor Plan" textAlignment="CENTER" wrapText="true" GridPane.rowIndex="1">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </GridPane>
+      <FlowPane layoutX="50.0" layoutY="22.0" prefHeight="65.0" prefWidth="402.0">
+         <children>
+            <Label prefHeight="65.0" prefWidth="150.0" text="Logged in as">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+            <Label fx:id="clockInOutLbl" text="Manager" textFill="#674ea7">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+         </children>
+      </FlowPane>
+      <Label alignment="CENTER" layoutX="229.0" layoutY="106.0" prefHeight="65.0" prefWidth="363.0" text="Choose an Action">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+
+   </children>
+</AnchorPane>
