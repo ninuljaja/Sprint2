@@ -4,7 +4,7 @@ public class OrderItem {
 
 
     private Item item;
-    private String addons;
+    private String addons = "";
     private String comments;
     private int quantity;
     private String tableID;

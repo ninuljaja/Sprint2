@@ -236,16 +236,16 @@ public class TableLayoutController {
     }
 
     @FXML
-
-    public void onPlaceOrderBtn(ActionEvent actionEvent) throws IOException {
+    protected void onPlaceOrderBtn(ActionEvent actionEvent) throws IOException {
         session.setSelectedTable(table);
         lm.goToNextPane(tableLayout,"Menu-view.fxml");
     }
-    public void goBack(ActionEvent actionEvent) throws IOException {
+    @FXML
+    protected void goBack(ActionEvent actionEvent) throws IOException {
 
         lm.goBack("LoginAs.fxml", actionEvent);
     }
-    public String[] getTable(String tableID){
+    protected String[] getTable(String tableID){
         try {
             String dataLine = "";
             File myFile = new File("Tables.csv");
@@ -267,7 +267,7 @@ public class TableLayoutController {
         }
         return null;
     }
-    public void updateAllTables(){
+    protected void updateAllTables(){
         allTables.removeAll(allTables);
         try {
             String dataLine = "";
@@ -286,7 +286,7 @@ public class TableLayoutController {
             ioex.printStackTrace();
         }
     }
-    public void setButtonStatus(String[] data){
+    protected void setButtonStatus(String[] data){
         for (Button button : buttons) {
             button.setDisable(true);
         }
