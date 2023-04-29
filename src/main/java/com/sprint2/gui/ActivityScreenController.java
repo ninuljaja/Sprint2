@@ -9,6 +9,8 @@ import javafx.scene.control.Label;
 
 import java.io.IOException;
 import java.util.Date;
+//import java.time.format.DateTimeFormatter;
+//import java.time.format.DateTimeFormatterBuilder;
 
 public class ActivityScreenController {
     
@@ -21,9 +23,8 @@ public class ActivityScreenController {
 
     public void initialize()
     {
-        System.out.println("initialized");
-        CreateLog("", "", new Date());
-        CreateLog("", "", new Date());
+        CreateLog("Test title", "Test text", new Date());
+        CreateLog("Test title 2", "Test text 2", new Date());
     }
 
     @FXML
@@ -34,18 +35,23 @@ public class ActivityScreenController {
     private void AddLog(Node newLog)
     {
         logContainer.getChildren().add(newLog);
-        
     }
 
     private void CreateLog(String title, String text, Date date)
     {
         Node node;
         try {
-            node = LoaderManager.LoadNode("ActivityLogTemplate.fxml", "activityLogTemplate");
+            node = LoaderManager.LoadNode("ActivityLogTemplate.fxml");
         } catch (IOException e) {
             e.printStackTrace();
             return;
         }
+
+        Label titleLabel = (Label) node.lookup("#title");
+        titleLabel.setText(title);
+        Label textLabel = (Label) node.lookup("#text");
+        textLabel.setText(FormatLogDate(date) + " " + text);
+        //System.out.println(titleLabel);
 
         AddLog(node);
     }
