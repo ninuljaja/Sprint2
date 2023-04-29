@@ -145,6 +145,6 @@ public class LoginAsController {
             }
         }
         session.setMode("manager");
-        lm.goToNextPane(loginAs, "EmployeeProfile-view.fxml");
+        lm.goToNextPane(loginAs, "ManagerScreenSelection.fxml");
     }
 }
