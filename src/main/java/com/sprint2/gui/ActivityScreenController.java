@@ -8,9 +8,8 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 
 import java.io.IOException;
-import java.util.Date;
-//import java.time.format.DateTimeFormatter;
-//import java.time.format.DateTimeFormatterBuilder;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class ActivityScreenController {
     
@@ -20,11 +19,12 @@ public class ActivityScreenController {
     VBox logContainer;
 
     private LoaderManager lm = new LoaderManager();
+    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("h:mm a");
 
     public void initialize()
     {
-        CreateLog("Test title", "Test text", new Date());
-        CreateLog("Test title 2", "Test text 2", new Date());
+        ActivityLogging.AddLog("Test logged title", "Test logged text");
+        LoadLogs();
     }
 
     @FXML
@@ -37,7 +37,7 @@ public class ActivityScreenController {
         logContainer.getChildren().add(newLog);
     }
 
-    private void CreateLog(String title, String text, Date date)
+    private void CreateLog(String title, String text, LocalDateTime time)
     {
         Node node;
         try {
@@ -48,15 +48,19 @@ public class ActivityScreenController {
         }
 
         Label titleLabel = (Label) node.lookup("#title");
-        titleLabel.setText(title);
+        titleLabel.setText(formatter.format(time) + " - " + title);
         Label textLabel = (Label) node.lookup("#text");
-        textLabel.setText(FormatLogDate(date) + " " + text);
+        textLabel.setText(text);
         //System.out.println(titleLabel);
 
         AddLog(node);
     }
 
-    private String FormatLogDate(Date date) {
-        return "";
+    private void LoadLogs()
+    {
+        for (ActivityLogging.Log log : ActivityLogging.getLogs())
+        {
+            CreateLog(log.title, log.text, log.time);
+        }
     }
 }
