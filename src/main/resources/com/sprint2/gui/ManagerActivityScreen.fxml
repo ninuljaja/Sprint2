@@ -38,7 +38,7 @@
                <children>
                   <ScrollPane fitToWidth="true" layoutX="14.0" layoutY="14.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                      <content>
-                        <VBox spacing="30.0">
+                        <VBox fx:id="logContainer" spacing="30.0">
                            <children>
                               <VBox style="-fx-background-color: #8e7cc3ff;">
                                  <children>
@@ -93,7 +93,7 @@
                                           <Font size="32.0" />
                                        </font>
                                     </Label>
-                                    <Label alignment="TOP_LEFT" style="-fx-background-color: #d9d2e9ff;" text="So while we were looking through the drinks section of a grocery store, my brother saw two flavours of Bang, peach mango and rainbow unicorn, and bought one of each. When I was walking to our bicycles as I was buying my own things, I could see his face expression showing utter disgust after drinking the rainbow unicorn. He said that despite the can saying it was fat and sugar free, it tasted like if you blended up every single MLP episode, extracted all the flavour, mixed it with water and carbonated it. The other flavour tasted like a carbonated tropical fruit salad, and both also tasted like it gave us type 69 diabetes. I am washing it down with coffee and knockoff La vache qui rit." wrapText="true">
+                                    <Label alignment="TOP_LEFT" style="-fx-background-color: #d9d2e9ff;" text="abcd" wrapText="true">
                                        <font>
                                           <Font size="16.0" />
                                        </font>

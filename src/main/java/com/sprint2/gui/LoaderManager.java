@@ -40,4 +40,9 @@ public class LoaderManager {
         Scene scene = node.getScene();
         scene.setRoot(root);
     }
+
+    public static Node LoadNode(String fxmlFileName, String nodeId) throws IOException {
+        FXMLLoader loader = new FXMLLoader(LoaderManager.class.getResource(fxmlFileName));
+        return loader.load();
+    }
 }
