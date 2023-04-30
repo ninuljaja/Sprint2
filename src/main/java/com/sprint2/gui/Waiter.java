@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -53,15 +54,28 @@ public class Waiter extends Employee {
 
             try {
                 int orderNumber = lastOrderNumber() + 1;
+                String orderTime = formatter.format(LocalDateTime.now());
+                String[] currentOrder = new String[5];
+                currentOrder[0] = String.valueOf(orderNumber);
+                currentOrder[1] = orderTime;
+                currentOrder[2] = table.getTableID();
+                currentOrder[3] = "IN_PROCESS";
+                currentOrder[4] = String.valueOf(getEmployeeID());
+                table.addToActiveOrders(currentOrder, orderItems);
 
                 FileWriter writer = new FileWriter("Orders.csv", true);
-                writer.write(orderNumber + "," + formatter.format(LocalDateTime.now()) + "," + table.getTableID() + "," +
-                        "IN_PROCESS" + "," + getEmployeeID() + "\n");
+                String currentOrderString = Arrays.toString(currentOrder); // "[apple, banana, cherry]"
+
+                currentOrderString = currentOrderString.substring(1, currentOrderString.length() - 1).replaceAll(", ", ",");
+                System.out.println(currentOrderString);
+
+                writer.write(currentOrderString + "\n");
                 writer.close();
 
                 writer = new FileWriter("OrderDetails.csv", true);
+
                 for(OrderItem items : orderItems) {
-                    writer.write(orderNumber + "," + items.getItem().getItemName() + "," + items.getAddons() + "," +
+                    writer.write(currentOrder[0] + "," + items.getItem().getItemName() + "," + items.getAddons() + "," +
                             items.getComments() + "," + items.getQuantity() + "\n");
 
                 }

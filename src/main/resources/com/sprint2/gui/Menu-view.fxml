@@ -10,7 +10,7 @@
    <children>
       <Pane fx:id="viewOrder" layoutX="5.0" layoutY="49.0" prefHeight="513.0" prefWidth="535.0" style="-fx-border-radius: 60px; -fx-background-radius: 60px; -fx-background-color: #f55e61ff;">
          <children>
-            <Group fx:id="menuGroup" layoutX="28.0" layoutY="16.0" visible="false">
+            <Group fx:id="menuGroup" layoutX="28.0" layoutY="16.0">
                <children>
                   <ScrollPane fx:id="menuPane" prefHeight="478.0" prefWidth="490.0" style="-fx-background-color: #f55e61ff; -fx-border-color: #f55e61ff;">
                      <content>
@@ -250,7 +250,7 @@
                   </ScrollPane>
                </children>
             </Group>
-            <TableView fx:id="orderListTbl" layoutX="39.0" layoutY="44.0" maxHeight="430.0" maxWidth="460.0" minHeight="430.0" minWidth="460.0" prefHeight="430.0" prefWidth="460.0" style="-fx-background-color: #f58f8fff;">
+            <TableView fx:id="orderListTbl" layoutX="39.0" layoutY="44.0" maxHeight="430.0" maxWidth="460.0" minHeight="430.0" minWidth="460.0" prefHeight="430.0" prefWidth="460.0" style="-fx-background-color: #f58f8fff;" visible="false">
               <columns>
                 <TableColumn fx:id="itemColumn" maxWidth="-1.0" minWidth="130.0" prefWidth="150.0" sortable="false" text="Item" />
                   <TableColumn fx:id="addonsColumn" maxWidth="-1.0" minWidth="130.0" prefWidth="120.0" sortable="false" text="Add" />
