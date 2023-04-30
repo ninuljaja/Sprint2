@@ -116,7 +116,7 @@ public class LoginAsController {
         }
         if(waiterUser != null) {
             session.setMode("waiter");
-            lm.goToNextPane(loginAs, "Table-layout.fxml");
+            LoaderManager.LoadScreen("Table-layout.fxml");
         }
 
     }
@@ -145,6 +145,6 @@ public class LoginAsController {
             }
         }
         session.setMode("manager");
-        lm.goToNextPane(loginAs, "ManagerScreenSelection.fxml");
+        LoaderManager.LoadScreen("ManagerScreenSelection.fxml");
     }
 }

@@ -44,8 +44,7 @@ public class EmployeeProfileEditorController {
     }
     @FXML
     protected void onGoBackBtn(ActionEvent actionEvent) throws IOException {
-        LoaderManager lm = new LoaderManager();
-        lm.goBack("ManagerScreenSelection.fxml", actionEvent);
+        LoaderManager.LoadScreen("ManagerScreenSelection.fxml");
     }
     @FXML
     protected void updateEmployeeList(){

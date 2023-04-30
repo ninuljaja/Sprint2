@@ -341,8 +341,7 @@ public class MenuViewController {
             alert.showAndWait();
 
         }
-        LoaderManager lm = new LoaderManager();
-        lm.goBack("Table-layout.fxml", actionEvent);
+        LoaderManager.LoadScreen("Table-layout.fxml");
     }
 
 
