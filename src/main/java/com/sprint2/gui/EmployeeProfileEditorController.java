@@ -25,7 +25,6 @@ public class EmployeeProfileEditorController {
     ObservableList<String[]> data = FXCollections.observableArrayList();
     Session session;
     Employee user;
-    LoaderManager lm = new LoaderManager();
 
     public void initialize() {
         session = Session.getInstance();
