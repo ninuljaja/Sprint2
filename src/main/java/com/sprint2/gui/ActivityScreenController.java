@@ -34,6 +34,7 @@ public class ActivityScreenController {
     private void AddLog(Node newLog)
     {
         logContainer.getChildren().add(newLog);
+        newLog.toBack(); // moves the new log to the top of the VBox (assumed to be most recent)
     }
 
     private void CreateLog(String title, String text, LocalDateTime time)
@@ -50,7 +51,6 @@ public class ActivityScreenController {
         titleLabel.setText(formatter.format(time) + " - " + title);
         Label textLabel = (Label) node.lookup("#text");
         textLabel.setText(text);
-        //System.out.println(titleLabel);
 
         AddLog(node);
     }

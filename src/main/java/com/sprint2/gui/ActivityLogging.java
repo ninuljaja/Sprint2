@@ -78,7 +78,6 @@ public class ActivityLogging {
         while (scan.hasNextLine())
         {
             String line = scan.nextLine();
-            System.out.println(line);
             String[] strings = line.split(delimiter);
             logs.add(new Log(strings[1], strings[2], strings[0]));
         }

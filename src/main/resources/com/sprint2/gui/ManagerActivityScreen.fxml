@@ -12,9 +12,9 @@
 
 <AnchorPane minHeight="450.0" minWidth="700.0" prefHeight="570.0" prefWidth="820.0" style="-fx-background-color: b4a7d6;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sprint2.gui.ActivityScreenController">
    <children>
-      <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
-            <Label alignment="CENTER" prefHeight="65.0" prefWidth="114.0" style="-fx-background-color: #8e7cc3ff; -fx-border-color: #8e7cc3;" text="Logs" textAlignment="CENTER" BorderPane.alignment="CENTER">
+            <Label alignment="CENTER" style="-fx-background-color: #8e7cc3ff; -fx-border-color: #8e7cc3;" text="Logs" textAlignment="CENTER" BorderPane.alignment="CENTER">
                <font>
                   <Font name="System Bold" size="35.0" />
                </font>
@@ -24,92 +24,17 @@
                <BorderPane.margin>
                   <Insets bottom="15.0" />
                </BorderPane.margin>
+               <padding>
+                  <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+               </padding>
             </Label>
          </top>
-         <bottom>
-            <Button mnemonicParsing="false" onAction="#goBack" prefHeight="31.0" prefWidth="64.0" text="Go Back" BorderPane.alignment="CENTER_RIGHT">
-               <BorderPane.margin>
-                  <Insets top="15.0" />
-               </BorderPane.margin>
-            </Button>
-         </bottom>
          <center>
             <AnchorPane style="-fx-background-color: #ffffff; -fx-background-radius: 15px; -fx-border-color: #8e7cc3; -fx-border-width: 2; -fx-border-radius: 15px;" BorderPane.alignment="CENTER">
                <children>
                   <ScrollPane fitToWidth="true" layoutX="14.0" layoutY="14.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                      <content>
                         <VBox fx:id="logContainer" spacing="30.0">
-                           <children>
-                              <VBox style="-fx-background-color: #8e7cc3ff;">
-                                 <children>
-                                    <Label text="00:00 AM - Log Title Title Title Title Title Title TItle TItle Title" textAlignment="CENTER">
-                                       <font>
-                                          <Font size="32.0" />
-                                       </font>
-                                    </Label>
-                                    <Label alignment="TOP_LEFT" style="-fx-background-color: #d9d2e9ff;" text="According to all known laws of aviation, there is no way a bee should be able to fly.Its wings are too small to get its fat little body off the ground.The bee, of course, flies anyway because bees don't care what humans think is impossible.Yellow, black. Yellow, black. Yellow, black. Yellow, black.Ooh, black and yellow!Let's shake it up a little.Barry! Breakfast is ready!Coming!Hang on a second.Hello?Barry?Adam?Can you believe this is happening?" wrapText="true">
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                       <padding>
-                                          <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                                       </padding>
-                                    </Label>
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                 </padding>
-                                 <effect>
-                                    <DropShadow />
-                                 </effect>
-                              </VBox>
-                              <VBox style="-fx-background-color: #8e7cc3ff;">
-                                 <children>
-                                    <Label text="Log 2" textAlignment="CENTER">
-                                       <font>
-                                          <Font size="32.0" />
-                                       </font>
-                                    </Label>
-                                    <Label alignment="TOP_LEFT" style="-fx-background-color: #d9d2e9ff;" text="According to legend, the gorillas in Gorilla Tag have been cursed by an evil spirit, causing them to become aggressive and territorial. In order to lift the curse and restore peace to the jungle, the gorillas must engage in friendly competition to prove their strength and agility.The jungle itself is said to be enchanted, with mystical powers that enhance the abilities of the gorillas who inhabit it. Some say that the trees are alive, and that they can communicate with the gorillas through a series of subtle movements and rustling sounds. Others claim that the jungle is a gateway to another dimension, and that those who master the art of gorilla movement will be able to traverse the multiverse.As the gorillas compete with one another, they earn the respect of the jungle's other inhabitants, such as the monkeys and birds who watch from the treetops. Some players believe that these creatures are secretly observing the gorillas' movements, and that they hold the key to unlocking the true power of Gorilla Tag.Despite the challenges they face, the gorillas of Gorilla Tag are a resilient and determined group, always pushing themselves to new heights and striving for greatness. And as they swing and climb through the jungle, they continue to build upon the rich lore that surrounds their virtual world" wrapText="true">
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                       <padding>
-                                          <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                                       </padding>
-                                    </Label>
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                 </padding>
-                                 <effect>
-                                    <DropShadow />
-                                 </effect>
-                              </VBox>
-                              <VBox style="-fx-background-color: #8e7cc3ff;">
-                                 <children>
-                                    <Label text="Log 3" textAlignment="CENTER">
-                                       <font>
-                                          <Font size="32.0" />
-                                       </font>
-                                    </Label>
-                                    <Label alignment="TOP_LEFT" style="-fx-background-color: #d9d2e9ff;" text="abcd" wrapText="true">
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                       <padding>
-                                          <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                                       </padding>
-                                    </Label>
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                 </padding>
-                                 <effect>
-                                    <DropShadow />
-                                 </effect>
-                              </VBox>
-                           </children>
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -122,6 +47,26 @@
          <padding>
             <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
          </padding>
+         <bottom>
+            <BorderPane BorderPane.alignment="CENTER">
+               <right>
+                  <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#goBack" prefHeight="31.0" prefWidth="64.0" text="Go Back" BorderPane.alignment="CENTER" />
+               </right>
+               <left>
+                  <Label text="Note: The newest activity logs are shown at the top of the list." BorderPane.alignment="BOTTOM_LEFT">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <padding>
+                        <Insets right="30.0" />
+                     </padding>
+                  </Label>
+               </left>
+               <padding>
+                  <Insets top="15.0" />
+               </padding>
+            </BorderPane>
+         </bottom>
       </BorderPane>
 
    </children>
