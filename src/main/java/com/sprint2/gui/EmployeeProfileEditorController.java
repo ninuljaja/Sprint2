@@ -8,10 +8,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class EmployeeProfileEditorController {
 
@@ -29,7 +27,7 @@ public class EmployeeProfileEditorController {
     public void initialize() {
         Session session = Session.getInstance();
         Employee user = session.getUser();
-        employees = new ArrayList<>();
+        employees = session.employeeList();
         updateEmployeeList();
 
         id.setCellValueFactory(param -> new ReadOnlyStringWrapper(param.getValue()[0]));
@@ -45,25 +43,11 @@ public class EmployeeProfileEditorController {
     }
     @FXML
     protected void updateEmployeeList(){
-        try {
-            String dataLine = "";
-            File myFile = new File("Employee.csv");
-            Scanner scan = new Scanner(myFile);
-            scan.nextLine();
-            while (scan.hasNextLine()) {
-                dataLine = scan.nextLine();
-
-                // Split the string by comma
-                String[] line = dataLine.split(",");
-                Employee emp = new Employee(line);
-                employees.add(emp);
-                String[] parts = {String.valueOf(emp.employeeID),(emp.getFirstName() + " " +emp.getLastName()), emp.getPosition()};
+        if(employees != null && !employees.isEmpty()) {
+            for (Employee emp : employees) {
+                String[] parts = {String.valueOf(emp.employeeID), (emp.getFirstName() + " " + emp.getLastName()), emp.getPosition()};
                 data.add(parts);
             }
-            scan.close();
-
-        } catch (IOException ioex) {
-            ioex.printStackTrace();
         }
     }
 }

@@ -168,4 +168,39 @@ public class Session {
 
         listTbl.setItems(list);
     }
+    public Employee findEmployee(String emploeeID){
+        ArrayList<Employee> employees = employeeList();
+        if(!employees.isEmpty()){
+            for(Employee employee : employees){
+                if(String.valueOf(employee.getEmployeeID()).equalsIgnoreCase(emploeeID)){
+                    return employee;
+                }
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<Employee> employeeList(){
+        ArrayList<Employee> employees = new ArrayList<>();
+        try {
+            String dataLine = "";
+            File myFile = new File("Employee.csv");
+            Scanner scan = new Scanner(myFile);
+            scan.nextLine();
+            while (scan.hasNextLine()) {
+                dataLine = scan.nextLine();
+                // Split the string by comma
+                String[] line = dataLine.split(",");
+                Employee emp = new Employee(line);
+                employees.add(emp);
+            }
+            scan.close();
+
+        } catch (IOException ioex) {
+            ioex.printStackTrace();
+        } finally {
+            return employees;
+        }
+    }
+
 }
