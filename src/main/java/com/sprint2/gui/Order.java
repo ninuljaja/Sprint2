@@ -43,12 +43,14 @@ public class Order {
     }
 
 
-
     public int getWaiterID() {
         return waiterID;
     }
 
     public ArrayList<OrderItem> getOrderItems() {
         return orderItems;
+    }
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
     }
 }

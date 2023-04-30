@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.input.MouseEvent;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -28,7 +29,7 @@ public class OrdersViewController {
     private TableColumn<String[], String> itemColumn, addonsColumn, commentsColumn, priceColumn;
     private ArrayList<TableColumn<String[], String>> tableColumns;
     @FXML
-    private Button viewOrderBtn;
+    private Button viewOrderBtn, markOrderReadyBtn, markOrderCompleteBtn;
     @FXML
     private Group activeOrders;
     private Session session = null;
@@ -57,10 +58,6 @@ public class OrdersViewController {
         orderList = FXCollections.observableArrayList();
         session.loadActiveOrders();
         orders = session.getData(table.getTableID());
-        activeOrders.setVisible(true);
-        waiterLbl.setText("");
-        viewOrderBtn.setText("View Order");
-        orderListTbl.setVisible(false);
         inProcessOrdersNum.setCellValueFactory(param -> new ReadOnlyStringWrapper(param.getValue()[0]));
         inProcessOrdersTotal.setCellValueFactory(param -> new ReadOnlyStringWrapper(param.getValue()[1]));
         readyOrdersNum.setCellValueFactory(param -> new ReadOnlyStringWrapper(param.getValue()[0]));
@@ -69,6 +66,13 @@ public class OrdersViewController {
         tableColumns.addAll(Arrays.asList(itemColumn, addonsColumn, commentsColumn, priceColumn));
         readyOrdersTbl.setItems(readyOrders);
         ordersInProcessTbl.setItems(ordersInProcess);
+        viewOrderBtn.setText("View Order");
+        viewOrderBtn.setDisable(true);
+        markOrderReadyBtn.setDisable(true);
+        markOrderCompleteBtn.setDisable(true);
+        orderListTbl.setVisible(false);
+        activeOrders.setVisible(true);
+        waiterLbl.setText("");
 
     }
     @FXML
@@ -77,7 +81,7 @@ public class OrdersViewController {
         lm.goBack("Table-layout.fxml", actionEvent);
     }
     @FXML
-    private void onViewOrderBtn(ActionEvent actionEvent) throws FileNotFoundException {
+    private void onViewOrderBtn() throws FileNotFoundException {
         if(viewOrderBtn.getText().equalsIgnoreCase("View Order")) {
             String[] selectedRow = new String[2];
             ArrayList<Order> order = new ArrayList<>();
@@ -131,5 +135,47 @@ public class OrdersViewController {
                ordersInProcess.add(parts);
            }
        }
+    }
+
+    public void onMarkOrderReadyBtn(ActionEvent actionEvent) throws FileNotFoundException {
+        String[] selectedRow = new String[2];
+        int selectedIndex = ordersInProcessTbl.getSelectionModel().getSelectedIndex();
+        Order order = null;
+        if (selectedIndex >= 0) {
+            selectedRow = ordersInProcessTbl.getItems().get(selectedIndex);
+            order = inProcessOrders.get(selectedIndex);
+            selectedRow = ordersInProcessTbl.getItems().get(selectedIndex);
+        }
+        if (!selectedRow[0].isEmpty() && order != null) {
+            session.updateOrderStatus(order, "READY");
+            initialize();
+        }
+    }
+
+    public void onMarkOrderCompleteBtn(ActionEvent actionEvent) throws FileNotFoundException {
+        String[] selectedRow = new String[2];
+        int selectedIndex = readyOrdersTbl.getSelectionModel().getSelectedIndex();
+        Order order = null;
+        if (selectedIndex >= 0) {
+            selectedRow = readyOrdersTbl.getItems().get(selectedIndex);
+            order = ordersReady.get(selectedIndex);
+            selectedRow = readyOrdersTbl.getItems().get(selectedIndex);
+        }
+        if (!selectedRow[0].isEmpty() && order != null) {
+            session.updateOrderStatus(order, "COMPLETED");
+            initialize();
+        }
+    }
+
+    public void onReadyOrdersClick(MouseEvent mouseEvent) {
+        markOrderReadyBtn.setDisable(true);
+        markOrderCompleteBtn.setDisable(false);
+        viewOrderBtn.setDisable(false);
+    }
+
+    public void onInProcessOrdersClick() throws FileNotFoundException {
+        markOrderReadyBtn.setDisable(false);
+        markOrderCompleteBtn.setDisable(true);
+        viewOrderBtn.setDisable(false);
     }
 }

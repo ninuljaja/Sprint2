@@ -7,6 +7,7 @@ import javafx.scene.control.TableView;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -69,7 +70,6 @@ public class Session {
     public void loadActiveOrders() throws FileNotFoundException {
         inCompleteOrdersList();
         for(String table : tables) {
-
             addData(table, tableOrders(table));
         }
     }
@@ -241,6 +241,30 @@ public class Session {
             ioex.printStackTrace();
         } finally {
             return orders;
+        }
+    }
+    public void updateOrderStatus(Order order, String status) {
+        try {
+            ArrayList<Order> orders = orderList();
+            String[] newOrderList = new String[5];
+            FileWriter writer = new FileWriter("Orders.csv");
+            for(Order ord : orders){
+                if(ord.getOrderNum() == order.getOrderNum()){
+                    ord.setOrderStatus(status);
+                }
+                newOrderList[0] = String.valueOf(ord.getOrderNum());
+                newOrderList[1] = ord.getOrderDateTime();
+                newOrderList[2] = ord.getTableID();
+                newOrderList[3] = ord.getOrderStatus();
+                newOrderList[4] = String.valueOf(ord.getWaiterID());
+
+
+                writer.write(String.join(",", newOrderList) + "\n");
+
+            }
+            writer.close();
+        } catch (IOException ex){
+            ex.printStackTrace();
         }
     }
 }
