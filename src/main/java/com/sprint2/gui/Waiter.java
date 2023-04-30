@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -64,12 +63,10 @@ public class Waiter extends Employee {
                 table.addToActiveOrders(currentOrder, orderItems);
 
                 FileWriter writer = new FileWriter("Orders.csv", true);
-                String currentOrderString = Arrays.toString(currentOrder); // "[apple, banana, cherry]"
+          //      String currentOrderString = Arrays.toString(currentOrder); // "[apple, banana, cherry]"
 
-                currentOrderString = currentOrderString.substring(1, currentOrderString.length() - 1).replaceAll(", ", ",");
-                System.out.println(currentOrderString);
-
-                writer.write(currentOrderString + "\n");
+               // currentOrderString = currentOrderString.substring(1, currentOrderString.length() - 1).replaceAll(", ", ",");
+                writer.write(String.join(",", currentOrder) + "\n");
                 writer.close();
 
                 writer = new FileWriter("OrderDetails.csv", true);

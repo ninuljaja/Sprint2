@@ -27,11 +27,11 @@
             </DropShadow>
          </effect>
       </Label>
-      <TextField fx:id="usernameField" alignment="CENTER" layoutX="85.0" layoutY="201.0" prefHeight="40.0" prefWidth="200.0" promptText="Username" style="-fx-background-color: #af4345; -fx-border-color: #f58f8f;" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0">
+      <TextField fx:id="usernameField" alignment="CENTER" layoutX="85.0" layoutY="201.0" onAction="#onUsernameField" prefHeight="40.0" prefWidth="200.0" promptText="Username" style="-fx-background-color: #af4345; -fx-border-color: #f58f8f;" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0">
          <font>
             <Font size="14.0" />
          </font></TextField>
-      <PasswordField fx:id="passwordField" alignment="CENTER" layoutX="85.0" layoutY="252.0" prefHeight="40.0" prefWidth="200.0" promptText="Password" style="-fx-background-color: #af4345; -fx-border-color: #f58f8f;" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0">
+      <PasswordField fx:id="passwordField" alignment="CENTER" layoutX="85.0" layoutY="252.0" onAction="#onPasswordField" prefHeight="40.0" prefWidth="200.0" promptText="Password" style="-fx-background-color: #af4345; -fx-border-color: #f58f8f;" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0">
          <font>
             <Font size="14.0" />
          </font>

@@ -10,11 +10,8 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class EmployeeProfileEditorController {
 
@@ -30,7 +27,7 @@ public class EmployeeProfileEditorController {
     public void initialize() {
         Session session = Session.getInstance();
         Employee user = session.getUser();
-        employees = new ArrayList<>();
+        employees = session.employeeList();
         updateEmployeeList();
 
         id.setCellValueFactory(param -> new ReadOnlyStringWrapper(param.getValue()[0]));

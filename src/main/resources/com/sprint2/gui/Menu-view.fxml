@@ -286,7 +286,7 @@
                            </toggleGroup></RadioButton>
                         <RadioButton fx:id="porkProtein" layoutY="16.0" mnemonicParsing="false" text="Pork" toggleGroup="$Protein" />
                         <RadioButton fx:id="hamProtein" layoutY="40.0" mnemonicParsing="false" text="Ham" toggleGroup="$Protein" />
-                        <RadioButton fx:id="noneProtein" layoutY="64.0" mnemonicParsing="false" text="None" toggleGroup="$Protein" />
+                        <RadioButton fx:id="noneProtein" layoutY="64.0" mnemonicParsing="false" selected="true" text="None" toggleGroup="$Protein" />
                      </children>
                   </Group>
                </children></Pane>
@@ -303,7 +303,7 @@
                         <RadioButton fx:id="blueCheeseSauce" layoutX="-8.0" layoutY="75.0" mnemonicParsing="false" text="Blue Cheese" toggleGroup="$Sauce" />
                         <RadioButton fx:id="ranchSauce" layoutX="95.0" layoutY="50.0" mnemonicParsing="false" text="Ranch" toggleGroup="$Sauce" />
                         <RadioButton fx:id="buffaloSauce" layoutX="95.0" layoutY="25.0" mnemonicParsing="false" text="Buffalo" toggleGroup="$Sauce" />
-                        <RadioButton fx:id="noneSauce" layoutX="95.0" layoutY="100.0" mnemonicParsing="false" text="None" toggleGroup="$Sauce" />
+                        <RadioButton fx:id="noneSauce" layoutX="95.0" layoutY="100.0" mnemonicParsing="false" selected="true" text="None" toggleGroup="$Sauce" />
                         <RadioButton fx:id="bbqSauce" layoutX="-8.0" layoutY="100.0" mnemonicParsing="false" text="BBQ" toggleGroup="$Sauce" />
                         <RadioButton fx:id="chipotleSauce" layoutX="95.0" layoutY="75.0" mnemonicParsing="false" text="Chipotle" toggleGroup="$Sauce" />
                      </children>
@@ -337,7 +337,7 @@
 
 
       </GridPane>
-      <Button layoutX="491.0" layoutY="5.0" mnemonicParsing="false" onAction="#onViewOrderBtn" prefHeight="32.0" prefWidth="96.0" style="-fx-background-color: #f58f8fff; -fx-border-color: #af4345;" text="View Order" />
+      <Button fx:id="viewOrderBtn" disable="true" layoutX="491.0" layoutY="5.0" mnemonicParsing="false" onAction="#onViewOrderBtn" prefHeight="32.0" prefWidth="96.0" style="-fx-background-color: #f58f8fff; -fx-border-color: #af4345;" text="View Order" />
       <Pane fx:id="viewOrderPane" layoutX="627.0" layoutY="6.0" prefHeight="570.0" prefWidth="222.0" style="-fx-background-color: #f58f8fff; -fx-border-color: #af4345;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Button fx:id="deleteItemBtn" disable="true" layoutX="50.0" layoutY="173.0" mnemonicParsing="false" onAction="#onDeleteItemBtn" prefHeight="40.0" prefWidth="133.0" style="-fx-background-color: white; -fx-border-color: #af4345; -fx-border-radius: 2px; -fx-border-insets: -1px;" text="Delete item" />

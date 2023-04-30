@@ -1,6 +1,5 @@
 package com.sprint2.gui;
 
-import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,7 +20,7 @@ public class MenuViewController {
     @FXML
     private Label itemNameLbl, orderLbl;
     @FXML
-    private Button addToOrderBtn, deleteItemBtn, goBackBtn;
+    private Button addToOrderBtn, deleteItemBtn, goBackBtn, viewOrderBtn;
     @FXML
     private RadioButton chipotleSauce, ranchSauce, buffaloSauce, blueCheeseSauce, bbqSauce, carolinaGoldSauce, jimBeamSauce, noneSauce;
     @FXML
@@ -40,8 +39,9 @@ public class MenuViewController {
     private Group menuGroup;
     @FXML
     private TableColumn<String[], String> itemColumn, addonsColumn, commentsColumn, priceColumn;
-    private ArrayList<RadioButton> sauces = new ArrayList<>();
-    private ArrayList<RadioButton> protein = new ArrayList<>();
+    private ArrayList<TableColumn<String[], String>> tableColumns;
+    private ArrayList<RadioButton> sauces;
+    private ArrayList<RadioButton> protein;
     private Item item = null;
     private Session session = null;
     private Employee user = null;
@@ -49,12 +49,14 @@ public class MenuViewController {
     private Waiter waiter = null;
     private Table table = null;
     ArrayList<OrderItem> orderItems = new ArrayList<>();
-    ObservableList<String[]> orderList = FXCollections.observableArrayList();
+    ObservableList<String[]> orderList;
 
 
     public void initialize() {
-
+        tableColumns = new ArrayList<>();
+        sauces = new ArrayList<>();
         session = Session.getInstance();
+        protein = new ArrayList<>();
         user = session.getUser();
         table = session.getSelectedTable();
         if(session.getMode().equalsIgnoreCase("waiter")){
@@ -62,8 +64,10 @@ public class MenuViewController {
         }
         goBackBtn.setText("Go Back");
         selectionPane.setVisible(false);
+        orderList = FXCollections.observableArrayList();
         sauces.addAll(Arrays.asList(chipotleSauce,ranchSauce,buffaloSauce,blueCheeseSauce,bbqSauce,carolinaGoldSauce,jimBeamSauce,noneSauce));
         protein.addAll(Arrays.asList(chickenProtein,porkProtein,hamProtein, noneProtein));
+        tableColumns.addAll(Arrays.asList(itemColumn, addonsColumn, commentsColumn, priceColumn));
         menuPane.setVisible(true);
         orderLbl.setVisible(false);
         menuGroup.setVisible(true);
@@ -234,6 +238,9 @@ public class MenuViewController {
                 addToOrderBtn.setText("Add to order");
                 addToOrderBtn.setDisable(true);
                 goBackBtn.setText("Cancel");
+                noneProtein.setSelected(true);
+                noneSauce.setSelected(true);
+                viewOrderBtn.setDisable(false);
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING,"Choose an item", ButtonType.OK);
@@ -253,29 +260,32 @@ public class MenuViewController {
                 orderItems.remove(selectedIndex);
                 if (!orderItems.isEmpty()) {
                     onViewOrderBtn();
+                } else {
+                    viewOrderBtn.setDisable(true);
                 }
             }
         }
     }
     @FXML
     private void onPlaceOrderBtn() {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Place an order?", ButtonType.YES, ButtonType.NO);
-        alert.setHeaderText("");
-        alert.showAndWait();
+        if(!orderItems.isEmpty()&& table != null) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Place an order?", ButtonType.YES, ButtonType.NO);
+            alert.setHeaderText("");
+            alert.showAndWait();
 
-        if (alert.getResult() == ButtonType.YES) {
-            if (orderItems != null && table != null) {
-                waiter.createOrder(table, orderItems);
-                selectionPane.setVisible(false);
-                addToOrderBtn.setText("Add to order");
-                addToOrderBtn.setDisable(true);
-                orderItems.removeAll(orderItems);
-                orderList.clear();
-                initialize();
-                ActivityLogging.AddLog("Order for Table " + table.getTableID(), "Employee " + session.getUser().employeeID + " placed an order for Table " + table.getTableID());
-            } else {
-                System.out.println("Chose an item");
+            if (alert.getResult() == ButtonType.YES) {
+                    waiter.createOrder(table, orderItems);
+                    selectionPane.setVisible(false);
+                    addToOrderBtn.setText("Add to order");
+                    addToOrderBtn.setDisable(true);
+                    orderItems.removeAll(orderItems);
+                    orderList.clear();
+                    initialize();
             }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Add an Item", ButtonType.OK);
+            alert.setHeaderText("");
+            alert.showAndWait();
         }
     }
 
@@ -288,33 +298,7 @@ public class MenuViewController {
         menuPane.setVisible(false);
         orderLbl.setVisible(true);
         menuGroup.setDisable(false);
-        float totalPrice = 0;
-
-        for(OrderItem items : orderItems) {
-            String[] parts = new String[4];
-            parts[0] = items.getItem().getItemName();
-            parts[1] = items.getAddons();
-            parts[2] = items.getComments();
-            parts[3] = String.valueOf(items.getItem().getPrice());
-            orderList.add(parts);
-            totalPrice += items.getItem().getPrice();
-        }
-        String[] subtotalParts = {"", "", "Subtotal", String.valueOf(totalPrice)};
-        orderList.add(subtotalParts);
-        float tax = totalPrice*7/100;
-        String[] taxParts = {"", "", "Tax", String.format("%.2f", tax)};
-        orderList.add(taxParts);
-        String[] totalParts = {"", "", "Total", String.valueOf(tax + totalPrice)};
-        orderList.add(totalParts);
-        itemColumn.setCellValueFactory(param -> new ReadOnlyStringWrapper(param.getValue()[0]));
-        itemColumn.setCellFactory(param -> new WrappingTextCell());
-        addonsColumn.setCellValueFactory(param -> new ReadOnlyStringWrapper(param.getValue()[1]));
-        addonsColumn.setCellFactory(param -> new WrappingTextCell());
-        commentsColumn.setCellValueFactory(param -> new ReadOnlyStringWrapper(param.getValue()[2]));
-        commentsColumn.setCellFactory(param -> new WrappingTextCell());
-        priceColumn.setCellValueFactory(param -> new ReadOnlyStringWrapper(param.getValue()[3]));
-
-        orderListTbl.setItems(orderList);
+        session.viewOrder(tableColumns, orderList, orderItems, orderListTbl);
         deleteItemBtn.setDisable(false);
 
 

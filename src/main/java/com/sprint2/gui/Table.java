@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Table {
     private String tableID;
     private int waiterID;
-    private String status;
+    private String tableStatus;
     private ArrayList<Order> activeOrders = new ArrayList<>();
     private ArrayList<ArrayList<OrderItem>> activeOrderDetails = new ArrayList<>();
 
@@ -22,7 +22,7 @@ public class Table {
             ex.printStackTrace();
         }
 
-        status = table[2];
+        tableStatus = table[2];
     }
 
     public String getTableID() {
@@ -33,16 +33,16 @@ public class Table {
         return waiterID;
     }
 
-    public String getStatus() {
-        return status;
+    public String getTableStatus() {
+        return tableStatus;
     }
 
     public void setWaiterID(int waiterID) {
         this.waiterID = waiterID;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setTableStatus(String status) {
+        this.tableStatus = status;
     }
 
     public ArrayList<Order> getActiveOrders() {
