@@ -38,13 +38,13 @@ public class EmployeeProfileEditorController {
 
         employeeTable.setItems(data);
     }
-
-    public void onGoBackBtn(ActionEvent actionEvent) throws IOException {
+    @FXML
+    protected void onGoBackBtn(ActionEvent actionEvent) throws IOException {
         LoaderManager lm = new LoaderManager();
         lm.goBack("ManagerScreenSelection.fxml", actionEvent);
     }
-
-    public void updateEmployeeList(){
+    @FXML
+    protected void updateEmployeeList(){
         try {
             String dataLine = "";
             File myFile = new File("Employee.csv");
