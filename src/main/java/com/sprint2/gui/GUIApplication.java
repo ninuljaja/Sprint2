@@ -10,6 +10,8 @@ import java.io.IOException;
 
 public class GUIApplication extends Application {
     private static Stage stage;
+    private static String employeeDatabaseFilename = "Employee.csv";
+    private static EmployeeDatabase employeeDatabase = new EmployeeDatabase();
 
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -21,6 +23,7 @@ public class GUIApplication extends Application {
         primaryStage.setResizable(false);
         primaryStage.setScene(scene);
         primaryStage.show();
+        employeeDatabase.loadFromFile(employeeDatabaseFilename);
     }
 
     public static void main(String[] args) {
@@ -31,5 +34,10 @@ public class GUIApplication extends Application {
     public static Stage getStage()
     {
         return stage;
+    }
+
+    public static EmployeeDatabase getEmployeeDatabase()
+    {
+        return employeeDatabase;
     }
 }

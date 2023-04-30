@@ -96,29 +96,8 @@ public class LoginAsController {
                 return;
             }
         }
-        String[] waiterUser = null;
-        try {
-            String dataLine = "";
-            File myFile = new File("Employee.csv");
-            Scanner scan = new Scanner(myFile);
-            while (scan.hasNextLine()) {
-                dataLine = scan.nextLine();
-                // Split the string by comma
-                String[] line = dataLine.split(",");
-                if (line[0].equalsIgnoreCase(String.valueOf(user.getEmployeeID()))) {
-                    waiterUser = line;
-                    break;
-                }
-            }
-            scan.close();
-        } catch (IOException ioex) {
-            ioex.printStackTrace();
-        }
-        if(waiterUser != null) {
-            session.setMode("waiter");
-            LoaderManager.LoadScreen("Table-layout.fxml");
-        }
-
+        session.setMode("waiter");
+        LoaderManager.LoadScreen("Table-layout.fxml");
     }
 
     @FXML

@@ -45,25 +45,11 @@ public class EmployeeProfileEditorController {
     }
     @FXML
     protected void updateEmployeeList(){
-        try {
-            String dataLine = "";
-            File myFile = new File("Employee.csv");
-            Scanner scan = new Scanner(myFile);
-            scan.nextLine();
-            while (scan.hasNextLine()) {
-                dataLine = scan.nextLine();
-
-                // Split the string by comma
-                String[] line = dataLine.split(",");
-                Employee emp = new Employee(line);
-                employees.add(emp);
-                String[] parts = {String.valueOf(emp.employeeID),(emp.getFirstName() + " " +emp.getLastName()), emp.getPosition()};
-                data.add(parts);
-            }
-            scan.close();
-
-        } catch (IOException ioex) {
-            ioex.printStackTrace();
+        for (Employee employee : GUIApplication.getEmployeeDatabase().getEmployees())
+        {
+            employees.add(employee);
+            String[] parts = {String.valueOf(employee.employeeID), employee.getFirstName() + " " + employee.getLastName(), employee.getPosition()};
+            data.add(parts);
         }
     }
 

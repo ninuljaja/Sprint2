@@ -120,6 +120,19 @@ public class Employee {
         this.SSN = SSN;
     }
 
+    public Employee asRole()
+    {
+        String[] employeeData = Employee.serialize(this).split(",");
+        switch (position.toLowerCase())
+        {
+            case "manager":
+                return new Manager(employeeData);
+            case "waiter":
+                return new Waiter(employeeData);
+            default:
+                return new Employee(employeeData);
+        }
+    }
 
     public static String serialize(Employee employee)
     {

@@ -31,37 +31,16 @@ public class LoginController {
     protected void onLoginButton() throws IOException {
         String userName = usernameField.getText();
         String pass = passwordField.getText();
-        String[] user= Authentication.authenticateUser(userName, pass);
+        Employee employee = Authentication.authenticateUser(userName, pass);
 
-        if(user != null)
+        if(employee != null)
         {
             tries = 0;
-            Employee employee = null;
-            Session session = null;
-            String role = user[6].toLowerCase();
-            switch (role) {
-                case "manager":
-                    employee = new Manager(user);
-                    session = Session.getInstance();
-                    session.setUser(employee);
-                    session.setMode("manager");
-                   break;
-                case "busser":
-                   //
-                  break;
-                case "cook":
-                    //
-                    break;
-                case "waiter":
-                    employee = new Waiter(user);
-                    session = Session.getInstance();
-                    session.setUser(employee);
-                    session.setMode("waiter");
-                    break;
-                case "host":
-                    //
-                    break;
-            }
+            Session session = Session.getInstance();
+            String role = employee.getPosition().toLowerCase();
+            employee = employee.asRole();
+            session.setUser(employee);
+            session.setMode(role);
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginAs.fxml"));
                 Parent root = loader.load();

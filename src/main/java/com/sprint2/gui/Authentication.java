@@ -11,29 +11,16 @@ public class Authentication {
      * @param pass
      * @return
      */
-    public static String[] authenticateUser(String user, String pass) {
-        try {
-            String dataLine = "";
-            File myFile = new File("Employee.csv");
-            Scanner scan = new Scanner(myFile);
-            while (scan.hasNextLine()) {
-                dataLine = scan.nextLine();
+    public static Employee authenticateUser(String user, String pass) {
 
-                // Split the string by comma
-                String[] line = dataLine.split(",");
-                if (line[7].equals(user)) {
-                    if (line[8].equals(pass)) {
-                        return line;
-                    }
-                }
+        for (Employee employee : GUIApplication.getEmployeeDatabase().getEmployees())
+        {
+            if (user.equals(employee.getUsername()) && pass.equals(employee.getPassword()))
+            {
+                return employee;
             }
-            scan.close();
-
-        } catch (IOException ioex) {
-            ioex.printStackTrace();
         }
         return null;
     }
-
 }
 
