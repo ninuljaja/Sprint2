@@ -19,6 +19,7 @@ public class Session {
         for(String table : tables) {
             addData(table, tableOrders(table));
         }
+        ActivityLogging.LoadLogs();
     }
 
     public static Session getInstance() {

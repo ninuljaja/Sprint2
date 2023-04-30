@@ -272,6 +272,7 @@ public class MenuViewController {
                 orderItems.removeAll(orderItems);
                 orderList.clear();
                 initialize();
+                ActivityLogging.AddLog("Order for Table " + table.getTableID(), "Employee " + session.getUser().employeeID + " placed an order for Table " + table.getTableID());
             } else {
                 System.out.println("Chose an item");
             }

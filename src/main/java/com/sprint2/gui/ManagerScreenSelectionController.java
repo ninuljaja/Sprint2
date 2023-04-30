@@ -26,7 +26,7 @@ public class ManagerScreenSelectionController {
 
     @FXML
     protected void onActivityButton() {
-        System.out.println("Daily activity");
+        lm.goToNextStage("ManagerActivityScreen.fxml", activityButton);
     }
 
     @FXML
