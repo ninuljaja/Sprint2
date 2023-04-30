@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="570.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sprint2.gui.MenuViewController">
+   <children>
+      <Pane fx:id="viewOrder" layoutX="5.0" layoutY="49.0" prefHeight="513.0" prefWidth="535.0" style="-fx-border-radius: 60px; -fx-background-radius: 60px; -fx-background-color: #f55e61ff;">
+         <children>
+            <Label fx:id="inProcessOrdersLbl1" layoutX="100.0" layoutY="15.0" text="Orders in process">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TableView fx:id="readyOrdersTbl" layoutX="50.0" layoutY="44.0" maxHeight="430.0" maxWidth="204.0" minHeight="430.0" minWidth="204.0" prefHeight="430.0" prefWidth="204.0" style="-fx-background-color: #f58f8fff;">
+              <columns>
+                <TableColumn fx:id="itemColumn" maxWidth="124.0" minWidth="73.0" prefWidth="109.0" sortable="false" text="Order Number" />
+                  <TableColumn fx:id="addonsColumn" maxWidth="180.0" minWidth="91.0" prefWidth="94.0" sortable="false" text="Total" />
+              </columns>
+            </TableView>
+            <Label fx:id="readyOrdersLbl" layoutX="340.0" layoutY="15.0" text="Ready orders">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TableView fx:id="ordersInProcessTbl" layoutX="280.0" layoutY="44.0" maxHeight="430.0" maxWidth="460.0" minHeight="430.0" minWidth="204.0" prefHeight="430.0" prefWidth="204.0" style="-fx-background-color: #f58f8fff;">
+               <columns>
+                  <TableColumn fx:id="itemColumn1" maxWidth="124.0" minWidth="73.0" prefWidth="109.0" sortable="false" text="Order Number" />
+                  <TableColumn fx:id="addonsColumn1" maxWidth="180.0" minWidth="91.0" prefWidth="94.0" sortable="false" text="Total" />
+               </columns>
+            </TableView>
+         </children></Pane>
+      <Button fx:id="goBackBtn" layoutX="531.0" layoutY="538.0" mnemonicParsing="false" onAction="#onGoBackBtn" prefHeight="28.0" prefWidth="61.0" style="-fx-background-color: #f58f8fff; -fx-border-color: #af4345;" text="Go Back" />
+      <GridPane fx:id="addOnsPane" gridLinesVisible="true" layoutX="603.0" prefHeight="570.0" prefWidth="222.0" style="-fx-background-color: #f58f8fff; -fx-grid-lines-color: #af4345; -fx-border-color: #af4345;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <Label fx:id="itemNameLbl" text="Item" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <font>
+               <Font size="14.0" />
+            </font></Label>
+
+
+            <Pane fx:id="selectionPane" prefWidth="222.0" BorderPane.alignment="CENTER" GridPane.rowIndex="1">
+
+
+                  <Pane layoutX="14.0" layoutY="12.0" prefHeight="122.0" prefWidth="195.0" style="-fx-background-color: #f4ccccff;">
+               <children>
+                  <Group fx:id="readyOrdersTbl" layoutX="9.0" layoutY="40.0">
+                     <children>
+                        <Label layoutX="9.0" layoutY="-35.0" prefHeight="17.0" prefWidth="112.0" text="Choose Protein" />
+                        <RadioButton fx:id="chickenProtein" layoutY="-7.0" mnemonicParsing="false" text="Chicken">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="Protein" />
+                           </toggleGroup></RadioButton>
+                        <RadioButton fx:id="porkProtein" layoutY="16.0" mnemonicParsing="false" text="Pork" toggleGroup="$Protein" />
+                        <RadioButton fx:id="hamProtein" layoutY="40.0" mnemonicParsing="false" text="Ham" toggleGroup="$Protein" />
+                        <RadioButton fx:id="noneProtein" layoutY="64.0" mnemonicParsing="false" text="None" toggleGroup="$Protein" />
+                     </children>
+                  </Group>
+               </children></Pane>
+                  <Pane layoutX="14.0" layoutY="142.0" prefHeight="140.0" prefWidth="195.0" style="-fx-background-color: #f4ccccff;">
+               <children>
+                  <Group layoutX="19.0" layoutY="11.0">
+                     <children>
+                        <Label layoutX="5.0" layoutY="-4.0" text="Choose Sauce" />
+                        <RadioButton fx:id="carolinaGoldSauce" layoutX="-8.0" layoutY="25.0" mnemonicParsing="false" text="Carolina Gold">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="Sauce" />
+                           </toggleGroup></RadioButton>
+                        <RadioButton fx:id="jimBeamSauce" layoutX="-8.0" layoutY="50.0" mnemonicParsing="false" text="Jim Beam" toggleGroup="$Sauce" />
+                        <RadioButton fx:id="blueCheeseSauce" layoutX="-8.0" layoutY="75.0" mnemonicParsing="false" text="Blue Cheese" toggleGroup="$Sauce" />
+                        <RadioButton fx:id="ranchSauce" layoutX="95.0" layoutY="50.0" mnemonicParsing="false" text="Ranch" toggleGroup="$Sauce" />
+                        <RadioButton fx:id="buffaloSauce" layoutX="95.0" layoutY="25.0" mnemonicParsing="false" text="Buffalo" toggleGroup="$Sauce" />
+                        <RadioButton fx:id="noneSauce" layoutX="95.0" layoutY="100.0" mnemonicParsing="false" text="None" toggleGroup="$Sauce" />
+                        <RadioButton fx:id="bbqSauce" layoutX="-8.0" layoutY="100.0" mnemonicParsing="false" text="BBQ" toggleGroup="$Sauce" />
+                        <RadioButton fx:id="chipotleSauce" layoutX="95.0" layoutY="75.0" mnemonicParsing="false" text="Chipotle" toggleGroup="$Sauce" />
+                     </children>
+                  </Group>
+               </children></Pane>
+                  <GridPane gridLinesVisible="true" layoutX="14.0" layoutY="300.0" prefHeight="140.0" prefWidth="195.0" style="-fx-background-color: #f4ccccff; -fx-grid-lines-color: #af4345;">
+
+                        <Label prefHeight="31.0" prefWidth="163.0" style="-fx-background-color: #f4ccccff;" text="Other" BorderPane.alignment="CENTER" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+               <TextArea fx:id="comments" prefHeight="126.0" prefWidth="200.0" promptText="Add description" style="-fx-control-inner-background: #f4ccccff;" text=" " GridPane.rowIndex="1" />
+               <columnConstraints>
+                  <ColumnConstraints />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="21.4" valignment="CENTER" />
+                  <RowConstraints minHeight="10.0" />
+               </rowConstraints>
+
+
+                  </GridPane>
+
+            </Pane>
+         <Button fx:id="addToOrderBtn" disable="true" mnemonicParsing="false" onAction="#onAddToOrder" prefHeight="41.0" prefWidth="182.0" style="-fx-border-color: #af4345; -fx-background-radius: 6px; -fx-border-radius: 6px; -fx-background-color: white; -fx-border-insets: -1;" text="Add to Order" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+         <columnConstraints>
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="57.6" minHeight="10.0" prefHeight="57.6" />
+            <RowConstraints maxHeight="541.6" minHeight="439.0" prefHeight="457.80000000000007" />
+            <RowConstraints maxHeight="86.79999999999995" minHeight="10.0" prefHeight="55.0" />
+         </rowConstraints>
+
+
+      </GridPane>
+      <Button layoutX="491.0" layoutY="5.0" mnemonicParsing="false" onAction="#onViewOrderBtn" prefHeight="32.0" prefWidth="96.0" style="-fx-background-color: #f58f8fff; -fx-border-color: #af4345;" text="View Order" />
+      <Pane fx:id="viewOrderPane" layoutX="627.0" layoutY="6.0" prefHeight="570.0" prefWidth="222.0" style="-fx-background-color: #f58f8fff; -fx-border-color: #af4345;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button fx:id="deleteItemBtn" disable="true" layoutX="50.0" layoutY="173.0" mnemonicParsing="false" onAction="#onDeleteItemBtn" prefHeight="40.0" prefWidth="133.0" style="-fx-background-color: white; -fx-border-color: #af4345; -fx-border-radius: 2px; -fx-border-insets: -1px;" text="Delete item" />
+            <Button layoutX="50.0" layoutY="315.0" mnemonicParsing="false" onAction="#onPlaceOrderBtn" prefHeight="40.0" prefWidth="133.0" style="-fx-background-color: white; -fx-border-color: #af4345; -fx-border-insets: -1px; -fx-border-radius: 2px;" text="Place Order" />
+            <Button layoutX="50.0" layoutY="244.0" mnemonicParsing="false" onAction="#onAddItemBtn" prefHeight="40.0" prefWidth="133.0" style="-fx-background-color: white; -fx-border-color: #af4345; -fx-border-radius: 2px; -fx-border-insets: -1px;" text="Add Item" />
+         </children></Pane>
+
+   </children>
+</AnchorPane>

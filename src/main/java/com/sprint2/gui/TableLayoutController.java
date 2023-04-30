@@ -240,6 +240,15 @@ public class TableLayoutController {
         session.setSelectedTable(table);
         lm.goToNextPane(tableLayout,"Menu-view.fxml");
     }
+
+    @FXML
+    protected void onViewOrdersBtn(){
+
+    }
+    @FXML
+    protected void onMarkAsDirtyBtn(){
+
+    }
     @FXML
     protected void goBack(ActionEvent actionEvent) throws IOException {
 

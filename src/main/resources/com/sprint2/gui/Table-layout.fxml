@@ -34,7 +34,7 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="markAsDirtyBtn" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="35.0" layoutY="194.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" style="-fx-border-color: black; -fx-background-color: white;" text="Mark as Dirty">
+            <Button fx:id="markAsDirtyBtn" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="35.0" layoutY="194.0" mnemonicParsing="false" onAction="#onMarkAsDirtyBtn" prefHeight="40.0" prefWidth="140.0" style="-fx-border-color: black; -fx-background-color: white;" text="Mark as Dirty">
                <font>
                   <Font size="15.0" />
                </font>
@@ -44,7 +44,7 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="viewOrdersBtn" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="35.0" layoutY="142.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" style="-fx-border-color: black; -fx-background-color: white;" text="View Orders">
+            <Button fx:id="viewOrdersBtn" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="35.0" layoutY="142.0" mnemonicParsing="false" onAction="#onViewOrdersBtn" prefHeight="40.0" prefWidth="140.0" style="-fx-border-color: black; -fx-background-color: white;" text="View Orders">
                <font>
                   <Font size="15.0" />
                </font>

@@ -1,18 +1,24 @@
 package com.sprint2.gui;
 
+import java.util.ArrayList;
+
 public class Table {
     private String tableID;
     private int waiterID;
     private String status;
+    private ArrayList<Order> activeOrders = new ArrayList<>();
+    private ArrayList<ArrayList<OrderItem>> activeOrderDetails = new ArrayList<>();
 
-    public Table(){
+
+    public Table() {
 
     }
-    public Table(String[] table){
+
+    public Table(String[] table) {
         tableID = table[0];
-        try{
+        try {
             waiterID = Integer.parseInt(table[1]);
-        } catch (NumberFormatException ex){
+        } catch (NumberFormatException ex) {
             ex.printStackTrace();
         }
 
@@ -38,4 +44,15 @@ public class Table {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public ArrayList<Order> getActiveOrders() {
+        return activeOrders;
+    }
+
+
+
+    public void addToActiveOrders(String[] currentOrder, ArrayList<OrderItem> orderItems) {
+        activeOrders.add(new Order(currentOrder, orderItems));
+    }
 }
+

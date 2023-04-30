@@ -71,7 +71,7 @@ public class MenuViewController {
         addToOrderBtn.setDisable(true);
         itemNameLbl.setText("");
         orderListTbl.setVisible(false);
-
+        viewOrderPane.setVisible(false);
     }
 
 
@@ -271,6 +271,7 @@ public class MenuViewController {
                 addToOrderBtn.setDisable(true);
                 orderItems.removeAll(orderItems);
                 orderList.clear();
+                initialize();
             } else {
                 System.out.println("Chose an item");
             }
@@ -342,6 +343,8 @@ public class MenuViewController {
         LoaderManager lm = new LoaderManager();
         lm.goBack("Table-layout.fxml", actionEvent);
     }
+
+
 
 
 
