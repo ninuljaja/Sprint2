@@ -1,5 +1,6 @@
 package com.sprint2.gui;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -45,12 +46,13 @@ public class TableLayoutController {
         tableButtons.addAll(Arrays.asList(A1,A2,A3,A4,A5,A6,B1,B2,B3,B4,B5,B6,C5,C6,D5,D6,E1,E2,E3,E4,E5,E6,F1,F2,F3,F4,F5,F6));
         buttons.addAll(Arrays.asList(placeOrderBtn, fillTableBtn, viewOrdersBtn, markAsDirtyBtn));
         allTables = session.tableList();
+        Platform.runLater(() -> goBackBtn.requestFocus());
         if(session.getMode().equalsIgnoreCase("waiter")){
             waiter = new Waiter(session.getUser());
         }
         updateTableButtonAvailability();
         updateTableButtonStatus();
-        goBackBtn.requestFocus();
+
     }
 
     private void updateTableButtonStatus() {
@@ -85,7 +87,6 @@ public class TableLayoutController {
                     }
                 }
             }
-                // }
         } else if (session.getMode().equalsIgnoreCase("manager") || session.getMode().equalsIgnoreCase("host")) {
             for (Button tableButton : tableButtons) {
                 tableButton.setDisable(false);
@@ -263,35 +264,12 @@ public class TableLayoutController {
     protected void goBack(ActionEvent actionEvent) throws IOException {
         lm.goBack("LoginAs.fxml", actionEvent);
     }
-   /* protected String[] getTable(String tableID){
-        try {
-            String dataLine = "";
-            File myFile = new File("Tables.csv");
-            Scanner scan = new Scanner(myFile);
-            scan.nextLine();
-            while (scan.hasNextLine()) {
-                dataLine = scan.nextLine();
-                // Split the string by comma
-                String[] line = dataLine.split(",");
-                allTables.add(new Table(line));
-                if (line[0].equalsIgnoreCase(tableID)) {
-                    return line;
-                }
-            }
-            scan.close();
 
-        } catch (IOException ioex) {
-            ioex.printStackTrace();
-        }
-        return null;
-    }*/
     protected void setButtonStatus(Table data){
         for (Button button : buttons) {
             button.setDisable(true);
         }
-
         if(data != null) {
-        //    table = new Table(data);
             tableNumberLabel.setText("Table " + table.getTableID());
             if(session.getMode().equalsIgnoreCase("waiter")) {
                 if (table.getStatus().equalsIgnoreCase("Occupied")) {
@@ -299,7 +277,6 @@ public class TableLayoutController {
                     markAsDirtyBtn.setDisable(false);
                     viewOrdersBtn.setDisable(false);
                 } else if(table.getStatus().equalsIgnoreCase("Ready")){
-                    fillTableBtn.setDisable(false);
                     markAsDirtyBtn.setDisable(false);
                 }
             } else if(session.getMode().equalsIgnoreCase("manager")) {

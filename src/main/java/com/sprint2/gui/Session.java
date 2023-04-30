@@ -6,6 +6,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -17,6 +18,7 @@ public class Session {
     private String mode;
     private Table selectedTable;
     private ArrayList<Order> allOrdersNotComplete = new ArrayList<>();
+    private ArrayList<Order> allOrders = new ArrayList<>();
     private Hashtable<String, ArrayList<Order>> activeOrders = new Hashtable<>();
     private String[] tables = {"A1","A2","A3","A4","A5","A6","B1","B2","B3","B4","B5","B6","C5","C6","D5","D6","E1","E2","E3","E4","E5","E6","F1","F2","F3","F4","F5","F6"};
 
@@ -64,8 +66,8 @@ public class Session {
     public void removeData(String table) {
         activeOrders.remove(table);
     }
-    public void loadActiveOrders(){
-        readOrdersFile();
+    public void loadActiveOrders() throws FileNotFoundException {
+        inCompleteOrdersList();
         for(String table : tables) {
 
             addData(table, tableOrders(table));
@@ -85,57 +87,15 @@ public class Session {
         return orders;
     }
 
-    public void readOrdersFile(){
-        try {
-            allOrdersNotComplete.removeAll(allOrdersNotComplete);
-            String dataLine = "";
-            File myFile = new File("Orders.csv");
-            Scanner scan = new Scanner(myFile);
-            scan.nextLine();
-            int i = 0;
-            while (scan.hasNextLine()) {
-
-                dataLine = scan.nextLine();
-                // Split the string by comma
-                String[] line = dataLine.split(",");
-
-                if(!line[3].equalsIgnoreCase("COMPLETED")) {
-                    ArrayList<OrderItem> orderItems = new ArrayList<>();
-                    String dataLine2 = "";
-                    File myFile2 = new File("OrderDetails.csv");
-                    Scanner scan2 = new Scanner(myFile2);
-                    scan2.nextLine();
-                    while (scan2.hasNextLine()) {
-                        dataLine2 = scan2.nextLine();
-                        // Split the string by comma
-                        String[] line2 = dataLine2.split(",");
-                        if (line[0].equalsIgnoreCase(line2[0])) {
-                            String dataLine3 = "";
-                            File myFile3 = new File("Items.csv");
-                            Scanner scan3 = new Scanner(myFile3);
-                            scan3.nextLine();
-                            while (scan3.hasNextLine()) {
-                                dataLine3 = scan3.nextLine();
-                                // Split the string by comma
-                                String[] line3 = dataLine3.split(",");
-                                if (line3[1].equalsIgnoreCase(line2[1])) {
-                                    orderItems.add(new OrderItem(new Item(line3), Integer.parseInt(line2[4]),line2[2],line2[3]));
-                                    break;
-                                }
-                            }
-                            scan3.close();
-
-                        }
-                    }
-                    scan2.close();
-                    Order newOrder = new Order(line, orderItems);
-                    allOrdersNotComplete.add(newOrder);
+    public void inCompleteOrdersList() throws FileNotFoundException {
+        allOrdersNotComplete.removeAll(allOrdersNotComplete);
+        allOrders = orderList();
+        if(!allOrders.isEmpty() && allOrders != null){
+            for(Order order : allOrders){
+                if(!order.getOrderStatus().equalsIgnoreCase("COMPLETED")) {
+                    allOrdersNotComplete.add(order);
                 }
             }
-            scan.close();
-
-        } catch (IOException ioex) {
-            ioex.printStackTrace();
         }
     }
 
@@ -233,5 +193,54 @@ public class Session {
                 }
             }
         return null;
+    }
+
+    public ArrayList<Order> orderList() throws FileNotFoundException {
+        ArrayList<Order> orders = new ArrayList<>();
+        try {
+            String dataLine = "";
+            File myFile = new File("Orders.csv");
+            Scanner scan = new Scanner(myFile);
+            scan.nextLine();
+            while (scan.hasNextLine()) {
+                dataLine = scan.nextLine();
+                // Split the string by comma
+                String[] line = dataLine.split(",");
+                ArrayList<OrderItem> orderItems = new ArrayList<>();
+                String dataLine2 = "";
+                File myFile2 = new File("OrderDetails.csv");
+                Scanner scan2 = new Scanner(myFile2);
+                scan2.nextLine();
+                while (scan2.hasNextLine()) {
+                    dataLine2 = scan2.nextLine();
+                    // Split the string by comma
+                    String[] line2 = dataLine2.split(",");
+                    if (line[0].equalsIgnoreCase(line2[0])) {
+                        String dataLine3 = "";
+                        File myFile3 = new File("Items.csv");
+                        Scanner scan3 = new Scanner(myFile3);
+                        scan3.nextLine();
+                        while (scan3.hasNextLine()) {
+                            dataLine3 = scan3.nextLine();
+                            // Split the string by comma
+                            String[] line3 = dataLine3.split(",");
+                            if (line3[1].equalsIgnoreCase(line2[1])) {
+                                orderItems.add(new OrderItem(new Item(line3), Integer.parseInt(line2[4]), line2[2], line2[3]));
+                                break;
+                            }
+                        }
+                        scan3.close();
+                    }
+                }
+                scan2.close();
+                Order newOrder = new Order(line, orderItems);
+                orders.add(newOrder);
+            }
+            scan.close();
+        } catch (IOException ioex) {
+            ioex.printStackTrace();
+        } finally {
+            return orders;
+        }
     }
 }

@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -41,7 +42,7 @@ public class OrdersViewController {
     private ArrayList<Order> ordersReady,inProcessOrders;
 
 
-    public void initialize() {
+    public void initialize() throws FileNotFoundException {
 
         session = Session.getInstance();
         user = session.getUser();
@@ -76,7 +77,7 @@ public class OrdersViewController {
         lm.goBack("Table-layout.fxml", actionEvent);
     }
     @FXML
-    private void onViewOrderBtn(ActionEvent actionEvent) {
+    private void onViewOrderBtn(ActionEvent actionEvent) throws FileNotFoundException {
         if(viewOrderBtn.getText().equalsIgnoreCase("View Order")) {
             String[] selectedRow = new String[2];
             ArrayList<Order> order = new ArrayList<>();
