@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.FlowPane?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane fx:id="managerScreenSelection" minHeight="450.0" minWidth="700.0" prefHeight="570.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sprint2.gui.ManagerScreenSelectionController">
    <children>
@@ -38,7 +33,7 @@
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="managerButton24" disable="true" maxHeight="130.0" maxWidth="300.0" mnemonicParsing="false" prefHeight="117.0" prefWidth="193.0" style="-fx-background-color: #8e7cc3ff; -fx-border-color: black; -fx-background-radius: 15px; -fx-border-radius: 15px;" text="View Schedule, Activities, and Salary" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Button fx:id="viewActiveOrders" maxHeight="130.0" maxWidth="300.0" mnemonicParsing="false" onAction="#onViewActiveOrders" prefHeight="117.0" prefWidth="193.0" style="-fx-background-color: #8e7cc3ff; -fx-border-color: black; -fx-background-radius: 15px; -fx-border-radius: 15px;" text="ViewActiveOrders" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font size="20.0" />
                </font>

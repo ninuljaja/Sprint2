@@ -24,7 +24,7 @@
                   <Font size="19.0" />
                </font>
             </Label>
-            <Button fx:id="fillTableBtn" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="35.0" layoutY="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" style="-fx-border-color: black; -fx-background-color: white;" text="Fill Table">
+            <Button fx:id="fillTableBtn" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="35.0" layoutY="40.0" mnemonicParsing="false" onAction="#onFillTableBtn" prefHeight="40.0" prefWidth="140.0" style="-fx-border-color: black; -fx-background-color: white;" text="Fill Table">
                <font>
                   <Font size="15.0" />
                </font>
@@ -39,7 +39,7 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="markAsCleanBtn" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="35.0" layoutY="248.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" style="-fx-border-color: black; -fx-background-color: white;" text="Mark as Clean">
+            <Button fx:id="markAsCleanBtn" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="35.0" layoutY="248.0" mnemonicParsing="false" onAction="#onMarkCleanBtn" prefHeight="40.0" prefWidth="140.0" style="-fx-border-color: black; -fx-background-color: white;" text="Mark as Clean">
                <font>
                   <Font size="15.0" />
                </font>

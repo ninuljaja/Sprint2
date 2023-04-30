@@ -248,6 +248,8 @@ public class Session {
             ArrayList<Order> orders = orderList();
             String[] newOrderList = new String[5];
             FileWriter writer = new FileWriter("Orders.csv");
+            String header = "OrderID,Date/Time,TableID,Status,WaiterID";
+            writer.write(header + "\n");
             for(Order ord : orders){
                 if(ord.getOrderNum() == order.getOrderNum()){
                     ord.setOrderStatus(status);
@@ -273,6 +275,8 @@ public class Session {
             ArrayList<Table> tables = tableList();
             String[] newTableList = new String[3];
             FileWriter writer = new FileWriter("Tables.csv");
+            String header = "TableID,WaiterID,Status";
+            writer.write(header + "\n");
             for(Table tbl : tables){
                 if(tbl.getTableID().equalsIgnoreCase(selectedTable.getTableID())){
                     tbl.setTableStatus(status);
