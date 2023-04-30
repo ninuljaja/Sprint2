@@ -45,4 +45,12 @@ public class LoaderManager {
         FXMLLoader loader = new FXMLLoader(LoaderManager.class.getResource(fxmlFileName));
         return loader.load();
     }
+
+    public static Parent LoadScreen(String fxmlFileName) throws IOException
+    {
+        FXMLLoader loader = new FXMLLoader(LoaderManager.class.getResource(fxmlFileName));
+        Parent root = loader.load();
+        GUIApplication.getStage().setScene(new Scene(root));
+        return root;
+    }
 }

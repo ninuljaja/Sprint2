@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="570.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sprint2.gui.ProfileEditorController">
+    <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <right>
+            <BorderPane style="-fx-background-color: #b4a7d6ff; -fx-border-color: #9900ff;" BorderPane.alignment="CENTER">
+               <top>
+                  <Label alignment="CENTER" text="Edit Menu" textAlignment="CENTER" underline="true" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </top>
+               <padding>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </padding>
+               <center>
+                  <VBox alignment="TOP_CENTER" spacing="20.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#onSave" style="-fx-background-color: #f3f3f3ff; -fx-border-color: #9900ff; -fx-background-radius: 11; -fx-border-radius: 10;" text="Save" textAlignment="CENTER">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#onCancel" style="-fx-background-color: #f3f3f3ff; -fx-border-color: #9900ff; -fx-background-radius: 11; -fx-border-radius: 10;" text="Cancel" textAlignment="CENTER">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <BorderPane.margin>
+                        <Insets top="35.0" />
+                     </BorderPane.margin>
+                  </VBox>
+               </center>
+            </BorderPane>
+         </right>
+         <center>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <top>
+                    <Button mnemonicParsing="false" onAction="#onGoBackBtn" style="-fx-background-color: #b4a7d6ff; -fx-border-color: #9900ff;" text="Go Back" BorderPane.alignment="TOP_LEFT">
+                     <BorderPane.margin>
+                        <Insets left="15.0" right="15.0" top="15.0" />
+                     </BorderPane.margin>
+                  </Button>
+               </top>
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #8e7cc3ff; -fx-background-radius: 60;" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </BorderPane.margin>
+                     <children>
+                        <ScrollPane fitToWidth="true" layoutX="62.0" layoutY="-77.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #9900ff;" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0">
+                           <content>
+                              <BorderPane>
+                                 <top>
+                                    <Label text="Edit Profile" BorderPane.alignment="CENTER">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                       <BorderPane.margin>
+                                          <Insets bottom="15.0" />
+                                       </BorderPane.margin>
+                                    </Label>
+                                 </top>
+                                 <center>
+                                    <GridPane hgap="15.0" vgap="15.0" BorderPane.alignment="CENTER">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="517.0" minWidth="10.0" prefWidth="181.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="470.0" minWidth="10.0" prefWidth="359.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="50.0" />
+                                        <RowConstraints minHeight="10.0" prefHeight="50.0" />
+                                        <RowConstraints minHeight="10.0" prefHeight="50.0" />
+                                          <RowConstraints minHeight="10.0" prefHeight="50.0" />
+                                          <RowConstraints minHeight="10.0" prefHeight="50.0" />
+                                          <RowConstraints minHeight="10.0" prefHeight="50.0" />
+                                          <RowConstraints minHeight="10.0" prefHeight="50.0" />
+                                          <RowConstraints minHeight="10.0" prefHeight="50.0" />
+                                          <RowConstraints minHeight="10.0" prefHeight="50.0" />
+                                          <RowConstraints minHeight="10.0" prefHeight="50.0" />
+                                      </rowConstraints>
+                                       <children>
+                                          <TextField fx:id="firstNameField" style="-fx-border-color: #674ea7;" GridPane.columnIndex="1">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </TextField>
+                                          <AnchorPane>
+                                             <children>
+                                                <Label style="-fx-background-color: #d9d2e9ff; -fx-border-color: #674ea7;" text="First Name" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                   </padding>
+                                                </Label>
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane layoutX="10.0" layoutY="7.0" GridPane.rowIndex="1">
+                                             <children>
+                                                <Label style="-fx-background-color: #d9d2e9ff; -fx-border-color: #674ea7;" text="Middle Initial" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                   </padding>
+                                                </Label>
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane layoutX="10.0" layoutY="7.0" GridPane.rowIndex="2">
+                                             <children>
+                                                <Label style="-fx-background-color: #d9d2e9ff; -fx-border-color: #674ea7;" text="Last Name" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                   </padding>
+                                                </Label>
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane GridPane.rowIndex="3">
+                                             <children>
+                                                <Label style="-fx-background-color: #d9d2e9ff; -fx-border-color: #674ea7;" text="Phone" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                   </padding>
+                                                </Label>
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane GridPane.rowIndex="4">
+                                             <children>
+                                                <Label style="-fx-background-color: #d9d2e9ff; -fx-border-color: #674ea7;" text="Address" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                   </padding>
+                                                </Label>
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane GridPane.rowIndex="5">
+                                             <children>
+                                                <Label style="-fx-background-color: #d9d2e9ff; -fx-border-color: #674ea7;" text="Role" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                   </padding>
+                                                </Label>
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane GridPane.rowIndex="6">
+                                             <children>
+                                                <Label style="-fx-background-color: #d9d2e9ff; -fx-border-color: #674ea7;" text="Username" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                   </padding>
+                                                </Label>
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane GridPane.rowIndex="7">
+                                             <children>
+                                                <Label style="-fx-background-color: #d9d2e9ff; -fx-border-color: #674ea7;" text="Password" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                   </padding>
+                                                </Label>
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane GridPane.rowIndex="8">
+                                             <children>
+                                                <Label style="-fx-background-color: #d9d2e9ff; -fx-border-color: #674ea7;" text="Salary" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                   </padding>
+                                                </Label>
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane GridPane.rowIndex="9">
+                                             <children>
+                                                <Label style="-fx-background-color: #d9d2e9ff; -fx-border-color: #674ea7;" text="SSN" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                   <padding>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                   </padding>
+                                                </Label>
+                                             </children>
+                                          </AnchorPane>
+                                          <TextField fx:id="middleInitialField" style="-fx-border-color: #674ea7;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="lastNameField" style="-fx-border-color: #674ea7;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="phoneField" style="-fx-border-color: #674ea7;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="addressField" style="-fx-border-color: #674ea7;" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="usernameField" style="-fx-border-color: #674ea7;" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="passwordField" style="-fx-border-color: #674ea7;" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="salaryField" style="-fx-border-color: #674ea7;" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField fx:id="ssnField" style="-fx-border-color: #674ea7;" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </TextField>
+                                          <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                             <children>
+                                                <ChoiceBox fx:id="roleDropdown" layoutX="83.0" layoutY="7.0" prefWidth="150.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                       <BorderPane.margin>
+                                          <Insets bottom="15.0" />
+                                       </BorderPane.margin>
+                                    </GridPane>
+                                 </center>
+                              </BorderPane>
+                           </content>
+                           <padding>
+                              <Insets left="15.0" right="15.0" top="15.0" />
+                           </padding>
+                        </ScrollPane>
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
+         </center>
+      </BorderPane>
+
+    </children>
+</AnchorPane>

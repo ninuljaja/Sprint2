@@ -9,11 +9,14 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class GUIApplication extends Application {
+    private static Stage stage;
+
     @Override
     public void start(Stage primaryStage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Login-view.fxml"));
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root);
+        stage = primaryStage;
         primaryStage.setResizable(false);
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -22,5 +25,10 @@ public class GUIApplication extends Application {
     public static void main(String[] args) {
 
         launch();
+    }
+
+    public static Stage getStage()
+    {
+        return stage;
     }
 }
