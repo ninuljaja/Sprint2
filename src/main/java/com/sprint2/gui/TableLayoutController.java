@@ -242,8 +242,9 @@ public class TableLayoutController {
     }
 
     @FXML
-    protected void onViewOrdersBtn(){
-
+    protected void onViewOrdersBtn() throws IOException {
+        session.setSelectedTable(table);
+        lm.goToNextPane(tableLayout, "Orders-View.fxml");
     }
     @FXML
     protected void onMarkAsDirtyBtn(){
@@ -251,7 +252,6 @@ public class TableLayoutController {
     }
     @FXML
     protected void goBack(ActionEvent actionEvent) throws IOException {
-
         lm.goBack("LoginAs.fxml", actionEvent);
     }
     protected String[] getTable(String tableID){

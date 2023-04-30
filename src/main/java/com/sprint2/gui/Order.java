@@ -6,22 +6,18 @@ public class Order {
     private int orderNum;
     private String orderDateTime;
     private String tableID;
-    private status orderStatus;
+    private String orderStatus;
 
     private int waiterID;
     private ArrayList<OrderItem> orderItems;
 
-    public enum status {
-        READY,
-        IN_PROCESS,
-        COMPLETED,
-    }
+
     public Order(String[] order, ArrayList<OrderItem> orderItems){
         try{
             orderNum = Integer.parseInt(order[0]);
             orderDateTime = order[1];
             tableID = order[2];
-            orderStatus = status.valueOf(order[3]);
+            orderStatus = order[3];
 
             waiterID = Integer.parseInt(order[4]);
             this.orderItems = orderItems;
@@ -42,7 +38,7 @@ public class Order {
         return tableID;
     }
 
-    public status getOrderStatus() {
+    public String getOrderStatus() {
         return orderStatus;
     }
 

@@ -16,9 +16,12 @@ public class Session {
     private String[] tables = {"A1","A2","A3","A4","A5","A6","B1","B2","B3","B4","B5","B6","C5","C6","D5","D6","E1","E2","E3","E4","E5","E6","F1","F2","F3","F4","F5","F6"};
 
     private Session() {
+        readOrdersFile();
         for(String table : tables) {
+
             addData(table, tableOrders(table));
         }
+
         ActivityLogging.LoadLogs();
     }
 
@@ -54,6 +57,7 @@ public class Session {
 
     public void addData(String table, ArrayList<Order> orders) {
         activeOrders.put(table, orders);
+
     }
 
     public void removeData(String table) {
@@ -63,13 +67,12 @@ public class Session {
     public ArrayList<Order> getData(String table) {
         return activeOrders.get(table);
     }
-    public ArrayList<Order> tableOrders(String table){
+    public ArrayList<Order> tableOrders (String table){
         ArrayList<Order> orders = new ArrayList<>();
-        readOrdersFile();
+
         for(Order order : allOrdersNotComplete){
             if(order.getTableID().equalsIgnoreCase(table)){
                 orders.add(order);
-             //   allOrdersNotComplete.remove(order);
             }
         }
         return orders;
@@ -77,36 +80,40 @@ public class Session {
 
     public void readOrdersFile(){
         try {
-         //   ArrayList<Order> orders = new ArrayList<>();
+            allOrdersNotComplete.removeAll(allOrdersNotComplete);
             String dataLine = "";
             File myFile = new File("Orders.csv");
             Scanner scan = new Scanner(myFile);
             scan.nextLine();
+            int i = 0;
             while (scan.hasNextLine()) {
+
                 dataLine = scan.nextLine();
                 // Split the string by comma
                 String[] line = dataLine.split(",");
+
                 if(!line[3].equalsIgnoreCase("COMPLETED")) {
                     ArrayList<OrderItem> orderItems = new ArrayList<>();
                     String dataLine2 = "";
                     File myFile2 = new File("OrderDetails.csv");
                     Scanner scan2 = new Scanner(myFile2);
-                    scan.nextLine();
-                    while (scan.hasNextLine()) {
-                        dataLine2 = scan.nextLine();
+                    scan2.nextLine();
+                    while (scan2.hasNextLine()) {
+                        dataLine2 = scan2.nextLine();
                         // Split the string by comma
                         String[] line2 = dataLine2.split(",");
                         if (line[0].equalsIgnoreCase(line2[0])) {
                             String dataLine3 = "";
                             File myFile3 = new File("Items.csv");
                             Scanner scan3 = new Scanner(myFile3);
-                            scan.nextLine();
-                            while (scan.hasNextLine()) {
-                                dataLine3 = scan.nextLine();
+                            scan3.nextLine();
+                            while (scan3.hasNextLine()) {
+                                dataLine3 = scan3.nextLine();
                                 // Split the string by comma
                                 String[] line3 = dataLine3.split(",");
                                 if (line3[1].equalsIgnoreCase(line2[1])) {
                                     orderItems.add(new OrderItem(new Item(line3), Integer.parseInt(line2[4]),line2[2],line2[3]));
+                                    break;
                                 }
                             }
                             scan3.close();
@@ -114,7 +121,8 @@ public class Session {
                         }
                     }
                     scan2.close();
-                    allOrdersNotComplete.add(new Order(line, orderItems));
+                    Order newOrder = new Order(line, orderItems);
+                    allOrdersNotComplete.add(newOrder);
                 }
             }
             scan.close();

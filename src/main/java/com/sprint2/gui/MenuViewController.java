@@ -259,23 +259,24 @@ public class MenuViewController {
     }
     @FXML
     private void onPlaceOrderBtn() {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Place an order?", ButtonType.YES, ButtonType.NO);
-        alert.setHeaderText("");
-        alert.showAndWait();
+        if(!orderItems.isEmpty()&& table != null) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Place an order?", ButtonType.YES, ButtonType.NO);
+            alert.setHeaderText("");
+            alert.showAndWait();
 
-        if (alert.getResult() == ButtonType.YES) {
-            if (orderItems != null && table != null) {
-                waiter.createOrder(table, orderItems);
-                selectionPane.setVisible(false);
-                addToOrderBtn.setText("Add to order");
-                addToOrderBtn.setDisable(true);
-                orderItems.removeAll(orderItems);
-                orderList.clear();
-                initialize();
-                ActivityLogging.AddLog("Order for Table " + table.getTableID(), "Employee " + session.getUser().employeeID + " placed an order for Table " + table.getTableID());
-            } else {
-                System.out.println("Chose an item");
+            if (alert.getResult() == ButtonType.YES) {
+                    waiter.createOrder(table, orderItems);
+                    selectionPane.setVisible(false);
+                    addToOrderBtn.setText("Add to order");
+                    addToOrderBtn.setDisable(true);
+                    orderItems.removeAll(orderItems);
+                    orderList.clear();
+                    initialize();
             }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Add an Item", ButtonType.OK);
+            alert.setHeaderText("");
+            alert.showAndWait();
         }
     }
 
@@ -304,7 +305,7 @@ public class MenuViewController {
         float tax = totalPrice*7/100;
         String[] taxParts = {"", "", "Tax", String.format("%.2f", tax)};
         orderList.add(taxParts);
-        String[] totalParts = {"", "", "Total", String.valueOf(tax + totalPrice)};
+        String[] totalParts = {"", "", "Total", String.format("%.2f", (tax + totalPrice))};
         orderList.add(totalParts);
         itemColumn.setCellValueFactory(param -> new ReadOnlyStringWrapper(param.getValue()[0]));
         itemColumn.setCellFactory(param -> new WrappingTextCell());
