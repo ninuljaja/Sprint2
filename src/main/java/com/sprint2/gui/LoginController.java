@@ -94,6 +94,14 @@ public class LoginController {
     protected void onCancelButton(){
         System.exit(0);
     }
+    @FXML
+    private void onUsernameField(){
+        passwordField.requestFocus();
+    }
+    @FXML
+    private void onPasswordField() throws IOException {
+        onLoginButton();
+    }
 
 
 

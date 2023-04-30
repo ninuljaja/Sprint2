@@ -18,7 +18,7 @@ import java.util.Arrays;
 
 public class OrdersViewController {
     @FXML
-    private Label tableNum;
+    private Label tableNum, waiterLbl;
     @FXML
     private TableView<String[]> readyOrdersTbl, ordersInProcessTbl, orderListTbl;
     @FXML
@@ -57,6 +57,7 @@ public class OrdersViewController {
         session.loadActiveOrders();
         orders = session.getData(table.getTableID());
         activeOrders.setVisible(true);
+        waiterLbl.setText("");
         viewOrderBtn.setText("View Order");
         orderListTbl.setVisible(false);
         inProcessOrdersNum.setCellValueFactory(param -> new ReadOnlyStringWrapper(param.getValue()[0]));
@@ -97,6 +98,8 @@ public class OrdersViewController {
                     orderList.clear();
                     ArrayList<OrderItem> orderItems = order.get(selectedIndex).getOrderItems();
                     orderListTbl.setVisible(true);
+                    Employee emp = session.findEmployee(String.valueOf(order.get(selectedIndex).getWaiterID()));
+                    waiterLbl.setText("Waiter:\n" + emp.getFirstName() + " " + emp.getLastName());
                     activeOrders.setVisible(false);
                     session.viewOrder(tableColumns, orderList, orderItems, orderListTbl);
                     viewOrderBtn.setText("Back to Orders List");

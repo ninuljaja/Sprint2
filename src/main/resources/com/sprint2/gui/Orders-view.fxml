@@ -14,7 +14,7 @@
       </Label>
       <Pane fx:id="viewOrder" layoutX="5.0" layoutY="49.0" prefHeight="513.0" prefWidth="535.0" style="-fx-border-radius: 60px; -fx-background-radius: 60px; -fx-background-color: #f55e61ff;">
          <children>
-            <Group fx:id="activeOrders" layoutX="50.0" layoutY="15.0" visible="false">
+            <Group fx:id="activeOrders" layoutX="50.0" layoutY="15.0">
                <children>
                   <Label fx:id="inProcessOrdersLbl1" layoutX="50.0" text="Orders in process">
                      <font>
@@ -40,7 +40,7 @@
                   </TableView>
                </children>
             </Group>
-            <TableView fx:id="orderListTbl" layoutX="39.0" layoutY="44.0" maxHeight="430.0" maxWidth="460.0" minHeight="430.0" minWidth="460.0" prefHeight="430.0" prefWidth="460.0" style="-fx-background-color: #f58f8fff;">
+            <TableView fx:id="orderListTbl" layoutX="39.0" layoutY="44.0" maxHeight="430.0" maxWidth="460.0" minHeight="430.0" minWidth="460.0" prefHeight="430.0" prefWidth="460.0" style="-fx-background-color: #f58f8fff;" visible="false">
                <columns>
                   <TableColumn fx:id="itemColumn" maxWidth="-1.0" minWidth="130.0" prefWidth="150.0" sortable="false" text="Item" />
                   <TableColumn fx:id="addonsColumn" maxWidth="-1.0" minWidth="130.0" prefWidth="120.0" sortable="false" text="Add" />
@@ -54,6 +54,7 @@
          <children>
             <Button fx:id="viewOrderBtn" layoutX="31.0" layoutY="244.0" mnemonicParsing="false" onAction="#onViewOrderBtn" prefHeight="40.0" prefWidth="167.0" style="-fx-background-color: white; -fx-border-color: #af4345; -fx-border-radius: 2px; -fx-border-insets: -1px;" text="View Order" />
          </children></Pane>
+      <Label fx:id="waiterLbl" layoutX="432.0" layoutY="5.0" prefHeight="40.0" prefWidth="160.0" text="Label" wrapText="true" />
 
    </children>
 </AnchorPane>

@@ -170,7 +170,7 @@ public class Session {
     }
     public Employee findEmployee(String emploeeID){
         ArrayList<Employee> employees = employeeList();
-        if(!employees.isEmpty()){
+        if(!employees.isEmpty() && employees != null){
             for(Employee employee : employees){
                 if(String.valueOf(employee.getEmployeeID()).equalsIgnoreCase(emploeeID)){
                     return employee;
@@ -202,5 +202,36 @@ public class Session {
             return employees;
         }
     }
+    public ArrayList<Table> tableList(){
+        ArrayList<Table> allTables = new ArrayList<>();
+        try {
+            String dataLine = "";
+            File myFile = new File("Tables.csv");
+            Scanner scan = new Scanner(myFile);
+            scan.nextLine();
+            while (scan.hasNextLine()) {
+                dataLine = scan.nextLine();
+                // Split the string by comma
+                String[] line = dataLine.split(",");
+                allTables.add(new Table(line));
+            }
+            scan.close();
 
+        } catch (IOException ioex) {
+            ioex.printStackTrace();
+        }
+        return allTables;
+    }
+
+    public Table getTable(String tableID){
+        ArrayList<Table> allTables = tableList();
+        if(!allTables.isEmpty() && allTables != null){
+            for(Table table : allTables) {
+                if (table.getTableID().equalsIgnoreCase(tableID)) {
+                        return table;
+                    }
+                }
+            }
+        return null;
+    }
 }
