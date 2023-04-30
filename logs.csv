@@ -9,3 +9,6 @@
 4/30/2023, 6:21 PM;Order for Table A1;Employee 1 placed an order for Table A1
 4/30/2023, 7:07 PM;Order for Table A1;Employee 1 placed an order for Table A1
 4/30/2023, 7:08 PM;Order for Table B2;Employee 1 placed an order for Table B2
+4/30/2023, 7:38 PM;Created Employee Profile;Employee "Jane Smith" (id 1) created profile for Employee "Timothy Jones" (id 6)
+4/30/2023, 7:38 PM;Deleted Employee Profile;Employee "Jane Smith" (id 1) deleted profile for Employee "Jack Anderson" (id 4)
+4/30/2023, 7:39 PM;Created Employee Profile;Employee "Jane Smith" (id 1) created profile for Employee "Paul Sandler" (id 7)

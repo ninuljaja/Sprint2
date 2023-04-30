@@ -9,8 +9,9 @@ import java.util.Scanner;
 
 public class EmployeeDatabase {
     private List<Employee> employees = new ArrayList<Employee>();
-    public static String employeeDatabaseFilename = "Employee.csv";
+    private String employeeDatabaseFilename = "Employee.csv";
     private String header = "Employee ID,FirstName,MiddleInitial,LastName,Phone#,Address,Role,username,password,wage ($ per hour),SSN";
+    private int nextEmployeeID = 1;
 
     public List<Employee> getEmployees()
     {
@@ -19,6 +20,7 @@ public class EmployeeDatabase {
 
     public void addEmployee(Employee employee)
     {
+        employee.employeeID = nextEmployeeID++;
         ActivityLogging.AddLog("Created Employee Profile", Session.getInstance().getUser() + " created profile for " + employee);
         employees.add(employee);
         saveToFile();
@@ -60,6 +62,7 @@ public class EmployeeDatabase {
                 String serializedEmployee = scan.nextLine();
                 Employee employee = Employee.deserialize(serializedEmployee);
                 employees.add(employee);
+                nextEmployeeID = Math.max(nextEmployeeID, employee.employeeID + 1);
             }
             scan.close();
         }
