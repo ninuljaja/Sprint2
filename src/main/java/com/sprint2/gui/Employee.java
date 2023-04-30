@@ -44,7 +44,7 @@ public class Employee {
         SSN = user.getSSN();
     }
 
-    private Employee() {
+    public Employee() {
     }
 
     public String getFirstName(){
@@ -87,6 +87,71 @@ public class Employee {
 
     public int getSSN() {
         return SSN;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    public void setMiddleInitial(String middleInitial) {
+        this.middleInitial = middleInitial;
+    }
+    public void setPhoneNum(String phoneNum) {
+        this.phoneNum = phoneNum;
+    }
+    public void setAddress(String address) {
+        this.address = address;
+    }
+    public void setPosition(String position) {
+        this.position = position;
+    }
+    public void setSalary(float salary) {
+        this.salary = salary;
+    }
+    public void setSSN(int SSN) {
+        this.SSN = SSN;
+    }
+
+
+    public static String serialize(Employee employee)
+    {
+        return employee.employeeID + ","
+            + employee.firstName + ","
+            + employee.middleInitial + ","
+            + employee.lastName + ","
+            + employee.phoneNum + ","
+            + employee.address + ","
+            + employee.position + ","
+            + employee.username + ","
+            + employee.password + ","
+            + employee.salary + ","
+            + employee.SSN;
+    }
+
+    public static Employee deserialize(String serializedString)
+    {
+        String[] data = serializedString.split(",");
+        Employee employee = new Employee();
+        employee.employeeID = Integer.parseInt(data[0]);
+        employee.firstName = data[1];
+        employee.middleInitial = data[2];
+        employee.lastName = data[3];
+        employee.phoneNum = data[4];
+        employee.address = data[5];
+        employee.position = data[6];
+        employee.username = data[7];
+        employee.password = data[8];
+        employee.salary = Float.parseFloat(data[9]);
+        employee.SSN = Integer.parseInt(data[10]);
+        return employee;
     }
 
 
