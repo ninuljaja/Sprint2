@@ -42,6 +42,7 @@ public class EmployeeProfileEditorController {
     }
     @FXML
     protected void updateEmployeeList(){
+        data.clear();
         for (Employee employee : GUIApplication.getEmployeeDatabase().getEmployees())
         {
             employees.add(employee);
@@ -50,12 +51,18 @@ public class EmployeeProfileEditorController {
         }
     }
 
+    private Employee getSelectedEmployee()
+    {
+        int selectedRow = employeeTable.getSelectionModel().getSelectedIndex();
+        if (selectedRow == -1) return null;
+        int employeeID = Integer.parseInt(id.getCellData(selectedRow));
+        return GUIApplication.getEmployeeDatabase().getEmployeeById(employeeID);
+    }
+
     @FXML
     protected void onEditProfile() throws IOException
     {
-        int row = getSelectedRowNdx();
-        if (row == -1) return;
-        Employee selectedEmployee = employees.get(row);
+        Employee selectedEmployee = getSelectedEmployee();
         LoaderManager.LoadScreen("ProfileEditor.fxml");
         ProfileEditorController controller = (ProfileEditorController) LoaderManager.getController();
         controller.LoadEmployee(selectedEmployee);
@@ -64,25 +71,20 @@ public class EmployeeProfileEditorController {
     @FXML
     protected void onDeleteProfile()
     {
-        int row = getSelectedRowNdx();
-        if (row == -1) return;
-        Employee selectedEmployee = employees.get(row);
+        Employee selectedEmployee = getSelectedEmployee();
         int employeeId = selectedEmployee.employeeID;
         if (employeeId == Session.getInstance().getUser().employeeID) 
         {
             showCannotDeleteCurrentProfileAlert();
             return;
-        }
-
-        String employeeName = selectedEmployee.getFirstName() + " " + employees.get(row).getLastName();
-        
-        Alert alert = new Alert(Alert.AlertType.WARNING, "Are you sure you want to delete the profile for employee " + employeeName + " (id " + employeeId + ")? This cannot be undone.", ButtonType.YES, ButtonType.NO);
+        }        
+        Alert alert = new Alert(Alert.AlertType.WARNING, "Are you sure you want to delete the profile for " + selectedEmployee + "? This cannot be undone.", ButtonType.YES, ButtonType.NO);
         alert.setHeaderText("Confirm Deletion of Employee Profile");
         alert.showAndWait();
 
         if (alert.getResult() == ButtonType.YES){
             alert.close();
-            deleteProfile(row);
+            deleteProfile(selectedEmployee);
             return;
         }
     }
@@ -91,16 +93,15 @@ public class EmployeeProfileEditorController {
     protected void onCreateProfile() throws IOException
     {
         LoaderManager.LoadScreen("ProfileEditor.fxml");
+        ProfileEditorController controller = (ProfileEditorController) LoaderManager.getController();
+        controller.CreateEmployee();
     }
 
-    private int getSelectedRowNdx()
+    private void deleteProfile(Employee employee)
     {
-        return employeeTable.getSelectionModel().getSelectedIndex();
-    }
-
-    private void deleteProfile(int ndx)
-    {
-        System.out.println("Delete profile " + ndx);
+        System.out.println("Delete profile " + employee.getFirstName());
+        GUIApplication.getEmployeeDatabase().deleteEmployee(employee);
+        updateEmployeeList();
     }
 
     private void showCannotDeleteCurrentProfileAlert()

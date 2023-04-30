@@ -167,6 +167,16 @@ public class Employee {
         return employee;
     }
 
+    @Override
+    public String toString()
+    {
+        return "Employee \"" + getFullName() + "\" (id " + employeeID + ")";
+    }
+
+    public String getFullName()
+    {
+        return firstName + " " + lastName;
+    }
 
     public static class Builder
     {

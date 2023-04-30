@@ -280,6 +280,7 @@ public class MenuViewController {
                     addToOrderBtn.setDisable(true);
                     orderItems.removeAll(orderItems);
                     orderList.clear();
+                    ActivityLogging.AddLog("Order for Table " + table.getTableID(), waiter + " placed an order for Table " + table.getTableID()); 
                     initialize();
             }
         } else {

@@ -31,7 +31,7 @@ public class ClockLogs {
    //     this.clockIns.add(clockInTime);
         saveClockInOutTime(employeeID, EventType.CLOCK_IN.name(), formatter.format(clockInTime));
         isClockedIn = true;
-        ActivityLogging.AddLog("Employee clocked in", "Employee " + employeeID + " clocked in");
+        ActivityLogging.AddLog("Employee clocked in", GUIApplication.getEmployeeDatabase().getEmployeeById(employeeID) + " clocked in");
     }
 
     public void clockOut(int employeeID) {
@@ -39,7 +39,7 @@ public class ClockLogs {
     //    this.clockOuts.add(clockOutTime);
         saveClockInOutTime(employeeID, EventType.CLOCK_OUT.name(), formatter.format(clockOutTime));
         isClockedIn = false;
-        ActivityLogging.AddLog("Employee clocked out", "Employee " + employeeID + " clocked out");
+        ActivityLogging.AddLog("Employee clocked out", GUIApplication.getEmployeeDatabase().getEmployeeById(employeeID) + " clocked out");
     }
 
     public String lastAction(int employeeID) {

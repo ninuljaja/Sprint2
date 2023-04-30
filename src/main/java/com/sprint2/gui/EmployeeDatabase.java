@@ -9,11 +9,41 @@ import java.util.Scanner;
 
 public class EmployeeDatabase {
     private List<Employee> employees = new ArrayList<Employee>();
+    public static String employeeDatabaseFilename = "Employee.csv";
     private String header = "Employee ID,FirstName,MiddleInitial,LastName,Phone#,Address,Role,username,password,wage ($ per hour),SSN";
 
     public List<Employee> getEmployees()
     {
         return employees;
+    }
+
+    public void addEmployee(Employee employee)
+    {
+        ActivityLogging.AddLog("Created Employee Profile", Session.getInstance().getUser() + " created profile for " + employee);
+        employees.add(employee);
+        saveToFile();
+    }
+
+    public void deleteEmployee(Employee employee)
+    {
+        ActivityLogging.AddLog("Deleted Employee Profile", Session.getInstance().getUser() + " deleted profile for " + employee);
+        employees.remove(employee);
+        saveToFile();
+    }
+
+    public void loadFromFile()
+    {
+        loadFromFile(employeeDatabaseFilename);
+    }
+
+    public Employee getEmployeeById(int employeeID)
+    {
+        for (Employee employee : employees)
+        {
+            if (employee.employeeID == employeeID)
+                return employee;
+        }
+        return null;
     }
 
     public void loadFromFile(String filename) {
@@ -38,6 +68,11 @@ public class EmployeeDatabase {
             e.printStackTrace();
             return;
         }
+    }
+
+    public void saveToFile()
+    {
+        saveToFile(employeeDatabaseFilename);
     }
 
     public void saveToFile(String filename)
