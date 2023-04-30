@@ -267,4 +267,28 @@ public class Session {
             ex.printStackTrace();
         }
     }
+
+    public void updateTableStatus(String status){
+        try {
+            ArrayList<Table> tables = tableList();
+            String[] newTableList = new String[3];
+            FileWriter writer = new FileWriter("Tables.csv");
+            for(Table tbl : tables){
+                if(tbl.getTableID().equalsIgnoreCase(selectedTable.getTableID())){
+                    tbl.setTableStatus(status);
+                }
+                newTableList[0] = tbl.getTableID();
+                newTableList[1] = String.valueOf(tbl.getWaiterID());
+                newTableList[2] = tbl.getTableStatus();
+
+                writer.write(String.join(",", newTableList) + "\n");
+
+            }
+            writer.close();
+        } catch (IOException ex){
+            ex.printStackTrace();
+        }
+
+
+    }
 }

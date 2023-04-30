@@ -39,9 +39,9 @@ public class MenuViewController {
     private Group menuGroup;
     @FXML
     private TableColumn<String[], String> itemColumn, addonsColumn, commentsColumn, priceColumn;
-    private ArrayList<TableColumn<String[], String>> tableColumns = new ArrayList<>();
-    private ArrayList<RadioButton> sauces = new ArrayList<>();
-    private ArrayList<RadioButton> protein = new ArrayList<>();
+    private ArrayList<TableColumn<String[], String>> tableColumns;
+    private ArrayList<RadioButton> sauces;
+    private ArrayList<RadioButton> protein;
     private Item item = null;
     private Session session = null;
     private Employee user = null;
@@ -49,12 +49,14 @@ public class MenuViewController {
     private Waiter waiter = null;
     private Table table = null;
     ArrayList<OrderItem> orderItems = new ArrayList<>();
-    ObservableList<String[]> orderList = FXCollections.observableArrayList();
+    ObservableList<String[]> orderList;
 
 
     public void initialize() {
-
+        tableColumns = new ArrayList<>();
+        sauces = new ArrayList<>();
         session = Session.getInstance();
+        protein = new ArrayList<>();
         user = session.getUser();
         table = session.getSelectedTable();
         if(session.getMode().equalsIgnoreCase("waiter")){
@@ -62,6 +64,7 @@ public class MenuViewController {
         }
         goBackBtn.setText("Go Back");
         selectionPane.setVisible(false);
+        orderList = FXCollections.observableArrayList();
         sauces.addAll(Arrays.asList(chipotleSauce,ranchSauce,buffaloSauce,blueCheeseSauce,bbqSauce,carolinaGoldSauce,jimBeamSauce,noneSauce));
         protein.addAll(Arrays.asList(chickenProtein,porkProtein,hamProtein, noneProtein));
         tableColumns.addAll(Arrays.asList(itemColumn, addonsColumn, commentsColumn, priceColumn));

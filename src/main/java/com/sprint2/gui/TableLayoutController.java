@@ -61,11 +61,11 @@ public class TableLayoutController {
             for (Table table : allTables){
                 Button button = (Button) tableButton.lookup("#" + table.getTableID());
                 if (button != null && !button.isDisable()) {
-                    if(table.getStatus().equalsIgnoreCase("READY")){
+                    if(table.getTableStatus().equalsIgnoreCase("READY")){
                         tableButton.setStyle(existingStyle + "-fx-background-color: #83df5bff;");
-                    } else if (table.getStatus().equalsIgnoreCase("OCCUPIED")){
+                    } else if (table.getTableStatus().equalsIgnoreCase("OCCUPIED")){
                         tableButton.setStyle(existingStyle + "-fx-background-color: #f0f00bff;");
-                    } else if(table.getStatus().equalsIgnoreCase("DIRTY")){
+                    } else if(table.getTableStatus().equalsIgnoreCase("DIRTY")){
                         tableButton.setStyle(existingStyle + "-fx-background-color: #e41111ff;");
                     }
                 }
@@ -272,11 +272,11 @@ public class TableLayoutController {
         if(data != null) {
             tableNumberLabel.setText("Table " + table.getTableID());
             if(session.getMode().equalsIgnoreCase("waiter")) {
-                if (table.getStatus().equalsIgnoreCase("Occupied")) {
+                if (table.getTableStatus().equalsIgnoreCase("Occupied")) {
                     placeOrderBtn.setDisable(false);
                     markAsDirtyBtn.setDisable(false);
                     viewOrdersBtn.setDisable(false);
-                } else if(table.getStatus().equalsIgnoreCase("Ready")){
+                } else if(table.getTableStatus().equalsIgnoreCase("Ready")){
                     markAsDirtyBtn.setDisable(false);
                 }
             } else if(session.getMode().equalsIgnoreCase("manager")) {
