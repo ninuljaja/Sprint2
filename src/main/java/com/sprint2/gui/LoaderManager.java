@@ -13,6 +13,8 @@ import java.io.IOException;
 
 public class LoaderManager {
 
+    private static Object activeController = null;
+
     /**
      * @deprecated Use the static method LoaderManager.LoadScreen(String fxmlFileName) instead.
      */
@@ -69,7 +71,13 @@ public class LoaderManager {
     {
         FXMLLoader loader = new FXMLLoader(LoaderManager.class.getResource(fxmlFileName));
         Parent root = loader.load();
+        activeController = loader.getController();
         GUIApplication.getStage().setScene(new Scene(root));
         return root;
+    }
+
+    public static Object getController()
+    {
+        return activeController;
     }
 }

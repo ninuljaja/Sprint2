@@ -43,6 +43,10 @@ public class Employee {
         salary = user.getSalary();
         SSN = user.getSSN();
     }
+
+    private Employee() {
+    }
+
     public String getFirstName(){
         return firstName;
     }
@@ -86,4 +90,95 @@ public class Employee {
     }
 
 
+    public static class Builder
+    {
+        protected int employeeID = -1;
+        private String firstName = "";
+        private String lastName = "";
+        private String username = "";
+        private String password = "";
+        private String middleInitial = "";
+        private String phoneNum = "";
+        private String address = "";
+        private String position = "";
+        private float salary = 0f;
+        private int SSN = 0;
+
+        public Employee build()
+        {
+            Employee employee = new Employee();
+            employee.employeeID = -1;
+            employee.firstName = firstName;
+            employee.lastName = lastName;
+            employee.username = username;
+            employee.password = password;
+            employee.middleInitial = middleInitial;
+            employee.phoneNum = phoneNum;
+            employee.address = address;
+            employee.position = position;
+            employee.salary = salary;
+            employee.SSN = SSN;
+            return employee;
+        }
+
+        public Employee.Builder withFirstName(String firstName)
+        {
+            this.firstName = firstName;
+            return this;
+        }
+
+        public Employee.Builder withLastName(String lastName)
+        {
+            this.lastName = lastName;
+            return this;
+        }
+
+        public Employee.Builder withMiddleInitial(String middleInitial)
+        {
+            this.middleInitial = middleInitial;
+            return this;
+        }
+
+        public Employee.Builder withUsername(String username)
+        {
+            this.username = username;
+            return this;
+        }
+
+        public Employee.Builder withPassword(String password)
+        {
+            this.password = password;
+            return this;
+        }
+
+        public Employee.Builder withPhoneNum(String phoneNum)
+        {
+            this.phoneNum = phoneNum;
+            return this;
+        }
+
+        public Employee.Builder withAddress(String address)
+        {
+            this.address = address;
+            return this;
+        }
+
+        public Employee.Builder withPosition(String position)
+        {
+            this.position = position;
+            return this;
+        }
+
+        public Employee.Builder withSalary(float salary)
+        {
+            this.salary = salary;
+            return this;
+        }
+
+        public Employee.Builder withSSN(int ssn)
+        {
+            this.SSN = ssn;
+            return this;
+        }
+    }
 }

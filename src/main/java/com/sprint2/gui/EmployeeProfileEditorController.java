@@ -27,9 +27,6 @@ public class EmployeeProfileEditorController {
 
     ObservableList<String[]> data = FXCollections.observableArrayList();
 
-    private LoaderManager lm = new LoaderManager();
-
-
     public void initialize() {
         Session session = Session.getInstance();
         Employee user = session.getUser();
@@ -75,9 +72,10 @@ public class EmployeeProfileEditorController {
     {
         int row = getSelectedRowNdx();
         if (row == -1) return;
+        Employee selectedEmployee = employees.get(row);
         LoaderManager.LoadScreen("ProfileEditor.fxml");
-        System.out.println("post-load test");
-        // TODO: load in existing profile data
+        ProfileEditorController controller = (ProfileEditorController) LoaderManager.getController();
+        controller.LoadEmployee(selectedEmployee);
     }
 
     @FXML
@@ -95,8 +93,6 @@ public class EmployeeProfileEditorController {
 
         String employeeName = selectedEmployee.getFirstName() + " " + employees.get(row).getLastName();
         
-        // TODO: current account cannot be deleted
-
         Alert alert = new Alert(Alert.AlertType.WARNING, "Are you sure you want to delete the profile for employee " + employeeName + " (id " + employeeId + ")? This cannot be undone.", ButtonType.YES, ButtonType.NO);
         alert.setHeaderText("Confirm Deletion of Employee Profile");
         alert.showAndWait();
