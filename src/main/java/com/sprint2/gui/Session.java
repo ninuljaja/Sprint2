@@ -6,7 +6,9 @@ public class Session {
     private String mode;
     private Table selectedTable;
 
-    private Session() {}
+    private Session() {
+        ActivityLogging.LoadLogs();
+    }
 
     public static Session getInstance() {
         if (instance == null) {

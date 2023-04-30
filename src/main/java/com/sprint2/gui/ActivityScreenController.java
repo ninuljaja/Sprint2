@@ -23,7 +23,6 @@ public class ActivityScreenController {
 
     public void initialize()
     {
-        ActivityLogging.AddLog("Test logged title", "Test logged text");
         LoadLogs();
     }
 
