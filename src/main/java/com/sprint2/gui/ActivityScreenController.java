@@ -28,7 +28,7 @@ public class ActivityScreenController {
 
     @FXML
     protected void goBack(ActionEvent actionEvent) throws IOException {
-        lm.goBack("ManagerScreenSelection.fxml", actionEvent);
+        LoaderManager.LoadScreen("ManagerScreenSelection.fxml");
     }
 
     private void AddLog(Node newLog)

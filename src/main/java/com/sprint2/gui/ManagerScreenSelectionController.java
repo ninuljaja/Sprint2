@@ -27,18 +27,18 @@ public class ManagerScreenSelectionController {
     }
 
     @FXML
-    protected void onEmployeeProfileButton() {
-        lm.goToNextStage("EmployeeProfile-view.fxml", employeeProfileButton);
+    protected void onEmployeeProfileButton() throws IOException {
+        LoaderManager.LoadScreen("EmployeeProfile-view.fxml");
     }
 
     @FXML
-    protected void onActivityButton() {
-        lm.goToNextStage("ManagerActivityScreen.fxml", activityButton);
+    protected void onActivityButton() throws IOException {
+        LoaderManager.LoadScreen("ManagerActivityScreen.fxml");
     }
 
     @FXML
     protected void goBack(ActionEvent actionEvent) throws IOException {
-        lm.goBack("LoginAs.fxml", actionEvent);
+        LoaderManager.LoadScreen("LoginAs.fxml");
     }
 
     public void onViewActiveOrders(ActionEvent actionEvent) throws IOException {

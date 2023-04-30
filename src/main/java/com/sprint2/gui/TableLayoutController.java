@@ -271,7 +271,8 @@ public class TableLayoutController {
 
     @FXML
     protected void onPlaceOrderBtn(ActionEvent actionEvent) throws IOException {
-        lm.goToNextPane(tableLayout,"Menu-view.fxml");
+        session.setSelectedTable(table);
+        LoaderManager.LoadScreen("Menu-view.fxml");
     }
 
     @FXML
@@ -303,8 +304,7 @@ public class TableLayoutController {
     }
     @FXML
     protected void goBack(ActionEvent actionEvent) throws IOException {
-        lm.goBack("LoginAs.fxml", actionEvent);
-        session.setSelectedTable(null);
+        LoaderManager.LoadScreen("LoginAs.fxml");
     }
 
     protected void setButtonStatus(Table data){

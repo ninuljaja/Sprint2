@@ -280,8 +280,7 @@ public class MenuViewController {
                     addToOrderBtn.setDisable(true);
                     orderItems.removeAll(orderItems);
                     orderList.clear();
-                    ActivityLogging.AddLog("Order for Table " + table.getTableID(), "Employee " +
-                            session.getUser().employeeID + " placed an order for Table " + table.getTableID());
+                    ActivityLogging.AddLog("Order for Table " + table.getTableID(), waiter + " placed an order for Table " + table.getTableID()); 
                     initialize();
             }
         } else {
@@ -327,8 +326,7 @@ public class MenuViewController {
             alert.showAndWait();
 
         }
-        LoaderManager lm = new LoaderManager();
-        lm.goBack("Table-layout.fxml", actionEvent);
+        LoaderManager.LoadScreen("Table-layout.fxml");
     }
 
 

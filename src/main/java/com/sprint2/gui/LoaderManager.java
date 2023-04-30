@@ -12,9 +12,21 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class LoaderManager {
+
+    private static Object activeController = null;
+
+    /**
+     * @deprecated Use the static method LoaderManager.LoadScreen(String fxmlFileName) instead.
+     */
+    @Deprecated
     public LoaderManager(){
 
         }
+
+    /**
+     * @deprecated Use the static method LoaderManager.LoadScreen(String fxmlFileName) instead.
+     */
+    @Deprecated
     public void goToNextStage(String filename, Button login){
         try {
             Stage stage;
@@ -27,11 +39,20 @@ public class LoaderManager {
             e.printStackTrace();
         }
     }
+
+    /**
+     * @deprecated Use the static method LoaderManager.LoadScreen(String fxmlFileName) instead.
+     */
+    @Deprecated
     public void goToNextPane(AnchorPane currentPane, String filename) throws IOException {
         AnchorPane nextPane = FXMLLoader.load(getClass().getResource(filename));
         currentPane.getChildren().setAll(nextPane);
     }
 
+    /**
+     * @deprecated Use the static method LoaderManager.LoadScreen(String fxmlFileName) instead.
+     */
+    @Deprecated
     public void goBack(String filename, ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(filename));
         Parent root = loader.load();
@@ -44,5 +65,19 @@ public class LoaderManager {
     public static Node LoadNode(String fxmlFileName) throws IOException {
         FXMLLoader loader = new FXMLLoader(LoaderManager.class.getResource(fxmlFileName));
         return loader.load();
+    }
+
+    public static Parent LoadScreen(String fxmlFileName) throws IOException
+    {
+        FXMLLoader loader = new FXMLLoader(LoaderManager.class.getResource(fxmlFileName));
+        Parent root = loader.load();
+        activeController = loader.getController();
+        GUIApplication.getStage().setScene(new Scene(root));
+        return root;
+    }
+
+    public static Object getController()
+    {
+        return activeController;
     }
 }
