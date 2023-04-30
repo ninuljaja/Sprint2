@@ -6,38 +6,65 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Group;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class OrdersViewController {
     @FXML
-    private TableView<String[]> readyOrdersTbl, ordersInProcessTbl;
+    private Label tableNum;
+    @FXML
+    private TableView<String[]> readyOrdersTbl, ordersInProcessTbl, orderListTbl;
     @FXML
     private TableColumn<String[], String> inProcessOrdersNum, inProcessOrdersTotal, readyOrdersTotal,readyOrdersNum;
+    @FXML
+    private TableColumn<String[], String> itemColumn, addonsColumn, commentsColumn, priceColumn;
+    private ArrayList<TableColumn<String[], String>> tableColumns;
+    @FXML
+    private Button viewOrderBtn;
+    @FXML
+    private Group activeOrders;
     private Session session = null;
     private Employee user = null;
     private Table table = null;
-    private ObservableList<String[]> readyOrders = FXCollections.observableArrayList();
-    private ObservableList<String[]> ordersInProcess = FXCollections.observableArrayList();
+    private ObservableList<String[]> readyOrders;
+    private ObservableList<String[]> ordersInProcess;
+    ObservableList<String[]> orderList;
 
-    private ArrayList<Order> orders = new ArrayList<>();
+    private ArrayList<Order> orders;
+    private ArrayList<Order> ordersReady,inProcessOrders;
+
 
     public void initialize() {
 
         session = Session.getInstance();
         user = session.getUser();
         table = session.getSelectedTable();
-
+        tableNum.setText("Table " + table.getTableID());
+        orders = new ArrayList<>();
+        ordersReady= new ArrayList<>();
+        inProcessOrders= new ArrayList<>();
+        tableColumns = new ArrayList<>();
+        readyOrders = FXCollections.observableArrayList();
+        ordersInProcess = FXCollections.observableArrayList();
+        orderList = FXCollections.observableArrayList();
+        session.loadActiveOrders();
         orders = session.getData(table.getTableID());
-
+        activeOrders.setVisible(true);
+        viewOrderBtn.setText("View Order");
+        orderListTbl.setVisible(false);
         inProcessOrdersNum.setCellValueFactory(param -> new ReadOnlyStringWrapper(param.getValue()[0]));
         inProcessOrdersTotal.setCellValueFactory(param -> new ReadOnlyStringWrapper(param.getValue()[1]));
         readyOrdersNum.setCellValueFactory(param -> new ReadOnlyStringWrapper(param.getValue()[0]));
         readyOrdersTotal.setCellValueFactory(param -> new ReadOnlyStringWrapper(param.getValue()[1]));
         updateOrderLists();
+        tableColumns.addAll(Arrays.asList(itemColumn, addonsColumn, commentsColumn, priceColumn));
         readyOrdersTbl.setItems(readyOrders);
         ordersInProcessTbl.setItems(ordersInProcess);
 
@@ -49,6 +76,38 @@ public class OrdersViewController {
     }
     @FXML
     private void onViewOrderBtn(ActionEvent actionEvent) {
+        if(viewOrderBtn.getText().equalsIgnoreCase("View Order")) {
+            String[] selectedRow = new String[2];
+            ArrayList<Order> order = new ArrayList<>();
+            int selectedIndex1 = readyOrdersTbl.getSelectionModel().getSelectedIndex();
+            int selectedIndex2 = ordersInProcessTbl.getSelectionModel().getSelectedIndex();
+            int selectedIndex = 0;
+            if (selectedIndex1 >= 0) {
+                selectedIndex = selectedIndex1;
+                order = ordersReady;
+                selectedRow = readyOrdersTbl.getItems().get(selectedIndex);
+            } else if(selectedIndex2 >= 0) {
+                selectedIndex = selectedIndex2;
+                order = inProcessOrders;
+                selectedRow = ordersInProcessTbl.getItems().get(selectedIndex);
+            }
+            if (!selectedRow[0].isEmpty()) {
+                try {
+                    orderListTbl.getItems().removeAll();
+                    orderList.clear();
+                    ArrayList<OrderItem> orderItems = order.get(selectedIndex).getOrderItems();
+                    orderListTbl.setVisible(true);
+                    activeOrders.setVisible(false);
+                    session.viewOrder(tableColumns, orderList, orderItems, orderListTbl);
+                    viewOrderBtn.setText("Back to Orders List");
+                }catch (NumberFormatException e){
+                    e.printStackTrace();
+                }
+            }
+        } else {
+            initialize();
+        }
+
     }
     public void updateOrderLists(){
        for(Order order : orders) {
@@ -61,16 +120,10 @@ public class OrdersViewController {
            }
            parts[1] = String.format("%.2f", total);
            if(order.getOrderStatus().equalsIgnoreCase("READY")) {
-               for(String part : parts){
-                   System.out.println(part + " ");
-               }
-               System.out.println();
+               ordersReady.add(order);
                readyOrders.add(parts);
            } else {
-               for(String part : parts){
-                   System.out.println(part + " ");
-               }
-               System.out.println();
+               inProcessOrders.add(order);
                ordersInProcess.add(parts);
            }
        }

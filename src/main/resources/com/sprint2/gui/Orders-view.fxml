@@ -1,40 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="570.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sprint2.gui.OrdersViewController">
    <children>
+      <Label fx:id="tableNum" layoutX="240.0" layoutY="15.0" underline="true">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
       <Pane fx:id="viewOrder" layoutX="5.0" layoutY="49.0" prefHeight="513.0" prefWidth="535.0" style="-fx-border-radius: 60px; -fx-background-radius: 60px; -fx-background-color: #f55e61ff;">
          <children>
-            <Label fx:id="inProcessOrdersLbl1" layoutX="100.0" layoutY="15.0" text="Orders in process">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <TableView fx:id="readyOrdersTbl" layoutX="280.0" layoutY="44.0" maxHeight="430.0" maxWidth="204.0" minHeight="430.0" minWidth="204.0" prefHeight="430.0" prefWidth="204.0" style="-fx-background-color: #f58f8fff;">
-              <columns>
-                <TableColumn fx:id="readyOrdersNum" maxWidth="124.0" minWidth="73.0" prefWidth="107.20000457763672" sortable="false" text="Order Number" />
-                  <TableColumn fx:id="readyOrdersTotal" maxWidth="180.0" minWidth="86.4000244140625" prefWidth="97.60000610351562" sortable="false" text="Total" />
-              </columns>
-            </TableView>
-            <Label fx:id="readyOrdersLbl" layoutX="340.0" layoutY="15.0" text="Ready orders">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <TableView fx:id="ordersInProcessTbl" layoutX="50.0" layoutY="44.0" maxHeight="430.0" maxWidth="460.0" minHeight="430.0" minWidth="204.0" prefHeight="430.0" prefWidth="204.0" style="-fx-background-color: #f58f8fff;">
+            <Group fx:id="activeOrders" layoutX="50.0" layoutY="15.0" visible="false">
+               <children>
+                  <Label fx:id="inProcessOrdersLbl1" layoutX="50.0" text="Orders in process">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="readyOrdersTbl" layoutX="230.0" layoutY="29.0" maxHeight="430.0" maxWidth="204.0" minHeight="430.0" minWidth="204.0" prefHeight="430.0" prefWidth="204.0" style="-fx-background-color: #f58f8fff;">
+                    <columns>
+                      <TableColumn fx:id="readyOrdersNum" maxWidth="124.0" minWidth="73.0" prefWidth="107.20000457763672" sortable="false" text="Order Number" />
+                        <TableColumn fx:id="readyOrdersTotal" maxWidth="180.0" minWidth="86.4000244140625" prefWidth="97.60000610351562" sortable="false" text="Total" />
+                    </columns>
+                  </TableView>
+                  <Label fx:id="readyOrdersLbl" layoutX="290.0" text="Ready orders">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="ordersInProcessTbl" layoutY="29.0" maxHeight="430.0" maxWidth="460.0" minHeight="430.0" minWidth="204.0" prefHeight="430.0" prefWidth="204.0" style="-fx-background-color: #f58f8fff;">
+                     <columns>
+                        <TableColumn fx:id="inProcessOrdersNum" maxWidth="124.0" minWidth="73.0" prefWidth="109.0" sortable="false" text="Order Number" />
+                        <TableColumn fx:id="inProcessOrdersTotal" maxWidth="180.0" minWidth="91.0" prefWidth="93.60000610351562" sortable="false" text="Total" />
+                     </columns>
+                  </TableView>
+               </children>
+            </Group>
+            <TableView fx:id="orderListTbl" layoutX="39.0" layoutY="44.0" maxHeight="430.0" maxWidth="460.0" minHeight="430.0" minWidth="460.0" prefHeight="430.0" prefWidth="460.0" style="-fx-background-color: #f58f8fff;">
                <columns>
-                  <TableColumn fx:id="inProcessOrdersNum" maxWidth="124.0" minWidth="73.0" prefWidth="109.0" sortable="false" text="Order Number" />
-                  <TableColumn fx:id="inProcessOrdersTotal" maxWidth="180.0" minWidth="91.0" prefWidth="93.60000610351562" sortable="false" text="Total" />
+                  <TableColumn fx:id="itemColumn" maxWidth="-1.0" minWidth="130.0" prefWidth="150.0" sortable="false" text="Item" />
+                  <TableColumn fx:id="addonsColumn" maxWidth="-1.0" minWidth="130.0" prefWidth="120.0" sortable="false" text="Add" />
+                  <TableColumn fx:id="commentsColumn" minWidth="130.0" prefWidth="130.0" sortable="false" text="Comments" />
+                  <TableColumn fx:id="priceColumn" maxWidth="65.0" minWidth="65.0" prefWidth="65.0" sortable="false" text="Price" />
                </columns>
             </TableView>
          </children></Pane>
       <Button fx:id="goBackBtn" layoutX="531.0" layoutY="538.0" mnemonicParsing="false" onAction="#onGoBackBtn" prefHeight="28.0" prefWidth="61.0" style="-fx-background-color: #f58f8fff; -fx-border-color: #af4345;" text="Go Back" />
       <Pane fx:id="viewOrderPane" layoutX="627.0" layoutY="6.0" prefHeight="570.0" prefWidth="222.0" style="-fx-background-color: #f58f8fff; -fx-border-color: #af4345;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="viewOrderBtn" layoutX="50.0" layoutY="244.0" mnemonicParsing="false" onAction="#onViewOrderBtn" prefHeight="40.0" prefWidth="133.0" style="-fx-background-color: white; -fx-border-color: #af4345; -fx-border-radius: 2px; -fx-border-insets: -1px;" text="View Order" />
+            <Button fx:id="viewOrderBtn" layoutX="31.0" layoutY="244.0" mnemonicParsing="false" onAction="#onViewOrderBtn" prefHeight="40.0" prefWidth="167.0" style="-fx-background-color: white; -fx-border-color: #af4345; -fx-border-radius: 2px; -fx-border-insets: -1px;" text="View Order" />
          </children></Pane>
 
    </children>

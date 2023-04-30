@@ -2,7 +2,9 @@ package com.sprint2.gui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
@@ -243,8 +245,16 @@ public class TableLayoutController {
 
     @FXML
     protected void onViewOrdersBtn() throws IOException {
-        session.setSelectedTable(table);
-        lm.goToNextPane(tableLayout, "Orders-View.fxml");
+        session.loadActiveOrders();
+        ArrayList<Order> orders = session.getData(table.getTableID());
+        if(!orders.isEmpty()) {
+            session.setSelectedTable(table);
+            lm.goToNextPane(tableLayout, "Orders-View.fxml");
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING,"No active orders", ButtonType.OK);
+            alert.setHeaderText("");
+            alert.showAndWait();
+        }
     }
     @FXML
     protected void onMarkAsDirtyBtn(){
@@ -299,6 +309,7 @@ public class TableLayoutController {
         for (Button button : buttons) {
             button.setDisable(true);
         }
+
         if(data != null) {
             table = new Table(data);
             tableNumberLabel.setText("Table " + table.getTableID());

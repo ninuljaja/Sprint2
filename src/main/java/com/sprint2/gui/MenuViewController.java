@@ -1,6 +1,5 @@
 package com.sprint2.gui;
 
-import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,7 +20,7 @@ public class MenuViewController {
     @FXML
     private Label itemNameLbl, orderLbl;
     @FXML
-    private Button addToOrderBtn, deleteItemBtn, goBackBtn;
+    private Button addToOrderBtn, deleteItemBtn, goBackBtn, viewOrderBtn;
     @FXML
     private RadioButton chipotleSauce, ranchSauce, buffaloSauce, blueCheeseSauce, bbqSauce, carolinaGoldSauce, jimBeamSauce, noneSauce;
     @FXML
@@ -40,6 +39,7 @@ public class MenuViewController {
     private Group menuGroup;
     @FXML
     private TableColumn<String[], String> itemColumn, addonsColumn, commentsColumn, priceColumn;
+    private ArrayList<TableColumn<String[], String>> tableColumns = new ArrayList<>();
     private ArrayList<RadioButton> sauces = new ArrayList<>();
     private ArrayList<RadioButton> protein = new ArrayList<>();
     private Item item = null;
@@ -64,6 +64,7 @@ public class MenuViewController {
         selectionPane.setVisible(false);
         sauces.addAll(Arrays.asList(chipotleSauce,ranchSauce,buffaloSauce,blueCheeseSauce,bbqSauce,carolinaGoldSauce,jimBeamSauce,noneSauce));
         protein.addAll(Arrays.asList(chickenProtein,porkProtein,hamProtein, noneProtein));
+        tableColumns.addAll(Arrays.asList(itemColumn, addonsColumn, commentsColumn, priceColumn));
         menuPane.setVisible(true);
         orderLbl.setVisible(false);
         menuGroup.setVisible(true);
@@ -234,6 +235,9 @@ public class MenuViewController {
                 addToOrderBtn.setText("Add to order");
                 addToOrderBtn.setDisable(true);
                 goBackBtn.setText("Cancel");
+                noneProtein.setSelected(true);
+                noneSauce.setSelected(true);
+                viewOrderBtn.setDisable(false);
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING,"Choose an item", ButtonType.OK);
@@ -253,6 +257,8 @@ public class MenuViewController {
                 orderItems.remove(selectedIndex);
                 if (!orderItems.isEmpty()) {
                     onViewOrderBtn();
+                } else {
+                    viewOrderBtn.setDisable(true);
                 }
             }
         }
@@ -289,33 +295,7 @@ public class MenuViewController {
         menuPane.setVisible(false);
         orderLbl.setVisible(true);
         menuGroup.setDisable(false);
-        float totalPrice = 0;
-
-        for(OrderItem items : orderItems) {
-            String[] parts = new String[4];
-            parts[0] = items.getItem().getItemName();
-            parts[1] = items.getAddons();
-            parts[2] = items.getComments();
-            parts[3] = String.valueOf(items.getItem().getPrice());
-            orderList.add(parts);
-            totalPrice += items.getItem().getPrice();
-        }
-        String[] subtotalParts = {"", "", "Subtotal", String.valueOf(totalPrice)};
-        orderList.add(subtotalParts);
-        float tax = totalPrice*7/100;
-        String[] taxParts = {"", "", "Tax", String.format("%.2f", tax)};
-        orderList.add(taxParts);
-        String[] totalParts = {"", "", "Total", String.format("%.2f", (tax + totalPrice))};
-        orderList.add(totalParts);
-        itemColumn.setCellValueFactory(param -> new ReadOnlyStringWrapper(param.getValue()[0]));
-        itemColumn.setCellFactory(param -> new WrappingTextCell());
-        addonsColumn.setCellValueFactory(param -> new ReadOnlyStringWrapper(param.getValue()[1]));
-        addonsColumn.setCellFactory(param -> new WrappingTextCell());
-        commentsColumn.setCellValueFactory(param -> new ReadOnlyStringWrapper(param.getValue()[2]));
-        commentsColumn.setCellFactory(param -> new WrappingTextCell());
-        priceColumn.setCellValueFactory(param -> new ReadOnlyStringWrapper(param.getValue()[3]));
-
-        orderListTbl.setItems(orderList);
+        session.viewOrder(tableColumns, orderList, orderItems, orderListTbl);
         deleteItemBtn.setDisable(false);
 
 

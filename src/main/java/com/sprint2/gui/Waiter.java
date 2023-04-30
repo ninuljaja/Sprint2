@@ -67,8 +67,6 @@ public class Waiter extends Employee {
                 String currentOrderString = Arrays.toString(currentOrder); // "[apple, banana, cherry]"
 
                 currentOrderString = currentOrderString.substring(1, currentOrderString.length() - 1).replaceAll(", ", ",");
-                System.out.println(currentOrderString);
-
                 writer.write(currentOrderString + "\n");
                 writer.close();
 

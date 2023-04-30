@@ -1,5 +1,10 @@
 package com.sprint2.gui;
 
+import javafx.beans.property.ReadOnlyStringWrapper;
+import javafx.collections.ObservableList;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,11 +21,7 @@ public class Session {
     private String[] tables = {"A1","A2","A3","A4","A5","A6","B1","B2","B3","B4","B5","B6","C5","C6","D5","D6","E1","E2","E3","E4","E5","E6","F1","F2","F3","F4","F5","F6"};
 
     private Session() {
-        readOrdersFile();
-        for(String table : tables) {
 
-            addData(table, tableOrders(table));
-        }
 
         ActivityLogging.LoadLogs();
     }
@@ -63,7 +64,13 @@ public class Session {
     public void removeData(String table) {
         activeOrders.remove(table);
     }
+    public void loadActiveOrders(){
+        readOrdersFile();
+        for(String table : tables) {
 
+            addData(table, tableOrders(table));
+        }
+    }
     public ArrayList<Order> getData(String table) {
         return activeOrders.get(table);
     }
@@ -130,5 +137,35 @@ public class Session {
         } catch (IOException ioex) {
             ioex.printStackTrace();
         }
+    }
+
+    public void viewOrder(ArrayList<TableColumn<String[], String>> tableColumn, ObservableList<String[]> list, ArrayList<OrderItem> ordItems, TableView<String[]> listTbl){
+        float totalPrice = 0;
+
+        for(OrderItem items : ordItems) {
+            String[] parts = new String[4];
+            parts[0] = items.getItem().getItemName();
+            parts[1] = items.getAddons();
+            parts[2] = items.getComments();
+            parts[3] = String.valueOf(items.getItem().getPrice());
+            list.add(parts);
+            totalPrice += items.getItem().getPrice();
+        }
+        String[] subtotalParts = {"", "", "Subtotal", String.valueOf(totalPrice)};
+        list.add(subtotalParts);
+        float tax = totalPrice*7/100;
+        String[] taxParts = {"", "", "Tax", String.format("%.2f", tax)};
+        list.add(taxParts);
+        String[] totalParts = {"", "", "Total", String.format("%.2f", (tax + totalPrice))};
+        list.add(totalParts);
+        int i = 0;
+        for (TableColumn<String[], String> tColumn : tableColumn) {
+            int finalI = i;
+            tColumn.setCellValueFactory(param -> new ReadOnlyStringWrapper(param.getValue()[finalI]));
+            i++;
+            tColumn.setCellFactory(param -> new WrappingTextCell());
+        }
+
+        listTbl.setItems(list);
     }
 }
