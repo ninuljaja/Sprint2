@@ -23,10 +23,13 @@ public class EmployeeProfileEditorController {
     private List<Employee> employees;
 
     ObservableList<String[]> data = FXCollections.observableArrayList();
+    Session session;
+    Employee user;
+    LoaderManager lm = new LoaderManager();
 
     public void initialize() {
-        Session session = Session.getInstance();
-        Employee user = session.getUser();
+        session = Session.getInstance();
+        user = session.getUser();
         employees = session.employeeList();
         updateEmployeeList();
 

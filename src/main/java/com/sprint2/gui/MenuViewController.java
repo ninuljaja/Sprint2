@@ -59,9 +59,8 @@ public class MenuViewController {
         protein = new ArrayList<>();
         user = session.getUser();
         table = session.getSelectedTable();
-        if(session.getMode().equalsIgnoreCase("waiter")){
-            waiter = new Waiter(session.getUser());
-        }
+        waiter = new Waiter(session.getUser());
+
         goBackBtn.setText("Go Back");
         selectionPane.setVisible(false);
         orderList = FXCollections.observableArrayList();
@@ -76,6 +75,7 @@ public class MenuViewController {
         itemNameLbl.setText("");
         orderListTbl.setVisible(false);
         viewOrderPane.setVisible(false);
+        viewOrderBtn.setDisable(true);
     }
 
 
