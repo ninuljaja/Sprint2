@@ -118,6 +118,8 @@ public class OrdersViewController {
                 selectedIndex = selectedIndex2;
                 order = inProcessOrders;
                 selectedRow = ordersInProcessTbl.getItems().get(selectedIndex);
+            } else {
+                return;
             }
             if (!selectedRow[0].isEmpty()) {
                 try {

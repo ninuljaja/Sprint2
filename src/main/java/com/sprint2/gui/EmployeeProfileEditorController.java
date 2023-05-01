@@ -65,29 +65,32 @@ public class EmployeeProfileEditorController {
     protected void onEditProfile() throws IOException
     {
         Employee selectedEmployee = getSelectedEmployee();
-        LoaderManager.LoadScreen("ProfileEditor.fxml");
-        ProfileEditorController controller = (ProfileEditorController) LoaderManager.getController();
-        controller.LoadEmployee(selectedEmployee);
+        if(selectedEmployee != null) {
+            LoaderManager.LoadScreen("ProfileEditor.fxml");
+            ProfileEditorController controller = (ProfileEditorController) LoaderManager.getController();
+            controller.LoadEmployee(selectedEmployee);
+        }
     }
 
     @FXML
     protected void onDeleteProfile()
     {
         Employee selectedEmployee = getSelectedEmployee();
-        int employeeId = selectedEmployee.employeeID;
-        if (employeeId == Session.getInstance().getUser().employeeID) 
-        {
-            showCannotDeleteCurrentProfileAlert();
-            return;
-        }        
-        Alert alert = new Alert(Alert.AlertType.WARNING, "Are you sure you want to delete the profile for " + selectedEmployee + "? This cannot be undone.", ButtonType.YES, ButtonType.NO);
-        alert.setHeaderText("Confirm Deletion of Employee Profile");
-        alert.showAndWait();
+        if(selectedEmployee != null) {
+            int employeeId = selectedEmployee.employeeID;
+            if (employeeId == Session.getInstance().getUser().employeeID) {
+                showCannotDeleteCurrentProfileAlert();
+                return;
+            }
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Are you sure you want to delete the profile for " + selectedEmployee + "? This cannot be undone.", ButtonType.YES, ButtonType.NO);
+            alert.setHeaderText("Confirm Deletion of Employee Profile");
+            alert.showAndWait();
 
-        if (alert.getResult() == ButtonType.YES){
-            alert.close();
-            deleteProfile(selectedEmployee);
-            return;
+            if (alert.getResult() == ButtonType.YES) {
+                alert.close();
+                deleteProfile(selectedEmployee);
+                return;
+            }
         }
     }
 
