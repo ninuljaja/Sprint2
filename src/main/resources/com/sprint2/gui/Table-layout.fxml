@@ -12,12 +12,12 @@
       <ColorAdjust />
    </effect>
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="226.0" layoutY="12.0" text="Manage Table Status" textFill="#f55e61" AnchorPane.topAnchor="12.0">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="226.0" layoutY="25.0" text="Manage Table Status" textFill="#f55e61" AnchorPane.topAnchor="25.0">
          <font>
             <Font name="System Bold" size="37.0" />
          </font>
       </Label>
-      <Pane layoutX="593.8" layoutY="85.0" prefHeight="316.0" prefWidth="211.0" style="-fx-background-radius: 10px; -fx-background-color: white; -fx-border-color: #666666; -fx-border-radius: 10px;" AnchorPane.bottomAnchor="169.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="85.0">
+      <Pane layoutX="593.8" layoutY="106.0" prefHeight="316.0" prefWidth="211.0" style="-fx-background-radius: 10px; -fx-background-color: white; -fx-border-color: #666666; -fx-border-radius: 10px;" AnchorPane.bottomAnchor="148.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="106.0">
          <children>
             <Label fx:id="tableNumberLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" prefHeight="40.0" prefWidth="210.0" text="Table" underline="true">
                <font>
@@ -51,7 +51,7 @@
             </Button>
          </children>
       </Pane>
-      <GridPane layoutX="24.0" layoutY="74.0" prefHeight="443.0" prefWidth="544.0">
+      <GridPane layoutX="24.0" layoutY="98.0" prefHeight="443.0" prefWidth="544.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.0" minWidth="10.0" prefWidth="24.6" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.0" minWidth="10.0" prefWidth="75.0" />
@@ -166,7 +166,7 @@
             </Pane>
          </children>
       </GridPane>
-      <Group layoutX="591.0" layoutY="431.0">
+      <Group layoutX="591.0" layoutY="454.0">
          <children>
             <Label layoutX="14.0" layoutY="-6.0" text="  Ready">
                <graphic>
@@ -193,6 +193,6 @@
             </Label>
          </children>
       </Group>
-      <Button fx:id="goBackBtn" layoutX="621.0" layoutY="410.0" mnemonicParsing="false" onAction="#goBack" prefHeight="31.0" prefWidth="64.0" text="Go Back" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="15.0" />
+      <Button fx:id="goBackBtn" layoutX="24.0" layoutY="23.0" mnemonicParsing="false" onAction="#goBack" prefHeight="31.0" prefWidth="64.0" text="Go Back" AnchorPane.bottomAnchor="515.8" AnchorPane.rightAnchor="732.0" />
    </children>
 </AnchorPane>

@@ -12,3 +12,24 @@
 4/30/2023, 7:38 PM;Created Employee Profile;Employee "Jane Smith" (id 1) created profile for Employee "Timothy Jones" (id 6)
 4/30/2023, 7:38 PM;Deleted Employee Profile;Employee "Jane Smith" (id 1) deleted profile for Employee "Jack Anderson" (id 4)
 4/30/2023, 7:39 PM;Created Employee Profile;Employee "Jane Smith" (id 1) created profile for Employee "Paul Sandler" (id 7)
+4/30/2023, 7:49 PM;Employee clocked out;Employee "Jane Smith" (id 1) clocked out
+4/30/2023, 7:49 PM;Employee clocked in;Employee "Jane Smith" (id 1) clocked in
+4/30/2023, 7:49 PM;Order for Table E4;Employee "Jane Smith" (id 1) placed an order for Table E4
+4/30/2023, 7:50 PM;Order for Table E4;Employee "Jane Smith" (id 1) placed an order for Table E4
+4/30/2023, 8:04 PM;Employee clocked out;Employee "Jane Smith" (id 1) clocked out
+4/30/2023, 8:04 PM;Employee clocked in;Employee "Jane Smith" (id 1) clocked in
+4/30/2023, 8:18 PM;Employee clocked out;Employee "Jane Smith" (id 1) clocked out
+4/30/2023, 8:19 PM;Employee clocked in;Employee "Jane Smith" (id 1) clocked in
+4/30/2023, 8:19 PM;Order for Table B1;Employee "Jane Smith" (id 1) placed an order for Table B1
+4/30/2023, 8:20 PM;Employee clocked out;Employee "Jane Smith" (id 1) clocked out
+4/30/2023, 8:23 PM;Order for Table A1;Employee "Jane Smith" (id 1) placed an order for Table A1
+4/30/2023, 9:11 PM;Employee clocked in;Employee "Jane Smith" (id 1) clocked in
+4/30/2023, 9:27 PM;Employee clocked out;Employee "Jane Smith" (id 1) clocked out
+4/30/2023, 9:35 PM;Employee clocked in;Employee "Jane Smith" (id 1) clocked in
+4/30/2023, 9:35 PM;Order for Table B1;Employee "Jane Smith" (id 1) placed an order for Table B1
+4/30/2023, 9:39 PM;Created Employee Profile;Employee "Jane Smith" (id 1) created profile for Employee "Zach Anderson" (id 8)
+4/30/2023, 9:40 PM;Employee clocked in;Employee "Victor Johnson" (id 2) clocked in
+4/30/2023, 9:41 PM;Order for Table B2;Employee "Victor Johnson" (id 2) placed an order for Table B2
+4/30/2023, 9:41 PM;Employee clocked out;Employee "Victor Johnson" (id 2) clocked out
+4/30/2023, 9:59 PM;Created Employee Profile;Employee "Jane Smith" (id 1) created profile for Employee "Josh Washington" (id 9)
+4/30/2023, 9:59 PM;Employee clocked out;Employee "Jane Smith" (id 1) clocked out

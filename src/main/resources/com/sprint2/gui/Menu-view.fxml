@@ -8,17 +8,17 @@
 
 <AnchorPane prefHeight="570.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sprint2.gui.MenuViewController">
    <children>
-      <Pane fx:id="viewOrder" layoutX="5.0" layoutY="49.0" prefHeight="513.0" prefWidth="535.0" style="-fx-border-radius: 60px; -fx-background-radius: 60px; -fx-background-color: #f55e61ff;">
+      <Pane fx:id="viewOrder" layoutX="5.0" layoutY="49.0" prefHeight="514.0" prefWidth="574.0" style="-fx-border-radius: 60px; -fx-background-radius: 60px; -fx-background-color: #f55e61ff;" AnchorPane.bottomAnchor="6.600000000000023" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="240.60000000000002" AnchorPane.topAnchor="49.0">
          <children>
             <Group fx:id="menuGroup" layoutX="28.0" layoutY="16.0">
                <children>
-                  <ScrollPane fx:id="menuPane" prefHeight="478.0" prefWidth="490.0" style="-fx-background-color: #f55e61ff; -fx-border-color: #f55e61ff;">
+                  <ScrollPane fx:id="menuPane" prefHeight="478.0" prefWidth="522.0" style="-fx-background-color: #f55e61ff; -fx-border-color: #f55e61ff;">
                      <content>
-                        <Pane prefWidth="472.0" style="-fx-background-color: #f55e61ff; -fx-border-color: #f55e61ff;">
+                        <Pane prefHeight="687.0" prefWidth="504.0" style="-fx-background-color: #f55e61ff; -fx-border-color: #f55e61ff;">
                           <children>
-                            <AnchorPane prefHeight="405.0" prefWidth="258.0">
+                            <AnchorPane prefHeight="686.0" prefWidth="270.0">
                                  <children>
-                                    <Pane id="menuPane" layoutX="14.0" layoutY="1.0" prefHeight="223.0" prefWidth="219.0" stylesheets="@style.css">
+                                    <Pane id="menuPane" layoutX="16.0" layoutY="1.0" prefHeight="223.0" prefWidth="219.0" stylesheets="@style.css">
                                        <children>
                                           <Label alignment="CENTER" contentDisplay="CENTER" layoutX="69.0" layoutY="10.0" text="Appetizers">
                                              <font>
@@ -62,7 +62,7 @@
                                           </Button>
                                        </children>
                                     </Pane>
-                                    <Pane id="menuPane" layoutX="14.0" layoutY="232.0" prefHeight="223.0" prefWidth="219.0" stylesheets="@style.css">
+                                    <Pane id="menuPane" layoutX="16.0" layoutY="232.0" prefHeight="223.0" prefWidth="219.0" stylesheets="@style.css">
                                        <children>
                                           <Label alignment="CENTER" contentDisplay="CENTER" layoutX="86.0" layoutY="10.0" text="Wraps">
                                              <font>
@@ -106,7 +106,7 @@
                                           </Button>
                                        </children>
                                     </Pane>
-                                    <Pane id="menuPane" layoutX="14.0" layoutY="463.0" prefHeight="223.0" prefWidth="219.0" stylesheets="@style.css">
+                                    <Pane id="menuPane" layoutX="16.0" layoutY="463.0" prefHeight="223.0" prefWidth="219.0" stylesheets="@style.css">
                                        <children>
                                           <Label alignment="CENTER" contentDisplay="CENTER" layoutX="65.0" layoutY="10.0" text="Sandwiches">
                                              <font>
@@ -152,9 +152,9 @@
                                     </Pane>
                                  </children>
                               </AnchorPane>
-                            <AnchorPane layoutX="237.0" layoutY="1.0" minHeight="0.0" minWidth="0.0" prefHeight="405.0" prefWidth="239.0">
+                            <AnchorPane layoutX="265.0" layoutY="1.0" minHeight="0.0" minWidth="0.0" prefHeight="405.0" prefWidth="262.0">
                                  <children>
-                                    <Pane id="menuPane" layoutX="4.0" layoutY="1.0" prefHeight="223.0" prefWidth="219.0" stylesheets="@style.css">
+                                    <Pane id="menuPane" layoutX="2.0" layoutY="1.0" prefHeight="223.0" prefWidth="219.0" stylesheets="@style.css">
                                        <children>
                                           <Label alignment="CENTER" contentDisplay="CENTER" layoutX="86.0" layoutY="10.0" text="Salads">
                                              <font>
@@ -196,7 +196,7 @@
                                                 <Insets left="10.0" />
                                              </padding>
                                           </Button>
-                                          <Pane id="menuPane" layoutY="231.0" prefHeight="223.0" prefWidth="219.0" stylesheets="@style.css">
+                                          <Pane id="menuPane" layoutX="-2.0" layoutY="231.0" prefHeight="223.0" prefWidth="219.0" stylesheets="@style.css">
                                              <children>
                                                 <Label alignment="CENTER" contentDisplay="CENTER" layoutX="82.0" layoutY="10.0" text="Entrees">
                                                    <font>
@@ -264,8 +264,8 @@
                </font>
             </Label>
          </children></Pane>
-      <Button fx:id="goBackBtn" layoutX="531.0" layoutY="538.0" mnemonicParsing="false" onAction="#onGoBackBtn" prefHeight="28.0" prefWidth="61.0" style="-fx-background-color: #f58f8fff; -fx-border-color: #af4345;" text="Go Back" />
-      <GridPane fx:id="addOnsPane" gridLinesVisible="true" layoutX="603.0" prefHeight="570.0" prefWidth="222.0" style="-fx-background-color: #f58f8fff; -fx-grid-lines-color: #af4345; -fx-border-color: #af4345;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Button fx:id="goBackBtn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onGoBackBtn" prefHeight="28.0" prefWidth="61.0" style="-fx-background-color: #f58f8fff; -fx-border-color: #af4345;" text="Go Back" AnchorPane.bottomAnchor="528.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="744.4" AnchorPane.topAnchor="14.0" />
+      <GridPane fx:id="addOnsPane" gridLinesVisible="true" layoutX="603.0" prefHeight="570.0" prefWidth="222.0" style="-fx-background-color: #f58f8fff; -fx-grid-lines-color: #af4345; -fx-border-color: #af4345;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="597.6" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <Label fx:id="itemNameLbl" text="Item" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
             <font>
                <Font size="14.0" />

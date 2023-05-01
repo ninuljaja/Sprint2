@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -19,6 +20,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class OrdersViewController {
+    @FXML
+    private Pane viewOrder,viewOrderPane;
     @FXML
     private Label tableNum, waiterLbl;
     @FXML
@@ -29,7 +32,7 @@ public class OrdersViewController {
     private TableColumn<String[], String> itemColumn, addonsColumn, commentsColumn, priceColumn;
     private ArrayList<TableColumn<String[], String>> tableColumns;
     @FXML
-    private Button viewOrderBtn, markOrderReadyBtn, markOrderCompleteBtn;
+    private Button viewOrderBtn, markOrderReadyBtn, markOrderCompleteBtn, goBackBtn;
     @FXML
     private Group activeOrders;
     private Session session = null;
@@ -73,12 +76,31 @@ public class OrdersViewController {
         orderListTbl.setVisible(false);
         activeOrders.setVisible(true);
         waiterLbl.setText("");
-
+        if(session.getMode().equalsIgnoreCase("waiter")){
+            goBackBtn.setStyle(" -fx-background-color:  #f58f8fff; -fx-border-color:  #af4345;");
+            viewOrder.setStyle("-fx-background-color: #f55e61ff; -fx-background-radius: 60px");
+            viewOrderPane.setStyle("-fx-background-color:  #f58f8fff; -fx-border-color:  #af4345;");
+            readyOrdersTbl.setStyle("-fx-background-color: #f58f8fff;");
+            ordersInProcessTbl.setStyle("-fx-background-color: #f58f8fff;");
+            orderListTbl.setStyle("-fx-background-color: #f58f8fff;");
+            viewOrderBtn.setStyle("-fx-border-color:  #af4345;");
+            markOrderReadyBtn.setStyle("-fx-border-color:  #af4345;");
+            markOrderCompleteBtn.setStyle("-fx-border-color:  #af4345;");
+        } else {
+            goBackBtn.setStyle("-fx-background-color:  #b4a7d6ff; -fx-border-color:   #9900ff;");
+            viewOrder.setStyle("-fx-background-color: #8e7cc3ff; -fx-background-radius: 60px");
+            viewOrderPane.setStyle("-fx-background-color:  #b4a7d6ff; -fx-border-color:   #9900ff;");
+            readyOrdersTbl.setStyle("-fx-background-color:  #b4a7d6ff;");
+            ordersInProcessTbl.setStyle("-fx-background-color:  #b4a7d6ff;");
+            orderListTbl.setStyle("-fx-background-color:  #b4a7d6ff;");
+            viewOrderBtn.setStyle("-fx-border-color:  #9900ff;");
+            markOrderReadyBtn.setStyle("-fx-border-color:  #9900ff;");
+            markOrderCompleteBtn.setStyle("-fx-border-color:  #9900ff;");
+        }
     }
     @FXML
     private void onGoBackBtn(ActionEvent actionEvent) throws IOException {
-        LoaderManager lm = new LoaderManager();
-        lm.goBack("Table-layout.fxml", actionEvent);
+        LoaderManager.LoadScreen("Table-layout.fxml");
     }
     @FXML
     private void onViewOrderBtn() throws FileNotFoundException {
@@ -142,7 +164,6 @@ public class OrdersViewController {
         int selectedIndex = ordersInProcessTbl.getSelectionModel().getSelectedIndex();
         Order order = null;
         if (selectedIndex >= 0) {
-            selectedRow = ordersInProcessTbl.getItems().get(selectedIndex);
             order = inProcessOrders.get(selectedIndex);
             selectedRow = ordersInProcessTbl.getItems().get(selectedIndex);
         }
@@ -157,7 +178,6 @@ public class OrdersViewController {
         int selectedIndex = readyOrdersTbl.getSelectionModel().getSelectedIndex();
         Order order = null;
         if (selectedIndex >= 0) {
-            selectedRow = readyOrdersTbl.getItems().get(selectedIndex);
             order = ordersReady.get(selectedIndex);
             selectedRow = readyOrdersTbl.getItems().get(selectedIndex);
         }

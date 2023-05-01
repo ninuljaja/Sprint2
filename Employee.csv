@@ -5,3 +5,5 @@ Employee ID,FirstName,MiddleInitial,LastName,Phone#,Address,Role,username,passwo
 5,Bill,Y,Miller,4704544545,879 Riverside Street; Atlanta; GA; 30330,Waiter,MBill1,Pas115,10.0,987654321
 6,Timothy,null,Jones,null,null,Waiter,TJones1,password,0.0,0
 7,Paul,null,Sandler,null,null,Cook,PSandler2,Pas123123,0.0,0
+8,Zach,E,Anderson,4528524512,700 Pine Street; Atlanta; GA; 30333,Cook,AJack1,Pas114,10.0,111111112
+9,Josh,L,Washington,47011111212,7412 Tens str; Atlanta; GA; 35007,Busser,WJosh1,Pas114,9.0,121314181

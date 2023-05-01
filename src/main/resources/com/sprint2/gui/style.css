@@ -28,4 +28,27 @@
     -fx-background-color: transparent;
 }
 
+.viewOrderManager{
+    -fx-background-color: #8e7cc3ff;
+    -fx-background-radius: 60px
+}
+.viewOrderWaiter{
+    -fx-background-color: #f55e61ff;
+    -fx-background-radius: 60px
+}
+.ordersTblManager{
+    -fx-background-color:  #b4a7d6ff;
+}
+.ordersTblWaiter{
+    -fx-background-color: #f58f8fff;
+}
+.viewOrderPaneManager{
+    -fx-background-color:  #b4a7d6ff;
+    -fx-border-color:   #9900ff;
+}
+.viewOrderPaneWaiter{
+    -fx-background-color:  #f58f8fff;
+    -fx-border-color:  #af4345;
+}
+
 

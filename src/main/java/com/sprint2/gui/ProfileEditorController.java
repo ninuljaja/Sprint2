@@ -1,11 +1,12 @@
 package com.sprint2.gui;
 
-import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+
+import java.io.IOException;
 
 public class ProfileEditorController {
 
@@ -95,7 +96,7 @@ public class ProfileEditorController {
         employee.setLastName(lastNameField.getText());
         employee.setMiddleInitial(middleInitialField.getText());
         employee.setPhoneNum(phoneField.getText());
-        employee.setAddress(addressField.getText());
+        employee.setAddress(addressField.getText().replaceAll(",",";"));
         employee.setUsername(usernameField.getText());
         employee.setPassword(passwordField.getText());
         employee.setPosition(roleDropdown.getValue());

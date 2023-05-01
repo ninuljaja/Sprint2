@@ -280,7 +280,7 @@ public class TableLayoutController {
         session.loadActiveOrders();
         ArrayList<Order> orders = session.getData(table.getTableID());
         if(!orders.isEmpty()) {
-        lm.goToNextPane(tableLayout, "Orders-View.fxml");
+            LoaderManager.LoadScreen("Orders-View.fxml");
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING,"No active orders", ButtonType.OK);
             alert.setHeaderText("");
@@ -304,7 +304,11 @@ public class TableLayoutController {
     }
     @FXML
     protected void goBack(ActionEvent actionEvent) throws IOException {
-        LoaderManager.LoadScreen("LoginAs.fxml");
+        if(session.getMode().equalsIgnoreCase("waiter")) {
+            LoaderManager.LoadScreen("LoginAs.fxml");
+        } else {
+            LoaderManager.LoadScreen("ManagerScreenSelection.fxml");
+        }
     }
 
     protected void setButtonStatus(Table data){
@@ -333,8 +337,6 @@ public class TableLayoutController {
                     markAsCleanBtn.setDisable(false);
                     viewOrdersBtn.setDisable(false);
                 }
-
-
             }
         }
     }
